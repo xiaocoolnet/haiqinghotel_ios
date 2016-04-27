@@ -11,9 +11,7 @@ import UIKit
 class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
     
     private var scrollView:UIScrollView!
-    
     private var tableView:UITableView!
-    
     private var searchbar:UISearchBar!
     internal var starttime:String=String()
     internal var endtime:String=String()
@@ -26,7 +24,6 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     
     var num=0
     
-    //dhjfghj
     
     override func viewDidLoad() {
         super.viewDidLoad()

@@ -121,7 +121,7 @@
     NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
     
 //    [dateFormatter setDateFormat: @"yyyy-MM-dd HH:mm:ss"];
-    [dateFormatter setDateFormat: @"yyyy-MM-dd"];
+    [dateFormatter setDateFormat: @"MM月dd日"];
     
     NSDate *destDate= [dateFormatter dateFromString:dateString];
     
@@ -139,7 +139,7 @@
     //zzz表示时区，zzz可以删除，这样返回的日期字符将不包含时区信息。
     
 //    [dateFormatter setDateFormat:@"yyyy-MM-dd HH:mm:ss zzz"];
-    [dateFormatter setDateFormat:@"yyyy-MM-dd"];
+    [dateFormatter setDateFormat:@"MM月dd日"];
     
     NSString *destDateString = [dateFormatter stringFromDate:date];
     

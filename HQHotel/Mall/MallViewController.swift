@@ -13,6 +13,7 @@ class MallViewController: UIViewController,UICollectionViewDelegate ,UICollectio
     override func viewDidLoad() {
         super.viewDidLoad()
 
+    
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)
         collectionView.backgroundColor=UIColor.clearColor()

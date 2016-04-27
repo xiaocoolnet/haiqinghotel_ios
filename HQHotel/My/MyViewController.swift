@@ -20,6 +20,7 @@ class MyViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
 
         self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         
+        
         let topView_h = (self.view.bounds.height)/2-80
         //顶部视图
         topView.frame=CGRectMake(0, 0, self.view.bounds.width, topView_h)

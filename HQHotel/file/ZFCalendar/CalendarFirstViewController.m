@@ -104,7 +104,7 @@
     {
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"YYYY-MM-dd"];
+        [formatter setDateFormat:@"MM-dd"];
         NSDate* date1 = [formatter dateFromString:[dataArray objectAtIndex:0]];
         NSDate* date2 = [formatter dateFromString:[dataArray objectAtIndex:1]];
         

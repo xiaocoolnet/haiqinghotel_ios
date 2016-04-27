@@ -23,6 +23,7 @@
 		F634CE5C1CCA253300164E14 /* 青岛海情-0.JPG in Resources */ = {isa = PBXBuildFile; fileRef = F634CE591CCA253300164E14 /* 青岛海情-0.JPG */; };
 		F634CE5D1CCA253300164E14 /* 青岛海情-2.JPG in Resources */ = {isa = PBXBuildFile; fileRef = F634CE5A1CCA253300164E14 /* 青岛海情-2.JPG */; };
 		F634CE611CCA26FD00164E14 /* 青岛海情-1.JPG in Resources */ = {isa = PBXBuildFile; fileRef = F634CE601CCA26FD00164E14 /* 青岛海情-1.JPG */; };
+		F635DD2F1CCF5B0B00453C4E /* SaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F635DD2E1CCF5B0B00453C4E /* SaleViewController.swift */; };
 		F6443BBC1CC1D1820078627B /* Facilitiescell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6443BBB1CC1D1820078627B /* Facilitiescell.swift */; };
 		F6443BBE1CC200FC0078627B /* LBNvc.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6443BBD1CC200FC0078627B /* LBNvc.swift */; };
 		F6443BC21CC2111D0078627B /* BT.png in Resources */ = {isa = PBXBuildFile; fileRef = F6443BC11CC2111D0078627B /* BT.png */; };
@@ -104,6 +105,7 @@
 		F634CE591CCA253300164E14 /* 青岛海情-0.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "青岛海情-0.JPG"; sourceTree = "<group>"; };
 		F634CE5A1CCA253300164E14 /* 青岛海情-2.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "青岛海情-2.JPG"; sourceTree = "<group>"; };
 		F634CE601CCA26FD00164E14 /* 青岛海情-1.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "青岛海情-1.JPG"; sourceTree = "<group>"; };
+		F635DD2E1CCF5B0B00453C4E /* SaleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaleViewController.swift; sourceTree = "<group>"; };
 		F6443BBB1CC1D1820078627B /* Facilitiescell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facilitiescell.swift; sourceTree = "<group>"; };
 		F6443BBD1CC200FC0078627B /* LBNvc.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LBNvc.swift; sourceTree = "<group>"; };
 		F6443BC11CC2111D0078627B /* BT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BT.png; sourceTree = "<group>"; };
@@ -412,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				F6480C8C1CBF7B5400F27866 /* HomeViewController.swift */,
+				F635DD2E1CCF5B0B00453C4E /* SaleViewController.swift */,
 				F6480C821CBF747C00F27866 /* ScollViewController.swift */,
 				F66283F61CC0DA8300198CB3 /* TabbarViewController.swift */,
 				F633738C1CC763B900F63FC1 /* HotelPlaceViewController.swift */,
@@ -608,6 +611,7 @@
 				F66283E61CC0B5A900198CB3 /* HotelmallTableViewCell.swift in Sources */,
 				F66283EB1CC0BFF900198CB3 /* HotelmallModel.swift in Sources */,
 				F634CE3F1CC9B52800164E14 /* CalendarDayModel.m in Sources */,
+				F635DD2F1CCF5B0B00453C4E /* SaleViewController.swift in Sources */,
 				F633738F1CC763C200F63FC1 /* CallMeViewController.swift in Sources */,
 				F64D73BA1CC47D180048B855 /* NewsTableViewCell.swift in Sources */,
 				F64EAB1C1CC5CEBE0084A795 /* GoodsViewController.swift in Sources */,
@@ -759,6 +763,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HQHotel/Resource",
+				);
 				INFOPLIST_FILE = HQHotel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiaocool.HQHotel;
@@ -771,6 +779,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				FRAMEWORK_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/HQHotel/Resource",
+				);
 				INFOPLIST_FILE = HQHotel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiaocool.HQHotel;

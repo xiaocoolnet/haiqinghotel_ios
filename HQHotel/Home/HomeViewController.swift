@@ -18,7 +18,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     internal var starttime:String=String()
     internal var endtime:String=String()
     internal var tianshu:Int=Int()
-    
+    private var timeleftBT = UIButton()
     
     
     
@@ -49,7 +49,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     
         //创建一个view作为表示图的头视图
         let headerview = UIView(frame: CGRectMake(0, 0, frame.width, 440))
-       
+       headerview.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         //滚动式图
         let scrollview_h = frame.width*0.55
         
@@ -98,8 +98,10 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         lidianL.text="离店"
         let daysL = UILabel(frame: CGRectMake(frame.width/2-20, 10, 40, 20))
         daysL.text="2天"
-        let timeleftBT = UIButton(frame: CGRectMake(40, 40, 100, 20))
+        timeleftBT = UIButton(frame: CGRectMake(40, 40, 100, 20))
         timeleftBT.setTitle("8月23日", forState: UIControlState.Normal)
+        timeleftBT.setTitleColor(UIColor.init(colorLiteralRed: 0/255, green: 166/255, blue: 251/255, alpha: 1), forState: UIControlState.Normal)
+//        timeleftBT.backgroundColor=UIColor.blackColor()
         timeleftBT.addTarget(self, action: #selector(timeStart), forControlEvents: UIControlEvents.TouchUpInside)
         let endtimeBT = UIButton(frame: CGRectMake((self.view.bounds.width-40-100),40,100,20))
         endtimeBT.setTitle(endtime, forState: UIControlState.Normal)
@@ -162,8 +164,8 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
             
         }
         //当前促销
-        let cuxiaoIV = UIImageView(frame: CGRectMake(10, scrollview_h+timeV_h+40+10, self.view.bounds.width-20, 1))
-        cuxiaoIV.image=UIImage(named: "ic_line")
+        let cuxiaoIV = UIImageView(frame: CGRectMake(10, scrollview_h+timeV_h+40+10, self.view.bounds.width-20, 18))
+        cuxiaoIV.image=UIImage(named: "ic_cuxiao")
         headerview.addSubview(cuxiaoIV)
         self.view.addSubview(tableView)
         self.view.addSubview(searchbar)
@@ -209,14 +211,20 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let hotelcell = HotelmallTableViewCell.cellWithTableView(tableView)
         
-        
         return hotelcell
         
     }
-    //隐藏导航栏
-    override func viewWillAppear(animated: Bool) {
-       self.navigationController?.navigationBarHidden=true
+    //点击事件
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
+        let cuxiaoV = SaleViewController()
+        self.navigationController?.pushViewController(cuxiaoV, animated: true)
+        
+        
+        
+        
     }
+    
+    
     //任务编辑文本
     func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool{
         
@@ -275,10 +283,17 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         
         let vvv = CalendarFirstViewController()
         self.navigationController?.pushViewController(vvv, animated: true)
-
+     
         
-        
-        
+    }
+    //隐藏导航栏
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBarHidden=true
+//        timeleftBT.setTitle("04月27日", forState: UIControlState.Normal)
+    }
+    //显示导航栏
+    override func viewWillDisappear(animated: Bool) {
+        self.navigationController?.navigationBarHidden=false
     }
     
     

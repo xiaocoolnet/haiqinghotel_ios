@@ -27,7 +27,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     var num=0
     
     
-    
+    // 666
     override func viewDidLoad() {
         super.viewDidLoad()
         let frame = self.view.bounds
@@ -295,12 +295,5 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     override func viewWillDisappear(animated: Bool) {
         self.navigationController?.navigationBarHidden=false
     }
-    
-    
-    
-
-
-
-
 
 }

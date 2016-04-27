@@ -121,12 +121,12 @@
 		F6443BC11CC2111D0078627B /* BT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BT.png; sourceTree = "<group>"; };
 		F6443C051CC22B1D0078627B /* bj.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bj.jpg; sourceTree = "<group>"; };
 		F6480C471CBF72C300F27866 /* HQHotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HQHotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
-		F6480C4A1CBF72C300F27866 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = ../AppDelegate.swift; sourceTree = "<group>"; };
-		F6480C4C1CBF72C300F27866 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = ../ViewController.swift; sourceTree = "<group>"; };
+		F6480C4A1CBF72C300F27866 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HQHotel/AppDelegate.swift; sourceTree = "<group>"; };
+		F6480C4C1CBF72C300F27866 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = HQHotel/ViewController.swift; sourceTree = "<group>"; };
 		F6480C4F1CBF72C300F27866 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		F6480C511CBF72C300F27866 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = ../Assets.xcassets; sourceTree = "<group>"; };
+		F6480C511CBF72C300F27866 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HQHotel/Assets.xcassets; sourceTree = "<group>"; };
 		F6480C541CBF72C300F27866 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		F6480C561CBF72C300F27866 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; name = Info.plist; path = ../Info.plist; sourceTree = "<group>"; };
+		F6480C561CBF72C300F27866 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = HQHotel/Info.plist; sourceTree = "<group>"; };
 		F6480C5B1CBF72C300F27866 /* HQHotelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HQHotelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6480C5F1CBF72C300F27866 /* HQHotelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HQHotelTests.swift; sourceTree = "<group>"; };
 		F6480C611CBF72C300F27866 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -307,7 +307,7 @@
 				F634CE2B1CC9B52800164E14 /* ZFCalendar */,
 			);
 			name = file;
-			path = ../file;
+			path = HQHotel/file;
 			sourceTree = "<group>";
 		};
 		F6480C7A1CBF741400F27866 /* Home */ = {
@@ -339,7 +339,7 @@
 				F6443C051CC22B1D0078627B /* bj.jpg */,
 			);
 			name = image;
-			path = ../image;
+			path = HQHotel/image;
 			sourceTree = "<group>";
 		};
 		F6480C7C1CBF741400F27866 /* Mall */ = {
@@ -679,7 +679,7 @@
 				F6480C4F1CBF72C300F27866 /* Base */,
 			);
 			name = Main.storyboard;
-			path = ..;
+			path = HQHotel;
 			sourceTree = "<group>";
 		};
 		F6480C531CBF72C300F27866 /* LaunchScreen.storyboard */ = {
@@ -688,7 +688,7 @@
 				F6480C541CBF72C300F27866 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
-			path = ..;
+			path = HQHotel;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */

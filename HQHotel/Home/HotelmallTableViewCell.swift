@@ -23,8 +23,8 @@ class HotelmallTableViewCell: UITableViewCell {
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
         imageV.frame=CGRectMake(10, 5, self.bounds.width-20, 140)
-        imageV.backgroundColor=UIColor.blueColor()
         imageV.image=UIImage(named: "1.jpg")
+        self.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         self.addSubview(imageV)
         
     }

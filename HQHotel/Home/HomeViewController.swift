@@ -17,7 +17,8 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     internal var endtime:String=String()
     internal var tianshu:Int=Int()
     private var timeleftBT = UIButton()
-    
+    private var endtimeBT = UIButton()
+    private var  daysL = UILabel()
     
     
     private let numOfPages=3
@@ -34,9 +35,10 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         tableView.dataSource=self
         tableView.rowHeight=200
         tableView.showsVerticalScrollIndicator=false
+        tableView.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         
         //searchbar
-        searchbar=UISearchBar(frame: CGRectMake(20, 30, frame.width-40, 20))
+        searchbar=UISearchBar(frame: CGRectMake(20, 20, frame.width-40, 20))
         searchbar.searchBarStyle=UISearchBarStyle.Minimal
         searchbar.layer.cornerRadius=14
         searchbar.layer.masksToBounds=true
@@ -45,7 +47,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         searchbar.delegate=self
     
         //创建一个view作为表示图的头视图
-        let headerview = UIView(frame: CGRectMake(0, 0, frame.width, 440))
+        let headerview = UIView(frame: CGRectMake(0, 0, frame.width, frame.width*0.55+frame.width*0.4+40+30))
        headerview.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         //滚动式图
         let scrollview_h = frame.width*0.55
@@ -85,33 +87,51 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
 
         //时间预定view
         let timeV_h = frame.width*0.4
+        let timeV_w = frame.width-20
+        
         
         let timeV = UIView(frame: CGRectMake(10, scrollview_h-10, frame.width-20, timeV_h))
         timeV.backgroundColor=UIColor.whiteColor()
         
         let ruzhuL = UILabel(frame: CGRectMake(60, 10, 40, 20))
         ruzhuL.text="入住"
+        ruzhuL.font=UIFont.boldSystemFontOfSize(16)
+        ruzhuL.textColor=UIColor.grayColor()
         let lidianL = UILabel(frame: CGRectMake(frame.width-100, 10, 40, 20))
         lidianL.text="离店"
-        let daysL = UILabel(frame: CGRectMake(frame.width/2-20, 10, 40, 20))
-        daysL.text="2天"
+        lidianL.font=UIFont.boldSystemFontOfSize(16)
+        lidianL.textColor=UIColor.grayColor()
+        daysL = UILabel(frame: CGRectMake(frame.width/2-20, 10, 40, 20))
+        daysL.textColor=UIColor.init(colorLiteralRed: 250/255, green: 140/255, blue: 60/255, alpha: 1)
+        daysL.font=UIFont.boldSystemFontOfSize(15)
         timeleftBT = UIButton(frame: CGRectMake(40, 40, 100, 20))
         timeleftBT.setTitle("8月23日", forState: UIControlState.Normal)
         timeleftBT.setTitleColor(UIColor.init(colorLiteralRed: 0/255, green: 166/255, blue: 251/255, alpha: 1), forState: UIControlState.Normal)
-        timeleftBT.backgroundColor=UIColor.blackColor()
+
         timeleftBT.addTarget(self, action: #selector(timeStart), forControlEvents: UIControlEvents.TouchUpInside)
-        let endtimeBT = UIButton(frame: CGRectMake((self.view.bounds.width-40-100),40,100,20))
-        endtimeBT.setTitle(endtime, forState: UIControlState.Normal)
+        endtimeBT = UIButton(frame: CGRectMake((self.view.bounds.width-40-100),40,100,20))
+        
         endtimeBT.setTitleColor(UIColor.init(colorLiteralRed: 0/255, green: 166/255, blue: 251/255, alpha: 1), forState: UIControlState.Normal)
-        endtimeBT.backgroundColor=UIColor.blackColor()
+
+        endtimeBT.addTarget(self, action: #selector(timeStart), forControlEvents: UIControlEvents.TouchUpInside)
+        
+        let reserveBT = UIButton(frame: CGRectMake(10,timeV_h-50,timeV_w-20,40))
+        reserveBT.setTitle("立即预订", forState: UIControlState.Normal)
+        reserveBT.backgroundColor=UIColor.init(colorLiteralRed: 0/255, green: 166/255, blue: 251/255, alpha: 1)
+        reserveBT.layer.cornerRadius=5
+        
+        
+        
+        timeV.addSubview(reserveBT)
         timeV.addSubview(timeleftBT)
         timeV.addSubview(daysL)
         timeV.addSubview(lidianL)
         timeV.addSubview(ruzhuL)
         timeV.addSubview(endtimeBT)
-        
+        //传值赋值
         timeleftBT.setTitle(starttime, forState: UIControlState.Normal)
-        daysL.text=String(tianshu)
+        endtimeBT.setTitle(endtime, forState: UIControlState.Normal)
+        daysL.text="\(String(tianshu))天"
         
         
         //将小白点添加到滚动视图
@@ -129,13 +149,15 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
             
             let button_w = frame.width/3
             
-            let button = UIButton(frame: CGRectMake(0+CGFloat(item)*button_w,scrollview_h+timeV_h,button_w,40))
-            let imageV = UIImageView(frame: CGRectMake(20+button_w*CGFloat(item), scrollview_h+timeV_h+10, 18, 18))
-            let xiangqingL = UILabel(frame: CGRectMake(45+button_w*CGFloat(item),scrollview_h+timeV_h,button_w-20,40))
+            let button = UIButton(frame: CGRectMake(0+CGFloat(item)*button_w,scrollview_h+timeV_h,button_w-1,40))
+            let bgView = UIView(frame: button.frame)
+            bgView.backgroundColor=UIColor.whiteColor()
+            
+            let imageV = UIImageView(frame: CGRectMake(15+button_w*CGFloat(item), scrollview_h+timeV_h+10, 18, 18))
+            let xiangqingL = UILabel(frame: CGRectMake(35+button_w*CGFloat(item),scrollview_h+timeV_h,button_w-40,40))
             xiangqingL.font=UIFont.systemFontOfSize(15)
             xiangqingL.textColor=UIColor.grayColor()
             button.tag=item
-
             switch button.tag {
             case 0:
                 imageV.image=UIImage(named: "phone-3")
@@ -156,6 +178,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
             default:
                 break
             }
+            headerview.addSubview(bgView)
             headerview.addSubview(imageV)
             headerview.addSubview(xiangqingL)
             headerview.addSubview(button)
@@ -166,7 +189,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         cuxiaoIV.image=UIImage(named: "ic_cuxiao")
         headerview.addSubview(cuxiaoIV)
         self.view.addSubview(tableView)
-        self.view.addSubview(searchbar)
+        headerview.addSubview(searchbar)
         //定时器
         NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector (doTime), userInfo: nil, repeats: true)
     }
@@ -214,7 +237,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     }
     //点击事件
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        let cuxiaoV = SaleViewController()
+        let cuxiaoV = SaleViewController(nibName: "SaleViewController", bundle: nil)
         self.navigationController?.pushViewController(cuxiaoV, animated: true)
         
         
@@ -261,7 +284,6 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     //响应酒店详情三个按钮的方法
     func hotelPlace(){
         let placeVC = HotelPlaceViewController()
-        placeVC.str = "hg"
         self.navigationController?.pushViewController(placeVC, animated: true)
         
         
@@ -288,8 +310,20 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden=true
         if starttime=="" {
-        timeleftBT.setTitle("04月27日", forState: UIControlState.Normal)
+            let date = NSDate()
+            let timeFormatter = NSDateFormatter()
+            timeFormatter.dateFormat = "MM-dd"
+            let strNowTime = timeFormatter.stringFromDate(date) as String
+            
+            let date1 = NSDate(timeIntervalSinceNow: 24*60*60)
+            let timeFormatter1 = NSDateFormatter()
+            timeFormatter1.dateFormat = "MM-dd"
+            let strNowTime1 = timeFormatter.stringFromDate(date1) as String
+        timeleftBT.setTitle(strNowTime, forState: UIControlState.Normal)
+        endtimeBT.setTitle(strNowTime1, forState: UIControlState.Normal)
+         daysL.text=""
         }
+        
     }
     //显示导航栏
     override func viewWillDisappear(animated: Bool) {

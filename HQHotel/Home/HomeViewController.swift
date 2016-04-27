@@ -298,12 +298,5 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     override func viewWillDisappear(animated: Bool) {
         self.navigationController?.navigationBarHidden=false
     }
-    
-    
-    
-
-
-
-
 
 }

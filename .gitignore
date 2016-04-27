@@ -1,6 +1,16 @@
+<<<<<<< HEAD
 
 HQHotel.xcworkspace/xcuserdata/xiaocool.xcuserdatad/xcdebugger/Breakpoints_v2.xcbkptlist
 
 HQHotel.xcworkspace/xcuserdata/xiaocool.xcuserdatad/UserInterfaceState.xcuserstate
 
 HQHotel.xcworkspace/xcuserdata/xiaocool.xcuserdatad/UserInterfaceState.xcuserstate
+=======
+*.xcuserstate  
+project.xcworkspace  
+xcuserdata  
+UserInterfaceState.xcuserstate  
+project.xcworkspace/  
+xcuserdata/  
+UserInterface.xcuserstate 
+>>>>>>> origin/master

@@ -26,7 +26,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     
     var num=0
     
-    
+    //dhjfghj
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -101,11 +101,12 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         timeleftBT = UIButton(frame: CGRectMake(40, 40, 100, 20))
         timeleftBT.setTitle("8月23日", forState: UIControlState.Normal)
         timeleftBT.setTitleColor(UIColor.init(colorLiteralRed: 0/255, green: 166/255, blue: 251/255, alpha: 1), forState: UIControlState.Normal)
-//        timeleftBT.backgroundColor=UIColor.blackColor()
+        timeleftBT.backgroundColor=UIColor.blackColor()
         timeleftBT.addTarget(self, action: #selector(timeStart), forControlEvents: UIControlEvents.TouchUpInside)
         let endtimeBT = UIButton(frame: CGRectMake((self.view.bounds.width-40-100),40,100,20))
         endtimeBT.setTitle(endtime, forState: UIControlState.Normal)
-        
+        endtimeBT.setTitleColor(UIColor.init(colorLiteralRed: 0/255, green: 166/255, blue: 251/255, alpha: 1), forState: UIControlState.Normal)
+        endtimeBT.backgroundColor=UIColor.blackColor()
         timeV.addSubview(timeleftBT)
         timeV.addSubview(daysL)
         timeV.addSubview(lidianL)
@@ -256,7 +257,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     //隐藏键盘的方法
     func viewtap(){
         self.view.endEditing(true)
-        
+//        
     }
 
 
@@ -289,7 +290,9 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     //隐藏导航栏
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden=true
-//        timeleftBT.setTitle("04月27日", forState: UIControlState.Normal)
+        if starttime=="" {
+        timeleftBT.setTitle("04月27日", forState: UIControlState.Normal)
+        }
     }
     //显示导航栏
     override func viewWillDisappear(animated: Bool) {

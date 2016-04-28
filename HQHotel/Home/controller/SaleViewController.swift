@@ -87,15 +87,19 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate{
         
         
         
-//        for item in 0...2 {
-//            let priceL_w = frame.width/3
-//            
-//            let priceL = UILabel(frame: CGRectMake(0+CGFloat(item)*priceL_w,scrollview_h+66,priceL_w-1,40))
-//            priceL.backgroundColor=UIColor.whiteColor()
-//            self.view.addSubview(priceL)
-//            
-//        }
-    }
+        
+        let priceL = UILabel(frame: CGRectMake(0,self.view.bounds.height-40,self.view.bounds.width/2,40))
+        priceL.backgroundColor=UIColor.whiteColor()
+        priceL.text="  总价："
+        self.view.addSubview(priceL)
+        let zongjiaL = UILabel(frame: CGRectMake(70,self.view.bounds.height-40,self.view.bounds.width/2-70,40))
+        zongjiaL.backgroundColor=UIColor.whiteColor()
+        zongjiaL.text="¥ 487"
+        self.view.addSubview(zongjiaL)
+        let yudingBT = UIButton(frame: CGRectMake(self.view.bounds.width/2,self.view.bounds.height-40,self.view.bounds.width/2,40))
+        yudingBT.backgroundColor=UIColor.init(red: 250/255, green: 140/255, blue: 61/255, alpha: 1)
+        yudingBT.setTitle("立即预订", forState: UIControlState.Normal)
+        self.view.addSubview(yudingBT)    }
     //执行定时器方法
     func doTime(){
         

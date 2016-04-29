@@ -13,6 +13,7 @@ class GoodsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 20/255, green: 125/255, blue: 192/255, alpha: 1)
         self.view.backgroundColor=UIColor.redColor()
     }
 

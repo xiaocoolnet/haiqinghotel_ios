@@ -56,6 +56,7 @@ class HotelPlaceViewController: UIViewController {
 //view将要出现的时候显示导航栏，隐藏tabbar
        override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden=false
+        self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 20/255, green: 125/255, blue: 192/255, alpha: 1)
         self.tabBarController?.tabBar.hidden=true
     }
     //视图将要消失的时候显示导航栏

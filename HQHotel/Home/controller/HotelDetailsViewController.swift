@@ -36,6 +36,7 @@ class HotelDetailsViewController: UIViewController {
     }
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden=false
+        self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 20/255, green: 125/255, blue: 192/255, alpha: 1)
         
     }
 

@@ -8,7 +8,7 @@
 
 import UIKit
 
-class SaleViewController: UIViewController ,UIScrollViewDelegate{
+class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource{
     
     @IBOutlet weak var menshijiaL: UILabel!
     
@@ -34,13 +34,16 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate{
     @IBOutlet weak var mianjiL: UILabel!
     
    
-    @IBOutlet weak var timeCell: UITableView!
+
+    
+    @IBOutlet weak var tableview: UITableView!
     
     
     private var scrollView:UIScrollView!
     private let numOfPages=4
     var num=0
     override func viewDidLoad() {
+        self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 20/255, green: 125/255, blue: 192/255, alpha: 1)
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         self.automaticallyAdjustsScrollViewInsets=false
@@ -83,9 +86,8 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate{
         self.view.addSubview(pageC)
         //定时器
         NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector (doTime), userInfo: nil, repeats: true)
-        
-        
-        
+        tableview.delegate=self
+        tableview.dataSource=self
         
         
         let priceL = UILabel(frame: CGRectMake(0,self.view.bounds.height-40,self.view.bounds.width/2,40))
@@ -99,7 +101,9 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate{
         let yudingBT = UIButton(frame: CGRectMake(self.view.bounds.width/2,self.view.bounds.height-40,self.view.bounds.width/2,40))
         yudingBT.backgroundColor=UIColor.init(red: 250/255, green: 140/255, blue: 61/255, alpha: 1)
         yudingBT.setTitle("立即预订", forState: UIControlState.Normal)
-        self.view.addSubview(yudingBT)    }
+        yudingBT.addTarget(self, action: #selector(yuding), forControlEvents: UIControlEvents.TouchUpInside)
+        self.view.addSubview(yudingBT)
+    }
     //执行定时器方法
     func doTime(){
         
@@ -129,7 +133,26 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate{
         
         pageC.currentPage = Int(scrollView.contentOffset.x/frame.width)
     }
-    
+    func yuding(){
+        
+        let reserve = ReserveViewController(nibName: "ReserveViewController", bundle: nil)
+        self.navigationController?.pushViewController(reserve, animated: true)
+        
+        
+        
+    }
+     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+    {
+        return 1
+    }
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        let cell = UITableViewCell()
+        cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
+        
+        return cell
+        
+        
+    }
     
     
     override func viewWillAppear(animated: Bool) {

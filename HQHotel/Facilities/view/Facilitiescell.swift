@@ -11,10 +11,11 @@ import UIKit
 
 class Facilitiescell: UIView {
 
+    private let imageView = UIImageView()
     
      override init(frame: CGRect){
         super.init(frame: frame)
-        let imageView = UIImageView()
+        
         
         imageView.image=UIImage(named: "bj.jpg")
         imageView.frame=CGRectMake(0, 0, frame.width, frame.height)

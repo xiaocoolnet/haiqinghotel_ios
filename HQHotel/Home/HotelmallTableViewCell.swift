@@ -10,7 +10,7 @@ import UIKit
 
 class HotelmallTableViewCell: UITableViewCell {
 
-    private var imageV=UIImageView()
+     var imageV=UIImageView()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -22,10 +22,13 @@ class HotelmallTableViewCell: UITableViewCell {
 
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-        imageV.frame=CGRectMake(10, 5, self.bounds.width-20, 140)
-        imageV.image=UIImage(named: "1.jpg")
+        imageV.frame=CGRectMake(10, 5, self.bounds.width-20,self.bounds.height-35)
+        imageV.image=UIImage(named: "青岛海情-0.JPG")
         self.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         self.addSubview(imageV)
+        
+        
+        
         
     }
     

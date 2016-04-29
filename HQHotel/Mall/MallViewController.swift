@@ -13,6 +13,7 @@ class MallViewController: UIViewController,UICollectionViewDelegate ,UICollectio
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 20/255, green: 125/255, blue: 192/255, alpha: 1)
     
         let layout = UICollectionViewFlowLayout()
         let collectionView = UICollectionView(frame: self.view.bounds, collectionViewLayout: layout)

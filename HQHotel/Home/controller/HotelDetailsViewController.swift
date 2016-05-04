@@ -13,6 +13,7 @@ class HotelDetailsViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         let imageV = UIImageView(frame: CGRectMake(0, 44, self.view.bounds.width, self.view.bounds.width*0.6))
         imageV.image=UIImage(named: "酒店详情.jpg")
         self.view.addSubview(imageV)
@@ -21,12 +22,11 @@ class HotelDetailsViewController: UIViewController {
         starL.font=UIFont.boldSystemFontOfSize(16)
         starL.textColor=UIColor.init(colorLiteralRed: 102/255, green: 156/255, blue: 203/255, alpha: 1)
         self.view.addSubview(starL)
-        for item in 1...4 {
-            
-        let starimageV = UIImageView(frame: CGRectMake((self.view.bounds.width-150)+30*CGFloat(item), 44+self.view.bounds.width*0.6+10, 20, 20))
-        starimageV.image=UIImage(named: "BT.png")
+        
+        let starimageV = UIImageView(frame: CGRectMake((self.view.bounds.width-120), 44+self.view.bounds.width*0.6+10, 110, 18))
+        starimageV.image=UIImage(named: "ic_star")
         self.view.addSubview(starimageV)
-        }
+        
         
     }
 
@@ -37,7 +37,11 @@ class HotelDetailsViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden=false
         self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
+        self.tabBarController?.tabBar.hidden=true
         
+    }
+    override func viewWillDisappear(animated: Bool) {
+        self.tabBarController?.tabBar.hidden=false
     }
 
     

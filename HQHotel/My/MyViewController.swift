@@ -15,6 +15,7 @@ class MyViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
     private let setupBT=UIButton()
     private let tableView=UITableView()
     
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -70,7 +71,7 @@ class MyViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
             
         }
                 
-        tableView.frame=CGRectMake(0, topView_h+40+20, self.view.bounds.width, 80)
+        tableView.frame=CGRectMake(0, topView_h+40+20, self.view.bounds.width, 130)
         tableView.scrollEnabled=false
         tableView.delegate=self
         tableView.dataSource=self
@@ -97,19 +98,43 @@ class MyViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
     }
     //tableview的代理方法
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 2
+        return 3
     }
 
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let cell = UITableViewCell()
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
+        cell.accessoryType = .DisclosureIndicator
         switch indexPath.row {
         case 0:
-            cell.textLabel?.text="我的预订"
+            cell.imageView?.image=UIImage(named: "ic_yuding-1")
+            cell.textLabel?.text="酒店预订"
+        case 1:
+            cell.imageView?.image=UIImage(named: "ic_dingdan-1")
+            cell.textLabel?.text="商城订单"
         default:
-            cell.textLabel?.text="我的订单"
+            cell.imageView?.image=UIImage(named: "ic_huiyuan-1")
+            cell.textLabel?.text="会员积分"
         }
         return cell
         
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        switch indexPath.row {
+        case 0:
+            let hotelVC = HotelOrderViewController()
+            self.navigationController?.pushViewController(hotelVC, animated: true)
+            hotelVC.view.backgroundColor = UIColor.whiteColor()
+        case 1:
+            let mallVC = MallOrderViewController()
+            self.navigationController?.pushViewController(mallVC, animated: true)
+            
+            
+        default:
+            
+            let markVC = MarkViewController()
+            self.navigationController?.pushViewController(markVC, animated: true)
+            
+        }
     }
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBar.hidden=true

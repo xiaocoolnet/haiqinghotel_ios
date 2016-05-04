@@ -21,6 +21,12 @@
 		F63C933B1CD98D7C0095BF18 /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C93381CD98D7C0095BF18 /* Http.swift */; };
 		F63C933C1CD98D7C0095BF18 /* Httpresult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C93391CD98D7C0095BF18 /* Httpresult.swift */; };
 		F63C933D1CD98D7C0095BF18 /* JSONJoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C933A1CD98D7C0095BF18 /* JSONJoy.swift */; };
+		F63C933F1CD9C8430095BF18 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C933E1CD9C8430095BF18 /* LoginViewController.swift */; };
+		F63C934E1CD9CECB0095BF18 /* XKeyBoard.m in Sources */ = {isa = PBXBuildFile; fileRef = F63C934D1CD9CECB0095BF18 /* XKeyBoard.m */; };
+		F63C93541CD9D1A50095BF18 /* MineModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C93531CD9D1A50095BF18 /* MineModel.swift */; };
+		F63C93561CD9F6310095BF18 /* HotelOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C93551CD9F6310095BF18 /* HotelOrderViewController.swift */; };
+		F63C93581CD9F6430095BF18 /* MallOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C93571CD9F6430095BF18 /* MallOrderViewController.swift */; };
+		F63C935A1CD9F6820095BF18 /* MarkViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C93591CD9F6820095BF18 /* MarkViewController.swift */; };
 		F643ED111CD0B02300E922BD /* SaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F643ED0F1CD0B02300E922BD /* SaleViewController.swift */; };
 		F643ED121CD0B02300E922BD /* SaleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F643ED101CD0B02300E922BD /* SaleViewController.xib */; };
 		F6443BBC1CC1D1820078627B /* Facilitiescell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6443BBB1CC1D1820078627B /* Facilitiescell.swift */; };
@@ -109,6 +115,13 @@
 		F63C93381CD98D7C0095BF18 /* Http.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
 		F63C93391CD98D7C0095BF18 /* Httpresult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Httpresult.swift; sourceTree = "<group>"; };
 		F63C933A1CD98D7C0095BF18 /* JSONJoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJoy.swift; sourceTree = "<group>"; };
+		F63C933E1CD9C8430095BF18 /* LoginViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		F63C934C1CD9CECB0095BF18 /* XKeyBoard.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = XKeyBoard.h; path = HQHotel/Home/XKeyBoard.h; sourceTree = SOURCE_ROOT; };
+		F63C934D1CD9CECB0095BF18 /* XKeyBoard.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = XKeyBoard.m; path = HQHotel/Home/XKeyBoard.m; sourceTree = SOURCE_ROOT; };
+		F63C93531CD9D1A50095BF18 /* MineModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MineModel.swift; sourceTree = "<group>"; };
+		F63C93551CD9F6310095BF18 /* HotelOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelOrderViewController.swift; sourceTree = "<group>"; };
+		F63C93571CD9F6430095BF18 /* MallOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MallOrderViewController.swift; sourceTree = "<group>"; };
+		F63C93591CD9F6820095BF18 /* MarkViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MarkViewController.swift; sourceTree = "<group>"; };
 		F643ED0F1CD0B02300E922BD /* SaleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaleViewController.swift; sourceTree = "<group>"; };
 		F643ED101CD0B02300E922BD /* SaleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaleViewController.xib; sourceTree = "<group>"; };
 		F6443BBB1CC1D1820078627B /* Facilitiescell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facilitiescell.swift; sourceTree = "<group>"; };
@@ -226,7 +239,8 @@
 		F61DC2AC1CD89D07000F87E1 /* Register */ = {
 			isa = PBXGroup;
 			children = (
-				F63C93311CD988380095BF18 /* RegisterGetCodeViewController.swift */,
+				F63C93521CD9D0D20095BF18 /* controller */,
+				F63C93511CD9D0CB0095BF18 /* model */,
 			);
 			name = Register;
 			sourceTree = "<group>";
@@ -239,6 +253,23 @@
 				F63C933A1CD98D7C0095BF18 /* JSONJoy.swift */,
 			);
 			path = Jsonjoy;
+			sourceTree = "<group>";
+		};
+		F63C93511CD9D0CB0095BF18 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F63C93531CD9D1A50095BF18 /* MineModel.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
+		F63C93521CD9D0D20095BF18 /* controller */ = {
+			isa = PBXGroup;
+			children = (
+				F63C93311CD988380095BF18 /* RegisterGetCodeViewController.swift */,
+				F63C933E1CD9C8430095BF18 /* LoginViewController.swift */,
+			);
+			name = controller;
 			sourceTree = "<group>";
 		};
 		F6443BB81CC1D03E0078627B /* controller */ = {
@@ -380,6 +411,9 @@
 				F64EAB1D1CC60CEA0084A795 /* CollectViewController.swift */,
 				F64EAB1F1CC60D200084A795 /* ShopListViewController.swift */,
 				F64EAB211CC60DCB0084A795 /* InformationViewController.swift */,
+				F63C93551CD9F6310095BF18 /* HotelOrderViewController.swift */,
+				F63C93571CD9F6430095BF18 /* MallOrderViewController.swift */,
+				F63C93591CD9F6820095BF18 /* MarkViewController.swift */,
 			);
 			path = My;
 			sourceTree = "<group>";
@@ -400,6 +434,8 @@
 		F6480C801CBF741400F27866 /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				F63C934C1CD9CECB0095BF18 /* XKeyBoard.h */,
+				F63C934D1CD9CECB0095BF18 /* XKeyBoard.m */,
 			);
 			path = Resource;
 			sourceTree = "<group>";
@@ -736,6 +772,7 @@
 				F6E786661CD1A76500B269BF /* CalendarHomeViewController.m in Sources */,
 				F66283F71CC0DA8300198CB3 /* TabbarViewController.swift in Sources */,
 				F63C93361CD98CA30095BF18 /* Urlfile.swift in Sources */,
+				F63C93561CD9F6310095BF18 /* HotelOrderViewController.swift in Sources */,
 				F66283ED1CC0D2E100198CB3 /* FacilitiesViewController.swift in Sources */,
 				F6E7866C1CD1A76500B269BF /* NSDate+WQCalendarLogic.m in Sources */,
 				F66283F11CC0D2FB00198CB3 /* MyViewController.swift in Sources */,
@@ -753,17 +790,22 @@
 				F6E7864C1CD1A5BB00B269BF /* ViewController.swift in Sources */,
 				F6E7866A1CD1A76500B269BF /* CalendarViewController.m in Sources */,
 				F643ED111CD0B02300E922BD /* SaleViewController.swift in Sources */,
+				F63C93541CD9D1A50095BF18 /* MineModel.swift in Sources */,
 				F633738F1CC763C200F63FC1 /* CallMeViewController.swift in Sources */,
 				F6E786651CD1A76500B269BF /* CalendarFirstViewController.m in Sources */,
 				F63C933B1CD98D7C0095BF18 /* Http.swift in Sources */,
 				F64D73BA1CC47D180048B855 /* NewsTableViewCell.swift in Sources */,
 				F64EAB1C1CC5CEBE0084A795 /* GoodsViewController.swift in Sources */,
+				F63C933F1CD9C8430095BF18 /* LoginViewController.swift in Sources */,
 				F6E786681CD1A76500B269BF /* CalendarMonthCollectionViewLayout.m in Sources */,
+				F63C93581CD9F6430095BF18 /* MallOrderViewController.swift in Sources */,
 				F6E786691CD1A76500B269BF /* CalendarMonthHeaderView.m in Sources */,
 				F6480C8D1CBF7B5400F27866 /* HomeViewController.swift in Sources */,
 				F64D73C71CC4C12B0048B855 /* MallCollectionViewCell.swift in Sources */,
+				F63C934E1CD9CECB0095BF18 /* XKeyBoard.m in Sources */,
 				F65D56B71CD33FF8008BB73E /* RoomDetailsViewController.swift in Sources */,
 				F6E7864A1CD1A5B600B269BF /* AppDelegate.swift in Sources */,
+				F63C935A1CD9F6820095BF18 /* MarkViewController.swift in Sources */,
 				F6443BBE1CC200FC0078627B /* LBNvc.swift in Sources */,
 				F621980F1CD1E8CD00B749BA /* FacilitiesTableViewCell.swift in Sources */,
 			);

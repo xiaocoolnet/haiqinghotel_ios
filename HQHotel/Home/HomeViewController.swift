@@ -313,6 +313,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     //隐藏导航栏
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden=true
+        self.tabBarController?.tabBar.hidden=false
         if starttime=="" {
             let date = NSDate()
             let timeFormatter = NSDateFormatter()
@@ -332,6 +333,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     //显示导航栏
     override func viewWillDisappear(animated: Bool) {
         self.navigationController?.navigationBarHidden=false
+        
     }
 
 }

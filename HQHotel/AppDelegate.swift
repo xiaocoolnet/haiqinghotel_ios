@@ -21,13 +21,13 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
     
-        self.window?.backgroundColor = UIColor .whiteColor()
-        
-        self.window?.rootViewController = TabbarViewController.TabbarC()
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        let guideViewController = storyboard.instantiateViewControllerWithIdentifier("register") as! RegisterGetCodeViewController
-        self.window?.rootViewController = guideViewController
-        
+//        self.window?.backgroundColor = UIColor .whiteColor()
+//        
+//        self.window?.rootViewController = TabbarViewController.TabbarC()
+//        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+//        let guideViewController = storyboard.instantiateViewControllerWithIdentifier("Login") as! LoginViewController
+//        self.window?.rootViewController = guideViewController
+//        
         
         
         

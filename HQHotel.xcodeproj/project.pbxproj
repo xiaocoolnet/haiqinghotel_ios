@@ -7,12 +7,20 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A9627948B1B7B966F4E66770 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 321589B9B34B4BA119F867F7 /* Pods.framework */; };
+		F61DC2A51CD84B7E000F87E1 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61DC2A41CD84B7E000F87E1 /* NewsViewController.swift */; };
+		F61DC2A71CD8745F000F87E1 /* 海参.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F61DC2A61CD8745F000F87E1 /* 海参.jpg */; };
 		F621980C1CD1B11500B749BA /* ReserveViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621980A1CD1B11500B749BA /* ReserveViewController.swift */; };
 		F621980D1CD1B11500B749BA /* ReserveViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F621980B1CD1B11500B749BA /* ReserveViewController.xib */; };
 		F621980F1CD1E8CD00B749BA /* FacilitiesTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F621980E1CD1E8CD00B749BA /* FacilitiesTableViewCell.swift */; };
 		F633738D1CC763B900F63FC1 /* HotelPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F633738C1CC763B900F63FC1 /* HotelPlaceViewController.swift */; };
 		F633738F1CC763C200F63FC1 /* CallMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F633738E1CC763C200F63FC1 /* CallMeViewController.swift */; };
 		F63373911CC763D200F63FC1 /* HotelDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63373901CC763D200F63FC1 /* HotelDetailsViewController.swift */; };
+		F63C93331CD988380095BF18 /* RegisterGetCodeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C93311CD988380095BF18 /* RegisterGetCodeViewController.swift */; };
+		F63C93361CD98CA30095BF18 /* Urlfile.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C93351CD98CA30095BF18 /* Urlfile.swift */; };
+		F63C933B1CD98D7C0095BF18 /* Http.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C93381CD98D7C0095BF18 /* Http.swift */; };
+		F63C933C1CD98D7C0095BF18 /* Httpresult.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C93391CD98D7C0095BF18 /* Httpresult.swift */; };
+		F63C933D1CD98D7C0095BF18 /* JSONJoy.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C933A1CD98D7C0095BF18 /* JSONJoy.swift */; };
 		F643ED111CD0B02300E922BD /* SaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F643ED0F1CD0B02300E922BD /* SaleViewController.swift */; };
 		F643ED121CD0B02300E922BD /* SaleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F643ED101CD0B02300E922BD /* SaleViewController.xib */; };
 		F6443BBC1CC1D1820078627B /* Facilitiescell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6443BBB1CC1D1820078627B /* Facilitiescell.swift */; };
@@ -52,11 +60,7 @@
 		F6E7866A1CD1A76500B269BF /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6E7865E1CD1A76500B269BF /* CalendarViewController.m */; };
 		F6E7866B1CD1A76500B269BF /* chack.png in Resources */ = {isa = PBXBuildFile; fileRef = F6E7865F1CD1A76500B269BF /* chack.png */; };
 		F6E7866C1CD1A76500B269BF /* NSDate+WQCalendarLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = F6E786621CD1A76500B269BF /* NSDate+WQCalendarLogic.m */; };
-		F6E7867C1CD1A7D000B269BF /* 1.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6E7866E1CD1A7D000B269BF /* 1.jpg */; };
 		F6E7867D1CD1A7D000B269BF /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6E7866F1CD1A7D000B269BF /* 2.jpg */; };
-		F6E7867E1CD1A7D000B269BF /* 3.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6E786701CD1A7D000B269BF /* 3.jpg */; };
-		F6E7867F1CD1A7D000B269BF /* 4.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6E786711CD1A7D000B269BF /* 4.jpg */; };
-		F6E786801CD1A7D000B269BF /* bj.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6E786721CD1A7D000B269BF /* bj.jpg */; };
 		F6E786811CD1A7D000B269BF /* BT.png in Resources */ = {isa = PBXBuildFile; fileRef = F6E786731CD1A7D000B269BF /* BT.png */; };
 		F6E786821CD1A7D000B269BF /* 酒店详情.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6E786741CD1A7D000B269BF /* 酒店详情.jpg */; };
 		F6E786831CD1A7D000B269BF /* 青岛海情-0.JPG in Resources */ = {isa = PBXBuildFile; fileRef = F6E786751CD1A7D000B269BF /* 青岛海情-0.JPG */; };
@@ -89,12 +93,22 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2BD5FEA6F436DD938995E20A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		321589B9B34B4BA119F867F7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
+		5B97422F80AB5194E72BFD9B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
+		F61DC2A41CD84B7E000F87E1 /* NewsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsViewController.swift; sourceTree = "<group>"; };
+		F61DC2A61CD8745F000F87E1 /* 海参.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "海参.jpg"; sourceTree = "<group>"; };
 		F621980A1CD1B11500B749BA /* ReserveViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReserveViewController.swift; sourceTree = "<group>"; };
 		F621980B1CD1B11500B749BA /* ReserveViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReserveViewController.xib; sourceTree = "<group>"; };
 		F621980E1CD1E8CD00B749BA /* FacilitiesTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FacilitiesTableViewCell.swift; sourceTree = "<group>"; };
 		F633738C1CC763B900F63FC1 /* HotelPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelPlaceViewController.swift; sourceTree = "<group>"; };
 		F633738E1CC763C200F63FC1 /* CallMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallMeViewController.swift; sourceTree = "<group>"; };
 		F63373901CC763D200F63FC1 /* HotelDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsViewController.swift; sourceTree = "<group>"; };
+		F63C93311CD988380095BF18 /* RegisterGetCodeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RegisterGetCodeViewController.swift; sourceTree = "<group>"; };
+		F63C93351CD98CA30095BF18 /* Urlfile.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Urlfile.swift; path = ../Home/Urlfile.swift; sourceTree = "<group>"; };
+		F63C93381CD98D7C0095BF18 /* Http.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Http.swift; sourceTree = "<group>"; };
+		F63C93391CD98D7C0095BF18 /* Httpresult.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Httpresult.swift; sourceTree = "<group>"; };
+		F63C933A1CD98D7C0095BF18 /* JSONJoy.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSONJoy.swift; sourceTree = "<group>"; };
 		F643ED0F1CD0B02300E922BD /* SaleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaleViewController.swift; sourceTree = "<group>"; };
 		F643ED101CD0B02300E922BD /* SaleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaleViewController.xib; sourceTree = "<group>"; };
 		F6443BBB1CC1D1820078627B /* Facilitiescell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facilitiescell.swift; sourceTree = "<group>"; };
@@ -151,11 +165,7 @@
 		F6E786601CD1A76500B269BF /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		F6E786611CD1A76500B269BF /* NSDate+WQCalendarLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+WQCalendarLogic.h"; sourceTree = "<group>"; };
 		F6E786621CD1A76500B269BF /* NSDate+WQCalendarLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+WQCalendarLogic.m"; sourceTree = "<group>"; };
-		F6E7866E1CD1A7D000B269BF /* 1.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 1.jpg; sourceTree = "<group>"; };
 		F6E7866F1CD1A7D000B269BF /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
-		F6E786701CD1A7D000B269BF /* 3.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 3.jpg; sourceTree = "<group>"; };
-		F6E786711CD1A7D000B269BF /* 4.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 4.jpg; sourceTree = "<group>"; };
-		F6E786721CD1A7D000B269BF /* bj.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = bj.jpg; sourceTree = "<group>"; };
 		F6E786731CD1A7D000B269BF /* BT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BT.png; sourceTree = "<group>"; };
 		F6E786741CD1A7D000B269BF /* 酒店详情.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "酒店详情.jpg"; sourceTree = "<group>"; };
 		F6E786751CD1A7D000B269BF /* 青岛海情-0.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "青岛海情-0.JPG"; sourceTree = "<group>"; };
@@ -175,6 +185,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9627948B1B7B966F4E66770 /* Pods.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -195,12 +206,48 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		1AC6CD73E867130A95465AF9 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				321589B9B34B4BA119F867F7 /* Pods.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		1E0C7C98B720E8D6ACB943C0 /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				5B97422F80AB5194E72BFD9B /* Pods.debug.xcconfig */,
+				2BD5FEA6F436DD938995E20A /* Pods.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
+		F61DC2AC1CD89D07000F87E1 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				F63C93311CD988380095BF18 /* RegisterGetCodeViewController.swift */,
+			);
+			name = Register;
+			sourceTree = "<group>";
+		};
+		F63C93371CD98D7C0095BF18 /* Jsonjoy */ = {
+			isa = PBXGroup;
+			children = (
+				F63C93381CD98D7C0095BF18 /* Http.swift */,
+				F63C93391CD98D7C0095BF18 /* Httpresult.swift */,
+				F63C933A1CD98D7C0095BF18 /* JSONJoy.swift */,
+			);
+			path = Jsonjoy;
+			sourceTree = "<group>";
+		};
 		F6443BB81CC1D03E0078627B /* controller */ = {
 			isa = PBXGroup;
 			children = (
 				F66283EC1CC0D2E100198CB3 /* FacilitiesViewController.swift */,
 				F64D73AF1CC470210048B855 /* RoomViewController.swift */,
 				F65D56B61CD33FF8008BB73E /* RoomDetailsViewController.swift */,
+				F61DC2A41CD84B7E000F87E1 /* NewsViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -229,6 +276,8 @@
 				F6480C5E1CBF72C300F27866 /* HQHotelTests */,
 				F6480C691CBF72C300F27866 /* HQHotelUITests */,
 				F6480C481CBF72C300F27866 /* Products */,
+				1E0C7C98B720E8D6ACB943C0 /* Pods */,
+				1AC6CD73E867130A95465AF9 /* Frameworks */,
 			);
 			sourceTree = "<group>";
 		};
@@ -301,6 +350,7 @@
 				F66283E71CC0B62600198CB3 /* controller */,
 				F66283E81CC0B62600198CB3 /* model */,
 				F66283E91CC0B62600198CB3 /* view */,
+				F61DC2AC1CD89D07000F87E1 /* Register */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -357,7 +407,9 @@
 		F6480C811CBF741400F27866 /* Tool */ = {
 			isa = PBXGroup;
 			children = (
+				F63C93371CD98D7C0095BF18 /* Jsonjoy */,
 				F6E7864D1CD1A73300B269BF /* OC_Header.h */,
+				F63C93351CD98CA30095BF18 /* Urlfile.swift */,
 			);
 			path = Tool;
 			sourceTree = "<group>";
@@ -452,11 +504,8 @@
 		F6E7866D1CD1A7D000B269BF /* image */ = {
 			isa = PBXGroup;
 			children = (
-				F6E7866E1CD1A7D000B269BF /* 1.jpg */,
+				F61DC2A61CD8745F000F87E1 /* 海参.jpg */,
 				F6E7866F1CD1A7D000B269BF /* 2.jpg */,
-				F6E786701CD1A7D000B269BF /* 3.jpg */,
-				F6E786711CD1A7D000B269BF /* 4.jpg */,
-				F6E786721CD1A7D000B269BF /* bj.jpg */,
 				F6E786731CD1A7D000B269BF /* BT.png */,
 				F6E786741CD1A7D000B269BF /* 酒店详情.jpg */,
 				F6E786751CD1A7D000B269BF /* 青岛海情-0.JPG */,
@@ -482,9 +531,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = F6480C6F1CBF72C300F27866 /* Build configuration list for PBXNativeTarget "HQHotel" */;
 			buildPhases = (
+				0F49F5C2572BEBAB8F60E440 /* Check Pods Manifest.lock */,
 				F6480C431CBF72C300F27866 /* Sources */,
 				F6480C441CBF72C300F27866 /* Frameworks */,
 				F6480C451CBF72C300F27866 /* Resources */,
+				A6BCA31E97A24159372A49E6 /* Embed Pods Frameworks */,
+				B56574F1F7A71E46AC4B2BB0 /* Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -580,6 +632,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F65D56B31CD2EF8E008BB73E /* 设施3.png in Resources */,
+				F61DC2A71CD8745F000F87E1 /* 海参.jpg in Resources */,
 				F6E786871CD1A7D000B269BF /* 青岛海情-004.JPG in Resources */,
 				F6E786841CD1A7D000B269BF /* 青岛海情-001.JPG in Resources */,
 				F6E786831CD1A7D000B269BF /* 青岛海情-0.JPG in Resources */,
@@ -588,8 +641,6 @@
 				F6E786861CD1A7D000B269BF /* 青岛海情-003.JPG in Resources */,
 				F6E7867D1CD1A7D000B269BF /* 2.jpg in Resources */,
 				F6E7866B1CD1A76500B269BF /* chack.png in Resources */,
-				F6E7867C1CD1A7D000B269BF /* 1.jpg in Resources */,
-				F6E786801CD1A7D000B269BF /* bj.jpg in Resources */,
 				F621980D1CD1B11500B749BA /* ReserveViewController.xib in Resources */,
 				F6E7868C1CD1A83A00B269BF /* LaunchScreen.storyboard in Resources */,
 				F643ED121CD0B02300E922BD /* SaleViewController.xib in Resources */,
@@ -598,8 +649,6 @@
 				F6E786881CD1A7D000B269BF /* 青岛海情-1.JPG in Resources */,
 				F6E786891CD1A7D000B269BF /* 青岛海情-2.JPG in Resources */,
 				F65D56B01CD2EF8E008BB73E /* 设施0.png in Resources */,
-				F6E7867F1CD1A7D000B269BF /* 4.jpg in Resources */,
-				F6E7867E1CD1A7D000B269BF /* 3.jpg in Resources */,
 				F6E786811CD1A7D000B269BF /* BT.png in Resources */,
 				F6E7868F1CD1A83E00B269BF /* Main.storyboard in Resources */,
 				F6E786851CD1A7D000B269BF /* 青岛海情-002.JPG in Resources */,
@@ -622,6 +671,54 @@
 		};
 /* End PBXResourcesBuildPhase section */
 
+/* Begin PBXShellScriptBuildPhase section */
+		0F49F5C2572BEBAB8F60E440 /* Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+		A6BCA31E97A24159372A49E6 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		B56574F1F7A71E46AC4B2BB0 /* Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods/Pods-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
+
 /* Begin PBXSourcesBuildPhase section */
 		F6480C431CBF72C300F27866 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
@@ -630,6 +727,7 @@
 				F66283EF1CC0D2F000198CB3 /* MallViewController.swift in Sources */,
 				F65D56B51CD32691008BB73E /* ScheduleTableViewCell.swift in Sources */,
 				F64EAB221CC60DCB0084A795 /* InformationViewController.swift in Sources */,
+				F63C93331CD988380095BF18 /* RegisterGetCodeViewController.swift in Sources */,
 				F6E786641CD1A76500B269BF /* CalendarDayModel.m in Sources */,
 				F6E786671CD1A76500B269BF /* CalendarLogic.m in Sources */,
 				F633738D1CC763B900F63FC1 /* HotelPlaceViewController.swift in Sources */,
@@ -637,15 +735,19 @@
 				F64D73B01CC470210048B855 /* RoomViewController.swift in Sources */,
 				F6E786661CD1A76500B269BF /* CalendarHomeViewController.m in Sources */,
 				F66283F71CC0DA8300198CB3 /* TabbarViewController.swift in Sources */,
+				F63C93361CD98CA30095BF18 /* Urlfile.swift in Sources */,
 				F66283ED1CC0D2E100198CB3 /* FacilitiesViewController.swift in Sources */,
 				F6E7866C1CD1A76500B269BF /* NSDate+WQCalendarLogic.m in Sources */,
 				F66283F11CC0D2FB00198CB3 /* MyViewController.swift in Sources */,
+				F61DC2A51CD84B7E000F87E1 /* NewsViewController.swift in Sources */,
 				F63373911CC763D200F63FC1 /* HotelDetailsViewController.swift in Sources */,
 				F6443BBC1CC1D1820078627B /* Facilitiescell.swift in Sources */,
 				F64EAB201CC60D200084A795 /* ShopListViewController.swift in Sources */,
 				F64EAB1E1CC60CEA0084A795 /* CollectViewController.swift in Sources */,
 				F6E786631CD1A76500B269BF /* CalendarDayCell.m in Sources */,
 				F6480C831CBF747C00F27866 /* ScollViewController.swift in Sources */,
+				F63C933D1CD98D7C0095BF18 /* JSONJoy.swift in Sources */,
+				F63C933C1CD98D7C0095BF18 /* Httpresult.swift in Sources */,
 				F66283E61CC0B5A900198CB3 /* HotelmallTableViewCell.swift in Sources */,
 				F66283EB1CC0BFF900198CB3 /* HotelmallModel.swift in Sources */,
 				F6E7864C1CD1A5BB00B269BF /* ViewController.swift in Sources */,
@@ -653,6 +755,7 @@
 				F643ED111CD0B02300E922BD /* SaleViewController.swift in Sources */,
 				F633738F1CC763C200F63FC1 /* CallMeViewController.swift in Sources */,
 				F6E786651CD1A76500B269BF /* CalendarFirstViewController.m in Sources */,
+				F63C933B1CD98D7C0095BF18 /* Http.swift in Sources */,
 				F64D73BA1CC47D180048B855 /* NewsTableViewCell.swift in Sources */,
 				F64EAB1C1CC5CEBE0084A795 /* GoodsViewController.swift in Sources */,
 				F6E786681CD1A76500B269BF /* CalendarMonthCollectionViewLayout.m in Sources */,
@@ -804,6 +907,7 @@
 		};
 		F6480C701CBF72C300F27866 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 5B97422F80AB5194E72BFD9B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -820,6 +924,7 @@
 		};
 		F6480C711CBF72C300F27866 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 2BD5FEA6F436DD938995E20A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				FRAMEWORK_SEARCH_PATHS = (

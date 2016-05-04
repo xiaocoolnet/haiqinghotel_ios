@@ -155,7 +155,7 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
     }
         override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden=false
-        self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 20/255, green: 125/255, blue: 192/255, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
         self.tabBarController?.tabBar.hidden=true
         
     }

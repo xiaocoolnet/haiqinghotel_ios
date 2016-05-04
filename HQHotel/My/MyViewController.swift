@@ -24,7 +24,7 @@ class MyViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
         let topView_h = (self.view.bounds.height)/2-80
         //顶部视图
         topView.frame=CGRectMake(0, 0, self.view.bounds.width, topView_h)
-        topView.backgroundColor=UIColor.init(colorLiteralRed: 20/255, green: 125/255, blue: 192/255, alpha: 1)
+        topView.backgroundColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
         //头像视图
         iconImage.frame=CGRectMake(0, 0, self.view.bounds.width/4, self.view.bounds.width/4)
         iconImage.center=topView.center

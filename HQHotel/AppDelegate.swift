@@ -24,8 +24,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         self.window?.backgroundColor = UIColor .whiteColor()
         
         self.window?.rootViewController = TabbarViewController.TabbarC()
-        
-        
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        let guideViewController = storyboard.instantiateViewControllerWithIdentifier("register") as! RegisterGetCodeViewController
+        self.window?.rootViewController = guideViewController
         
         
         

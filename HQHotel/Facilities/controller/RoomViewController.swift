@@ -38,7 +38,7 @@ class RoomViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     }
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden=true
-        self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 20/255, green: 125/255, blue: 192/255, alpha: 1)
+        self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
     }
     override func viewWillDisappear(animated: Bool) {
         self.tabBarController?.tabBar.hidden=false

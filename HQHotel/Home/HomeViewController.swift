@@ -28,6 +28,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.tabBarController?.tabBar.tintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
         let frame = self.view.bounds
         
         tableView=UITableView(frame: CGRectMake(0, 0, frame.width, frame.height-44), style: UITableViewStyle.Plain)
@@ -153,33 +154,36 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
             let bgView = UIView(frame: button.frame)
             bgView.backgroundColor=UIColor.whiteColor()
             
-            let imageV = UIImageView(frame: CGRectMake(15+button_w*CGFloat(item), scrollview_h+timeV_h+10, 18, 18))
+            
             let xiangqingL = UILabel(frame: CGRectMake(35+button_w*CGFloat(item),scrollview_h+timeV_h,button_w-40,40))
             xiangqingL.font=UIFont.systemFontOfSize(15)
             xiangqingL.textColor=UIColor.grayColor()
             button.tag=item
             switch button.tag {
             case 0:
+                let imageV = UIImageView(frame: CGRectMake(15, 10, 11, 20))
                 imageV.image=UIImage(named: "phone-3")
                 xiangqingL.text="酒店位置"
                 button.addTarget(self, action: #selector(hotelPlace), forControlEvents: UIControlEvents.TouchUpInside)
+                button.addSubview(imageV)
                 
             case 1:
+                let imageV = UIImageView(frame: CGRectMake(10, 10, 18, 20))
                 imageV.image=UIImage(named: "phone-1")
                 xiangqingL.text="联系我们"
                 button.addTarget(self, action: #selector(callMe), forControlEvents: UIControlEvents.TouchUpInside)
-                
+                button.addSubview(imageV)
                 
             case 2:
+                let imageV = UIImageView(frame: CGRectMake(10, 10, 18, 18))
                 imageV.image=UIImage(named: "phone-4")
                 xiangqingL.text="酒店详情"
                 button.addTarget(self, action: #selector(hotelDetails), forControlEvents: UIControlEvents.TouchUpInside)
-                
+                button.addSubview(imageV)
             default:
                 break
             }
             headerview.addSubview(bgView)
-            headerview.addSubview(imageV)
             headerview.addSubview(xiangqingL)
             headerview.addSubview(button)
             

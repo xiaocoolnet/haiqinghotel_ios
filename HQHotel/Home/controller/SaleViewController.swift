@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Alamofire
+import MBProgressHUD
 class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDelegate,UITableViewDataSource{
     
     @IBOutlet weak var menshijiaL: UILabel!
@@ -23,35 +24,52 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
     @IBOutlet weak var loucengL: UILabel!
     
     @IBOutlet weak var chuangxingL: UILabel!
-    
-    
+ 
     @IBOutlet weak var chuanghuL: UILabel!
-    
-    
-    @IBOutlet weak var weiyuL: UILabel!
-    
-    
-    @IBOutlet weak var mianjiL: UILabel!
-    
-   
 
-    
+    @IBOutlet weak var weiyuL: UILabel!
+   
+    @IBOutlet weak var mianjiL: UILabel!
+
     @IBOutlet weak var tableview: UITableView!
-    
+    var saleSource = SaleModel()
     
     private var scrollView:UIScrollView!
     private let numOfPages=4
     var num=0
+    
     override func viewDidLoad() {
+        
+        let room = NSUserDefaults.standardUserDefaults()
+        let price = room.stringForKey("price")
+//        let name = room.stringForKey("name")
+        let oprice = room.stringForKey("oprice")
+//        let count = room.stringForKey("count")
+//        let picture = room.stringForKey("picture")
+//        let daynum = room.stringForKey("daynum")
+//        let surplus = room.stringForKey("surplus")
+//        let showid = room.stringForKey("showid")
+//        let time = room.stringForKey("time")
+//        let daysurplus = room.stringForKey("daysurplus")
+
+       
+
+        
+        
+        youhuijiaL.text = price
+        menshijiaL.text=oprice
+        
+        
+        print(youhuijiaL.text)
         self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         self.automaticallyAdjustsScrollViewInsets=false
         let frame = self.view.bounds
         //滚动式图
-        let scrollview_h = frame.width*0.55
+        let scrollview_h = frame.width*0.50
         
-        scrollView = UIScrollView(frame: CGRectMake(0, 66, frame.width, scrollview_h))
+        scrollView = UIScrollView(frame: CGRectMake(0, 64, frame.width, scrollview_h))
         
         scrollView.pagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
@@ -104,6 +122,48 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
         yudingBT.addTarget(self, action: #selector(yuding), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(yudingBT)
     }
+    //酒店房间接口
+    func GetDate(){
+        let url = apiUrl+"showbedroominfo"
+//        let userid = NSUserDefaults.standardUserDefaults()
+//        let uid = userid.stringForKey("userid")
+        let param = [
+            "id":12
+        ]
+        Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
+            if(error != nil){
+            }
+            else{
+                
+                let status = SaleModel(JSONDecoder(json!))
+                print("状态是")
+                print(status.status)
+                if(status.status == "error"){
+                    let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    hud.mode = MBProgressHUDMode.Text;
+                    hud.labelText = status.errorData
+                    hud.margin = 10.0
+                    hud.removeFromSuperViewOnHide = true
+                    hud.hide(true, afterDelay: 1)
+                }
+                if(status.status == "success"){
+                    print("Success")
+                    let room = NSUserDefaults.standardUserDefaults()
+                    room.setValue(status.data?.roomprice, forKey: "price")
+                    room.setValue(status.data?.roomcount, forKey: "count")
+                    room.setValue(status.data?.roomname, forKey: "name")
+                    room.setValue(status.data?.roomoprice, forKey: "oprice")
+                    
+                    room.setValue(status.data?.roomdaynum, forKey: "daynum")
+                    room.setValue(status.data?.roomdaysurplus, forKey: "daysurplus")
+                    room.setValue(status.data?.roompicture, forKey: "picture")
+                    room.setValue(status.data?.roomshowid, forKey: "showid")
+                    room.setValue(status.data?.roomtime, forKey: "time")
+                }
+            }
+        }
+    }
+
     //执行定时器方法
     func doTime(){
         
@@ -158,6 +218,7 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden=false
         self.tabBarController?.tabBar.hidden=true
+        self.GetDate()
     }
     override func  viewWillDisappear(animated: Bool) {
         self.navigationController?.navigationBarHidden=true

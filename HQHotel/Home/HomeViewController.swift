@@ -203,15 +203,16 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         //定时器
         NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector (doTime), userInfo: nil, repeats: true)
     }
+    
     //酒店预订接口
     func GetDate(){
         let url = apiUrl+"getpromotionlist"
-        let userid = NSUserDefaults.standardUserDefaults()
-        let uid = userid.stringForKey("userid")
-        let param = [
-            "userid":uid!
-        ]
-        Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
+//        let userid = NSUserDefaults.standardUserDefaults()
+//        let uid = userid.stringForKey("userid")
+//        let param = [
+//            "userid":uid!
+//        ]
+        Alamofire.request(.GET, url, parameters: nil).response { request, response, json, error in
             if(error != nil){
             }
             else{
@@ -274,6 +275,8 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         let hotelcell = HotelmallTableViewCell.cellWithTableView(tableView)
         hotelcell.selectionStyle = .None
         let reservationInfo = resrvationSource.objectlist[indexPath.row]
+        
+        
         hotelcell.titName.text = reservationInfo.name
         hotelcell.size.text = "14*14"
         hotelcell.priceLab.text = reservationInfo.price
@@ -289,15 +292,25 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     }
     //点击事件
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath){
-        let cuxiaoV = SaleViewController(nibName: "SaleViewController", bundle: nil)
-        self.navigationController?.pushViewController(cuxiaoV, animated: true)
+        let reservationInfo = resrvationSource.objectlist[indexPath.row]
+        if  reservationInfo.type == 1{
+            let cuxiaoV = SaleViewController(nibName: "SaleViewController", bundle: nil)
+            self.navigationController?.pushViewController(cuxiaoV, animated: true)
+
+        }
+        else{
+            let foodVC = FoodViewController(nibName: "FoodViewController", bundle: nil)
+            self.navigationController?.pushViewController(foodVC, animated: true)
+            
+        }
         
         
         
         
     }
     
-    
+
+
     //任务编辑文本
     func searchBarShouldBeginEditing(searchBar: UISearchBar) -> Bool{
         

@@ -7,5 +7,8 @@
 //
 
 import Foundation
+let WIDTH = UIScreen.mainScreen().bounds.size.width
+
+
 var apiUrl = "http://hq.xiaocool.net/index.php?g=apps&m=index&a="
         

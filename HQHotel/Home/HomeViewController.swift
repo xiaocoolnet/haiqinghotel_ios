@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import Alamofire
+import MBProgressHUD
 
 class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDelegate,UITableViewDataSource,UISearchBarDelegate{
     
@@ -20,6 +22,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     private var endtimeBT = UIButton()
     private var  daysL = UILabel()
     
+    var resrvationSource = ReservationsModel()
     
     private let numOfPages=3
     
@@ -34,9 +37,12 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         tableView=UITableView(frame: CGRectMake(0, 0, frame.width, frame.height-44), style: UITableViewStyle.Plain)
         tableView.delegate=self
         tableView.dataSource=self
-        tableView.rowHeight=200
+        tableView.rowHeight=250
         tableView.showsVerticalScrollIndicator=false
         tableView.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+        
+        self.GetDate()
+        
         
         //searchbar
         searchbar=UISearchBar(frame: CGRectMake(20, 20, frame.width-40, 20))
@@ -72,7 +78,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
             imageView.frame = CGRect(x: frame.size.width * CGFloat(index), y: 0, width: frame.size.width, height: scrollview_h)
             scrollView.addSubview(imageView)
         }
-
+        
         //滚动视图添加小白点
         let pageC = UIPageControl()
         pageC.frame=CGRectMake(frame.size.width/2-20, 200, 40, 20)
@@ -197,6 +203,37 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         //定时器
         NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector (doTime), userInfo: nil, repeats: true)
     }
+    //酒店预订接口
+    func GetDate(){
+        let url = apiUrl+"getpromotionlist"
+        let userid = NSUserDefaults.standardUserDefaults()
+        let uid = userid.stringForKey("userid")
+        let param = [
+            "userid":uid!
+        ]
+        Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
+            if(error != nil){
+            }
+            else{
+                
+                let status = Http(JSONDecoder(json!))
+                print("状态是")
+                print(status.status)
+                if(status.status == "error"){
+                    let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    hud.mode = MBProgressHUDMode.Text;
+                    hud.margin = 10.0
+                    hud.removeFromSuperViewOnHide = true
+                    hud.hide(true, afterDelay: 1)
+                }
+                if(status.status == "success"){
+                    self.resrvationSource = ReservationsModel(status.data!)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+
     //执行定时器方法
     func doTime(){
         
@@ -229,12 +266,23 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     
     //tableView代理方法
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 3
+        return self.resrvationSource.count
     }
     
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let hotelcell = HotelmallTableViewCell.cellWithTableView(tableView)
+        hotelcell.selectionStyle = .None
+        let reservationInfo = resrvationSource.objectlist[indexPath.row]
+        hotelcell.titName.text = reservationInfo.name
+        hotelcell.size.text = "14*14"
+        hotelcell.priceLab.text = reservationInfo.price
+        if reservationInfo.type == 1 {
+            hotelcell.prie.text = "起/晚"
+        }else{
+            hotelcell.prie.text = "/位"
+        }
+        hotelcell.imageV.image = UIImage(named: "青岛海情-002.JPG")
         
         return hotelcell
         

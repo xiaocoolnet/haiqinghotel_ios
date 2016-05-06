@@ -32,7 +32,6 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
     @IBOutlet weak var mianjiL: UILabel!
 
     @IBOutlet weak var tableview: UITableView!
-    var saleSource = SaleModel()
     
     private var scrollView:UIScrollView!
     private let numOfPages=4

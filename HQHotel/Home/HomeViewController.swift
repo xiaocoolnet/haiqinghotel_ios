@@ -21,6 +21,9 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     private var timeleftBT = UIButton()
     private var endtimeBT = UIButton()
     private var  daysL = UILabel()
+    var strNowTime=String()
+    var strNowTime1=String()
+    
     
     var resrvationSource = ReservationsModel()
     
@@ -111,8 +114,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         daysL = UILabel(frame: CGRectMake(frame.width/2-20, 10, 40, 20))
         daysL.textColor=UIColor.init(colorLiteralRed: 250/255, green: 140/255, blue: 60/255, alpha: 1)
         daysL.font=UIFont.boldSystemFontOfSize(15)
-        timeleftBT = UIButton(frame: CGRectMake(40, 40, 100, 20))
-        timeleftBT.setTitle("8月23日", forState: UIControlState.Normal)
+        timeleftBT = UIButton(frame: CGRectMake(20, 40, 110, 20))
         timeleftBT.setTitleColor(UIColor.init(colorLiteralRed: 0/255, green: 166/255, blue: 251/255, alpha: 1), forState: UIControlState.Normal)
 
         timeleftBT.addTarget(self, action: #selector(timeStart), forControlEvents: UIControlEvents.TouchUpInside)
@@ -295,6 +297,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         let reservationInfo = resrvationSource.objectlist[indexPath.row]
         if  reservationInfo.type == 1{
             let cuxiaoV = SaleViewController(nibName: "SaleViewController", bundle: nil)
+          
             self.navigationController?.pushViewController(cuxiaoV, animated: true)
 
         }
@@ -378,13 +381,13 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         if starttime=="" {
             let date = NSDate()
             let timeFormatter = NSDateFormatter()
-            timeFormatter.dateFormat = "MM-dd"
-            let strNowTime = timeFormatter.stringFromDate(date) as String
+            timeFormatter.dateFormat = "yyyy-MM-dd"
+            strNowTime = timeFormatter.stringFromDate(date) as String
             
             let date1 = NSDate(timeIntervalSinceNow: 24*60*60)
             let timeFormatter1 = NSDateFormatter()
-            timeFormatter1.dateFormat = "MM-dd"
-            let strNowTime1 = timeFormatter.stringFromDate(date1) as String
+            timeFormatter1.dateFormat = "yyyy-MM-dd"
+            strNowTime1 = timeFormatter.stringFromDate(date1) as String
         timeleftBT.setTitle(strNowTime, forState: UIControlState.Normal)
         endtimeBT.setTitle(strNowTime1, forState: UIControlState.Normal)
          daysL.text=""

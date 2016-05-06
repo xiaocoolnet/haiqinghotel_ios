@@ -66,6 +66,7 @@
 		F66283EF1CC0D2F000198CB3 /* MallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66283EE1CC0D2F000198CB3 /* MallViewController.swift */; };
 		F66283F11CC0D2FB00198CB3 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66283F01CC0D2FB00198CB3 /* MyViewController.swift */; };
 		F66283F71CC0DA8300198CB3 /* TabbarViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66283F61CC0DA8300198CB3 /* TabbarViewController.swift */; };
+		F6D26E3C1CDC9DE6002A28F5 /* HotelOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D26E3B1CDC9DE6002A28F5 /* HotelOrderModel.swift */; };
 		F6E7864A1CD1A5B600B269BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E786491CD1A5B600B269BF /* AppDelegate.swift */; };
 		F6E7864C1CD1A5BB00B269BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E7864B1CD1A5BB00B269BF /* ViewController.swift */; };
 		F6E786631CD1A76500B269BF /* CalendarDayCell.m in Sources */ = {isa = PBXBuildFile; fileRef = F6E786501CD1A76500B269BF /* CalendarDayCell.m */; };
@@ -78,7 +79,6 @@
 		F6E7866A1CD1A76500B269BF /* CalendarViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F6E7865E1CD1A76500B269BF /* CalendarViewController.m */; };
 		F6E7866B1CD1A76500B269BF /* chack.png in Resources */ = {isa = PBXBuildFile; fileRef = F6E7865F1CD1A76500B269BF /* chack.png */; };
 		F6E7866C1CD1A76500B269BF /* NSDate+WQCalendarLogic.m in Sources */ = {isa = PBXBuildFile; fileRef = F6E786621CD1A76500B269BF /* NSDate+WQCalendarLogic.m */; };
-		F6E7867D1CD1A7D000B269BF /* 2.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6E7866F1CD1A7D000B269BF /* 2.jpg */; };
 		F6E786811CD1A7D000B269BF /* BT.png in Resources */ = {isa = PBXBuildFile; fileRef = F6E786731CD1A7D000B269BF /* BT.png */; };
 		F6E786821CD1A7D000B269BF /* 酒店详情.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F6E786741CD1A7D000B269BF /* 酒店详情.jpg */; };
 		F6E786831CD1A7D000B269BF /* 青岛海情-0.JPG in Resources */ = {isa = PBXBuildFile; fileRef = F6E786751CD1A7D000B269BF /* 青岛海情-0.JPG */; };
@@ -180,6 +180,7 @@
 		F66283EE1CC0D2F000198CB3 /* MallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MallViewController.swift; path = ../MallViewController.swift; sourceTree = "<group>"; };
 		F66283F01CC0D2FB00198CB3 /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
 		F66283F61CC0DA8300198CB3 /* TabbarViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TabbarViewController.swift; sourceTree = "<group>"; };
+		F6D26E3B1CDC9DE6002A28F5 /* HotelOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelOrderModel.swift; sourceTree = "<group>"; };
 		F6E786491CD1A5B600B269BF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HQHotel/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		F6E7864B1CD1A5BB00B269BF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = HQHotel/ViewController.swift; sourceTree = SOURCE_ROOT; };
 		F6E7864F1CD1A76500B269BF /* CalendarDayCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CalendarDayCell.h; sourceTree = "<group>"; };
@@ -202,7 +203,6 @@
 		F6E786601CD1A76500B269BF /* Color.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Color.h; sourceTree = "<group>"; };
 		F6E786611CD1A76500B269BF /* NSDate+WQCalendarLogic.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSDate+WQCalendarLogic.h"; sourceTree = "<group>"; };
 		F6E786621CD1A76500B269BF /* NSDate+WQCalendarLogic.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSDate+WQCalendarLogic.m"; sourceTree = "<group>"; };
-		F6E7866F1CD1A7D000B269BF /* 2.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = 2.jpg; sourceTree = "<group>"; };
 		F6E786731CD1A7D000B269BF /* BT.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = BT.png; sourceTree = "<group>"; };
 		F6E786741CD1A7D000B269BF /* 酒店详情.jpg */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "酒店详情.jpg"; sourceTree = "<group>"; };
 		F6E786751CD1A7D000B269BF /* 青岛海情-0.JPG */ = {isa = PBXFileReference; lastKnownFileType = image.jpeg; path = "青岛海情-0.JPG"; sourceTree = "<group>"; };
@@ -447,6 +447,7 @@
 				F63C93551CD9F6310095BF18 /* HotelOrderViewController.swift */,
 				F63C93571CD9F6430095BF18 /* MallOrderViewController.swift */,
 				F63C93591CD9F6820095BF18 /* MarkViewController.swift */,
+				F6D26E3A1CDC9DA2002A28F5 /* model */,
 				F63C5EB81CDAF585005A7230 /* view */,
 			);
 			path = My;
@@ -549,6 +550,14 @@
 			path = view;
 			sourceTree = "<group>";
 		};
+		F6D26E3A1CDC9DA2002A28F5 /* model */ = {
+			isa = PBXGroup;
+			children = (
+				F6D26E3B1CDC9DE6002A28F5 /* HotelOrderModel.swift */,
+			);
+			name = model;
+			sourceTree = "<group>";
+		};
 		F6E7864E1CD1A76500B269BF /* ZFCalendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -581,7 +590,6 @@
 			isa = PBXGroup;
 			children = (
 				F61DC2A61CD8745F000F87E1 /* 海参.jpg */,
-				F6E7866F1CD1A7D000B269BF /* 2.jpg */,
 				F6E786731CD1A7D000B269BF /* BT.png */,
 				F63C5EBD1CDB194B005A7230 /* food1.png */,
 				F63C5EBF1CDB1951005A7230 /* food2.png */,
@@ -722,7 +730,6 @@
 				F6E786911CD1A87D00B269BF /* Assets.xcassets in Resources */,
 				F65D56B11CD2EF8E008BB73E /* 设施1.png in Resources */,
 				F6E786861CD1A7D000B269BF /* 青岛海情-003.JPG in Resources */,
-				F6E7867D1CD1A7D000B269BF /* 2.jpg in Resources */,
 				F6E7866B1CD1A76500B269BF /* chack.png in Resources */,
 				F621980D1CD1B11500B749BA /* ReserveViewController.xib in Resources */,
 				F63C5EBE1CDB194B005A7230 /* food1.png in Resources */,
@@ -854,6 +861,7 @@
 				F6E786681CD1A76500B269BF /* CalendarMonthCollectionViewLayout.m in Sources */,
 				F63C93581CD9F6430095BF18 /* MallOrderViewController.swift in Sources */,
 				F6E786691CD1A76500B269BF /* CalendarMonthHeaderView.m in Sources */,
+				F6D26E3C1CDC9DE6002A28F5 /* HotelOrderModel.swift in Sources */,
 				F6480C8D1CBF7B5400F27866 /* HomeViewController.swift in Sources */,
 				F64D73C71CC4C12B0048B855 /* MallCollectionViewCell.swift in Sources */,
 				F63C934E1CD9CECB0095BF18 /* XKeyBoard.m in Sources */,

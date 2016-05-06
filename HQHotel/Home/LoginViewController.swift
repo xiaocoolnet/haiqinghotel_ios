@@ -26,7 +26,6 @@ class LoginViewController: UIViewController ,UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
         self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
 //        XKeyBoard.registerKeyBoardHide(self)
 //        XKeyBoard.registerKeyBoardShow(self)
@@ -35,18 +34,15 @@ class LoginViewController: UIViewController ,UITextFieldDelegate{
         LoginButton.addTarget(self, action: #selector(LoginViewController.Login), forControlEvents: UIControlEvents.TouchUpInside)
         
     }
-    
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBar.hidden=true
     }
-    
     func textFieldShouldReturn(textField: UITextField) -> Bool
     {
         AccountText.resignFirstResponder()
         PasswordText.resignFirstResponder()
         return true
     }
-    
 //    @IBAction func register(sender: AnyObject) {
 //        
 //        let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
@@ -102,13 +98,6 @@ class LoginViewController: UIViewController ,UITextFieldDelegate{
             if(error != nil){
             }
             else{
-                print("request是")
-                print(request!)
-                print("response是")
-                print(response!)
-                print("data是")
-                print(json!)
-                print("====================")
                 let status = Httpresult(JSONDecoder(json!))
                 print("状态是")
                 print(status.status)
@@ -132,22 +121,16 @@ class LoginViewController: UIViewController ,UITextFieldDelegate{
                     schoolid.setValue(status.data?.schoolid, forKey: "schoolid")
                     let classid = NSUserDefaults.standardUserDefaults()
                     classid.setValue(status.data?.classid, forKey: "classid")
+                    
                     self.GetUserInfo()
+                    
                     let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
                     let vc : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("tabbar")
                     self.presentViewController(vc, animated: true, completion: nil)
-                    
-//                    let homeVC=HomeViewController()
-//                    self.navigationController?.pushViewController(homeVC, animated: true)
-                    
-                    
-                    
-                    
                 }
             }
         }
     }
-    
     func GetUserInfo(){
         let userid = NSUserDefaults.standardUserDefaults()
         let uid = userid.stringForKey("userid")
@@ -159,9 +142,6 @@ class LoginViewController: UIViewController ,UITextFieldDelegate{
             if(error != nil){
             }
             else{
-                print("request是")
-                print(request!)
-                print("====================")
                 let status = MineModel(JSONDecoder(json!))
                 print("状态是")
                 print(status.status)

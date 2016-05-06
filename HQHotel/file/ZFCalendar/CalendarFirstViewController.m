@@ -20,6 +20,7 @@
     
     
 }
+
 @end
 
 @implementation CalendarFirstViewController
@@ -104,7 +105,7 @@
     {
         
         NSDateFormatter *formatter = [[NSDateFormatter alloc] init];
-        [formatter setDateFormat:@"MM-dd"];
+        [formatter setDateFormat:@"yyyy-MM-dd"];
         NSDate* date1 = [formatter dateFromString:[dataArray objectAtIndex:0]];
         NSDate* date2 = [formatter dateFromString:[dataArray objectAtIndex:1]];
         
@@ -119,6 +120,24 @@
         
         
         lable.text=[NSString stringWithFormat:@"%@入住---%@离店 共%d晚",[dataArray objectAtIndex:0],[dataArray objectAtIndex:1],days];
+        
+        if (_str) {
+//            SaleViewController *saleVC=[[SaleViewController alloc]init];
+            str1=[dataArray objectAtIndex:0];
+            str2=[dataArray objectAtIndex:1];
+//            saleVC.startTime=str1;
+//            saleVC.endTime=str2;
+            NSUserDefaults *chuanzhi = NSUserDefaults.standardUserDefaults;
+            
+            [chuanzhi setObject:str1 forKey:@"startTime"];
+            [chuanzhi setObject:str2 forKey:@"endTime"];
+            
+            [chuanzhi synchronize];
+            [[self navigationController]popViewControllerAnimated:YES];
+        }else{
+        
+        
+        
          HomeViewController *homeVC=[[HomeViewController alloc]init];
         
          str1=[dataArray objectAtIndex:0];
@@ -130,7 +149,7 @@
         
          
         [self.navigationController pushViewController:homeVC animated:YES];
-       
+        }
         
        
         

@@ -32,7 +32,18 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
     @IBOutlet weak var mianjiL: UILabel!
 
     @IBOutlet weak var tableview: UITableView!
+<<<<<<< HEAD
     
+=======
+    var saleSource = SaleModel()
+    internal var startTime=String()
+    internal var endTime=String()
+    var name=String()
+    var bedsize=String()
+    var repast=String()
+    var network=String()
+    var price=String()
+>>>>>>> origin/master
     private var scrollView:UIScrollView!
     private let numOfPages=4
     var num=0
@@ -40,8 +51,8 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
     override func viewDidLoad() {
         
         let room = NSUserDefaults.standardUserDefaults()
-        let price = room.stringForKey("price")
-//        let name = room.stringForKey("name")
+        price = room.stringForKey("price")!
+        name = room.stringForKey("name")!
         let oprice = room.stringForKey("oprice")
 //        let count = room.stringForKey("count")
 //        let picture = room.stringForKey("picture")
@@ -50,16 +61,41 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
 //        let showid = room.stringForKey("showid")
 //        let time = room.stringForKey("time")
 //        let daysurplus = room.stringForKey("daysurplus")
+//        let limit = room.stringForKey("limit")
+        let floor = room.stringForKey("floor")
+        let acreage = room.stringForKey("acreage")
+        bedsize = room.stringForKey("bedsize")!
+        repast = room.stringForKey("repast")!
+        network = room.stringForKey("network")!
+        let window = room.stringForKey("window")
+        let peoplenumber = room.stringForKey("peoplenumbe")
+        let bathroom = room.stringForKey("bathroom")
+//        let status = room.stringForKey("status")
 
+
+        if repast=="1" {
+            zaocanIV.image=UIImage(named: "ic_zaocan-1")
+        }else{
+            zaocanIV.image=UIImage(named: "ic_zaocan")
+        }
+        
        
 
         
         
         youhuijiaL.text = price
         menshijiaL.text=oprice
+        shangwangL.text=network
+        kezhuL.text=peoplenumber
+        loucengL.text=floor
+        chuangxingL.text=bedsize
+        chuanghuL.text=window
+        weiyuL.text=bathroom
+        mianjiL.text=acreage
         
         
-        print(youhuijiaL.text)
+        
+        
         self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
@@ -113,7 +149,8 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
         self.view.addSubview(priceL)
         let zongjiaL = UILabel(frame: CGRectMake(70,self.view.bounds.height-40,self.view.bounds.width/2-70,40))
         zongjiaL.backgroundColor=UIColor.whiteColor()
-        zongjiaL.text="¥ 487"
+        zongjiaL.text="¥"+price
+        zongjiaL.textColor=UIColor.init(red: 39/255, green: 178/255, blue: 252/255, alpha: 1)
         self.view.addSubview(zongjiaL)
         let yudingBT = UIButton(frame: CGRectMake(self.view.bounds.width/2,self.view.bounds.height-40,self.view.bounds.width/2,40))
         yudingBT.backgroundColor=UIColor.init(red: 250/255, green: 140/255, blue: 61/255, alpha: 1)
@@ -124,8 +161,7 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
     //酒店房间接口
     func GetDate(){
         let url = apiUrl+"showbedroominfo"
-//        let userid = NSUserDefaults.standardUserDefaults()
-//        let uid = userid.stringForKey("userid")
+
         let param = [
             "id":12
         ]
@@ -158,6 +194,16 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
                     room.setValue(status.data?.roompicture, forKey: "picture")
                     room.setValue(status.data?.roomshowid, forKey: "showid")
                     room.setValue(status.data?.roomtime, forKey: "time")
+                    room.setValue(status.data?.roomlimit, forKey: "limit")
+                    room.setValue(status.data?.roomfloor, forKey: "floor")
+                    room.setValue(status.data?.roomacreage, forKey: "acreage")
+                    room.setValue(status.data?.roombedsize, forKey: "bedsize")
+                    room.setValue(status.data?.roomrepast, forKey: "repast")
+                    room.setValue(status.data?.roomnetwork, forKey: "network")
+                    room.setValue(status.data?.roomwindow, forKey: "window")
+                    room.setValue(status.data?.roompeoplenumber, forKey: "peoplenumbe")
+                    room.setValue(status.data?.roombathroom, forKey: "bathroom")
+                    room.setValue(status.data?.roomstatus, forKey: "status")
                 }
             }
         }
@@ -192,9 +238,18 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
         
         pageC.currentPage = Int(scrollView.contentOffset.x/frame.width)
     }
+    //预订按钮
     func yuding(){
         
         let reserve = ReserveViewController(nibName: "ReserveViewController", bundle: nil)
+        reserve.name=name
+        reserve.bedsize=bedsize
+        reserve.network=network
+        reserve.repast=repast
+        reserve.startTime=startTime
+        reserve.endTime=endTime
+        reserve.price=price
+        
         self.navigationController?.pushViewController(reserve, animated: true)
         
         
@@ -205,11 +260,19 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
         return 1
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        let cell = UITableViewCell()
-        cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
         
+        let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
+        cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
+        cell.imageView?.image=UIImage(named: "ic_rili")
+        cell.textLabel?.text=startTime+"入住，"+endTime+"退房"
         return cell
         
+        
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let riliVC = CalendarFirstViewController()
+        riliVC.str="1"
+        self.navigationController?.pushViewController(riliVC, animated: true)
         
     }
     
@@ -217,6 +280,24 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden=false
         self.tabBarController?.tabBar.hidden=true
+
+        let chuanzhi = NSUserDefaults.standardUserDefaults()
+        if startTime=="" {
+            let date = NSDate()
+            let timeFormatter = NSDateFormatter()
+            timeFormatter.dateFormat = "yyyy-MM-dd"
+            startTime = timeFormatter.stringFromDate(date) as String
+            
+            let date1 = NSDate(timeIntervalSinceNow: 24*60*60)
+            let timeFormatter1 = NSDateFormatter()
+            timeFormatter1.dateFormat = "yyyy-MM-dd"
+            endTime = timeFormatter.stringFromDate(date1) as String
+        }else{
+        startTime = chuanzhi.stringForKey("startTime")!
+        endTime = chuanzhi.stringForKey("endTime")!
+        }
+        
+        tableview.reloadData()
         self.GetDate()
     }
     override func  viewWillDisappear(animated: Bool) {

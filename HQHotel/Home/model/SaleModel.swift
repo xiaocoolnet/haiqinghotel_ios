@@ -38,6 +38,19 @@ class SaleInfo: JSONJoy{
     var roompicture:String?
     var roomshowid:String?
     var roomtime:String?
+    var roomlimit:String?
+    var roomfloor:String?
+    var roomacreage:String?
+    var roombedsize:String?
+    var roomrepast:String?
+    var roomnetwork:String?
+    var roomwindow:String?
+    var roompeoplenumber:String?
+    var roombathroom:String?
+    var roomstatus:String?
+
+        
+    
     
     
     
@@ -56,6 +69,19 @@ class SaleInfo: JSONJoy{
         roompicture = decoder["picture"].string
         roomshowid=decoder["showid"].string
         roomtime=decoder["time"].string
+        roomlimit=decoder["limit"].string
+        roomfloor=decoder["floor"].string
+        roomacreage=decoder["acreage"].string
+        roombedsize=decoder["bedsize"].string
+        roomrepast=decoder["repast"].string
+        roomnetwork=decoder["network"].string
+        roomwindow=decoder["window"].string
+        roompeoplenumber=decoder["peoplenumbe"].string
+        roombathroom=decoder["bathroom"].string
+        roomstatus=decoder["status"].string
+        
+       
+
     }
     
 }

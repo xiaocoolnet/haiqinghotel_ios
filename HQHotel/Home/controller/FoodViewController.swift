@@ -32,6 +32,8 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
     
     let business = UILabel()
     let busContact = UILabel()
+    let reservation = UIButton()
+    
     
     var caterSoutce = CaterModel()
     
@@ -65,28 +67,28 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         priceHui.textColor = UIColor.orangeColor()
         
         
-        for i in 0...2 {
+        for i in 0...1 {
             let titLab = UILabel()
 
             titLab.frame = CGRectMake(0+CGFloat(i)*self.view.bounds.width/3, self.view.bounds.width*0.5+64, self.view.bounds.width/3, 60)
             titLab.tag = i
             titLab.backgroundColor = UIColor.whiteColor()
             self.view.addSubview(titLab)
-            
-            if titLab.tag == 2 {
-                titLab.backgroundColor = UIColor.orangeColor()
-                titLab.text = "立即预订"
-                titLab.textColor = UIColor.whiteColor()
-                titLab.textAlignment = .Center
-            }
-            
+    
         }
-
+        
+        reservation.frame = CGRectMake(WIDTH/3*2, self.view.bounds.width*0.5+64, self.view.bounds.width/3, 60)
+        reservation.backgroundColor = UIColor.orangeColor()
+        reservation.setTitle("立即预订", forState:.Normal)
+        reservation.setTitleColor(UIColor.whiteColor(), forState: .Normal)
+        reservation.titleLabel?.font = UIFont.systemFontOfSize(16)
+        
         self.view.addSubview(shimenjia)
         self.view.addSubview(youhuijia)
         self.view.addSubview(line)
         self.view.addSubview(priceMen)
         self.view.addSubview(priceHui)
+        self.view.addSubview(reservation)
         
         jianjieView.frame = CGRectMake(0, self.view.bounds.width*0.5+134, self.view.bounds.width, 150)
         jianjieView.backgroundColor = UIColor.whiteColor()
@@ -100,7 +102,7 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         busContact.frame = CGRectMake(10, 25, WIDTH-20, 125)
         busContact.font = UIFont.systemFontOfSize(12)
         busContact.numberOfLines = 0
-        busContact.text = "-你说过的话，一句一句，如同星光般洒落，独自仰望的夜空，会惧怕被深不见底的夜吸进去，和阿渡一起仰望的星空变幻不定，和小椿一起仰望的星空，光辉灿烂却隐隐透着不安。和你一同仰望的星空，是怎样的呢？"
+        
         jianjieView.addSubview(busContact)
         
         taocanTable.frame = CGRectMake(0, self.view.bounds.width*0.5+294, WIDTH, 136)
@@ -272,7 +274,7 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
                     self.busContact.text = status.data?.foodDescription
                     self.priceOld.text = "¥"+(status.data?.foodOprice)!
                     self.priceNew.text = "¥"+(status.data?.foodPrice)!
-                    self.count = status.data?.goodList?.array?.count
+                    self.count = (status.data?.goodList?.array?.count)!
                 }
                 
             }

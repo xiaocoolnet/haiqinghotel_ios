@@ -32,9 +32,7 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
     @IBOutlet weak var mianjiL: UILabel!
 
     @IBOutlet weak var tableview: UITableView!
-<<<<<<< HEAD
-    
-=======
+
     var saleSource = SaleModel()
     internal var startTime=String()
     internal var endTime=String()
@@ -43,36 +41,28 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
     var repast=String()
     var network=String()
     var price=String()
->>>>>>> origin/master
+
     private var scrollView:UIScrollView!
     private let numOfPages=4
     var num=0
     
     override func viewDidLoad() {
         
-        let room = NSUserDefaults.standardUserDefaults()
-        price = room.stringForKey("price")!
-        name = room.stringForKey("name")!
-        let oprice = room.stringForKey("oprice")
-//        let count = room.stringForKey("count")
-//        let picture = room.stringForKey("picture")
-//        let daynum = room.stringForKey("daynum")
-//        let surplus = room.stringForKey("surplus")
-//        let showid = room.stringForKey("showid")
-//        let time = room.stringForKey("time")
-//        let daysurplus = room.stringForKey("daysurplus")
-//        let limit = room.stringForKey("limit")
-        let floor = room.stringForKey("floor")
-        let acreage = room.stringForKey("acreage")
-        bedsize = room.stringForKey("bedsize")!
-        repast = room.stringForKey("repast")!
-        network = room.stringForKey("network")!
-        let window = room.stringForKey("window")
-        let peoplenumber = room.stringForKey("peoplenumbe")
-        let bathroom = room.stringForKey("bathroom")
-//        let status = room.stringForKey("status")
-
-
+//        let room = NSUserDefaults.standardUserDefaults()
+//        price = room.stringForKey("price")!
+//        name = room.stringForKey("name")!
+//        let oprice = room.stringForKey("oprice")
+//
+//        let floor = room.stringForKey("floor")
+//        let acreage = room.stringForKey("acreage")
+////        bedsize = room.stringForKey("bedsize")!
+////        repast = room.stringForKey("repast")!
+////        network = room.stringForKey("network")!
+//        let window = room.stringForKey("window")
+//        let peoplenumber = room.stringForKey("peoplenumbe")
+//        let bathroom = room.stringForKey("bathroom")
+//
+//
         if repast=="1" {
             zaocanIV.image=UIImage(named: "ic_zaocan-1")
         }else{
@@ -83,15 +73,7 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
 
         
         
-        youhuijiaL.text = price
-        menshijiaL.text=oprice
-        shangwangL.text=network
-        kezhuL.text=peoplenumber
-        loucengL.text=floor
-        chuangxingL.text=bedsize
-        chuanghuL.text=window
-        weiyuL.text=bathroom
-        mianjiL.text=acreage
+        
         
         
         
@@ -183,27 +165,38 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
                 }
                 if(status.status == "success"){
                     print("Success")
-                    let room = NSUserDefaults.standardUserDefaults()
-                    room.setValue(status.data?.roomprice, forKey: "price")
-                    room.setValue(status.data?.roomcount, forKey: "count")
-                    room.setValue(status.data?.roomname, forKey: "name")
-                    room.setValue(status.data?.roomoprice, forKey: "oprice")
+//                    let room = NSUserDefaults.standardUserDefaults()
                     
-                    room.setValue(status.data?.roomdaynum, forKey: "daynum")
-                    room.setValue(status.data?.roomdaysurplus, forKey: "daysurplus")
-                    room.setValue(status.data?.roompicture, forKey: "picture")
-                    room.setValue(status.data?.roomshowid, forKey: "showid")
-                    room.setValue(status.data?.roomtime, forKey: "time")
-                    room.setValue(status.data?.roomlimit, forKey: "limit")
-                    room.setValue(status.data?.roomfloor, forKey: "floor")
-                    room.setValue(status.data?.roomacreage, forKey: "acreage")
-                    room.setValue(status.data?.roombedsize, forKey: "bedsize")
-                    room.setValue(status.data?.roomrepast, forKey: "repast")
-                    room.setValue(status.data?.roomnetwork, forKey: "network")
-                    room.setValue(status.data?.roomwindow, forKey: "window")
-                    room.setValue(status.data?.roompeoplenumber, forKey: "peoplenumbe")
-                    room.setValue(status.data?.roombathroom, forKey: "bathroom")
-                    room.setValue(status.data?.roomstatus, forKey: "status")
+                    self.chuangxingL.text = status.data?.roombedsize
+                    self.youhuijiaL.text = status.data?.roomprice
+                    self.menshijiaL.text = status.data?.roomoprice
+                    self.shangwangL.text = status.data?.roomnetwork
+                    self.kezhuL.text = status.data?.roompeoplenumber
+                    self.loucengL.text = status.data?.roomfloor
+                    self.chuanghuL.text = status.data?.roomwindow
+                    self.weiyuL.text = status.data?.roombathroom
+                    self.mianjiL.text = status.data?.roomacreage
+                    
+//                    room.setValue(status.data?.roomprice, forKey: "price")
+//                    room.setValue(status.data?.roomcount, forKey: "count")
+//                    room.setValue(status.data?.roomname, forKey: "name")
+//                    room.setValue(status.data?.roomoprice, forKey: "oprice")
+//                    
+//                    room.setValue(status.data?.roomdaynum, forKey: "daynum")
+//                    room.setValue(status.data?.roomdaysurplus, forKey: "daysurplus")
+//                    room.setValue(status.data?.roompicture, forKey: "picture")
+//                    room.setValue(status.data?.roomshowid, forKey: "showid")
+//                    room.setValue(status.data?.roomtime, forKey: "time")
+//                    room.setValue(status.data?.roomlimit, forKey: "limit")
+//                    room.setValue(status.data?.roomfloor, forKey: "floor")
+//                    room.setValue(status.data?.roomacreage, forKey: "acreage")
+//                    room.setValue(status.data?.roombedsize, forKey: "bedsize")
+//                    room.setValue(status.data?.roomrepast, forKey: "repast")
+//                    room.setValue(status.data?.roomnetwork, forKey: "network")
+//                    room.setValue(status.data?.roomwindow, forKey: "window")
+//                    room.setValue(status.data?.roompeoplenumber, forKey: "peoplenumbe")
+//                    room.setValue(status.data?.roombathroom, forKey: "bathroom")
+//                    room.setValue(status.data?.roomstatus, forKey: "status")
                 }
             }
         }

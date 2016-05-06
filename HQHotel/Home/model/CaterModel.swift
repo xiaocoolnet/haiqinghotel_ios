@@ -35,7 +35,7 @@ class CaterInfo: JSONJoy{
     var foodPicture:String?
     var foodShowid:String?
     var foodTime:String?
-    var goodList:GoodListInfo?
+    var goodList:JSONDecoder?
     
     
     init() {

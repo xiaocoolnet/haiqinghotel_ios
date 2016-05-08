@@ -85,6 +85,7 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         reservation.setTitle("立即预订", forState:.Normal)
         reservation.setTitleColor(UIColor.whiteColor(), forState: .Normal)
         reservation.titleLabel?.font = UIFont.systemFontOfSize(16)
+        reservation.addTarget(self, action: #selector(FoodViewController.getYuDing), forControlEvents: .TouchUpInside)
         
         self.view.addSubview(shimenjia)
         self.view.addSubview(youhuijia)
@@ -142,6 +143,11 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         
     }
     
+    func getYuDing() {
+        print("立即预订")
+        
+        
+    }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return self.caterSoutce.count
     }

@@ -1030,7 +1030,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiaocool.HQHotel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/xiaocool/Desktop/haiqinghotel_ios/HQHotel/Tool/OC_Header.h;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/apple/Desktop/haiqinghotel_ios/HQHotel/Tool/OC_Header.h;
 			};
 			name = Debug;
 		};
@@ -1047,7 +1047,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiaocool.HQHotel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/xiaocool/Desktop/haiqinghotel_ios/HQHotel/Tool/OC_Header.h;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/apple/Desktop/haiqinghotel_ios/HQHotel/Tool/OC_Header.h;
 			};
 			name = Release;
 		};

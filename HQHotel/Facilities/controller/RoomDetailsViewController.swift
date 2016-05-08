@@ -35,7 +35,21 @@ class RoomDetailsViewController: UIViewController {
         let detailsL_h = roomImageView_h*0.7
         detailsL=UITextView(frame: CGRectMake(0,64+roomImageView_h+40+1,self.view.bounds.width,detailsL_h))
         detailsL.backgroundColor=UIColor.whiteColor()
+
+        
         detailsL.text="时代感和疯狂日记的看法才能舍得离开凤凰网老人干净利索的基础饿反反复复反反复复反反复复反复发反反复复反反复复反复反复反反复复反反复复"
+
+//        let str = "djfhvgdfkhsckhsdkv"
+//        if (str==) {
+//            let constraint:CGSize = CGSizeMake(self.view.bounds.width, detailsL_h)
+//        }
+        
+        
+        
+        
+        
+        
+        
         detailsL.font=UIFont.systemFontOfSize(16)
         detailsL.textColor=UIColor.grayColor()
         detailsL.editable=false
@@ -60,6 +74,7 @@ class RoomDetailsViewController: UIViewController {
         
 
     }
+   
 
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden=true

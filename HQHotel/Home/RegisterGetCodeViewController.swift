@@ -42,6 +42,7 @@ class RegisterGetCodeViewController: UIViewController ,UIImagePickerControllerDe
         timeLabel.hidden = true
         self.navigationController?.navigationBar.hidden = false
         iconBT.addTarget(self, action: #selector(addicon), forControlEvents: UIControlEvents.TouchUpInside)
+        icon.image=UIImage(named: "ic_touxiang-1")
     }
     
     func GetCode(){
@@ -84,8 +85,9 @@ class RegisterGetCodeViewController: UIViewController ,UIImagePickerControllerDe
             "phone":self.phoneNumberText.text!,
             "code":self.codeText.text!,
             "password":self.password.text!,
-            "devicestate":"1"
-            
+            "devicestate":"1",
+            "name":self.nameTF.text!,
+            "avatar":"1234.png"
             
         ]
         print(url)
@@ -133,6 +135,25 @@ class RegisterGetCodeViewController: UIViewController ,UIImagePickerControllerDe
             let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             hud.mode = MBProgressHUDMode.Text
             hud.labelText = "请输入验证码"
+            hud.margin = 10.0
+            hud.removeFromSuperViewOnHide = true
+            hud.hide(true, afterDelay: 1)
+            return false
+        }
+        if (nameTF.text!.isEmpty) {
+            let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            hud.mode = MBProgressHUDMode.Text
+            hud.labelText = "请输入姓名"
+            hud.margin = 10.0
+            hud.removeFromSuperViewOnHide = true
+            hud.hide(true, afterDelay: 1)
+            return false
+
+        }
+        if (self.icon.image==UIImage(named:"ic_touxiang-1")) {
+            let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            hud.mode = MBProgressHUDMode.Text
+            hud.labelText = "请选择头像"
             hud.margin = 10.0
             hud.removeFromSuperViewOnHide = true
             hud.hide(true, afterDelay: 1)
@@ -217,12 +238,14 @@ class RegisterGetCodeViewController: UIViewController ,UIImagePickerControllerDe
         }
         
     }
+    //添加头像
     func addicon(){
         let picker = UIImagePickerController()
         picker.sourceType = UIImagePickerControllerSourceType.PhotoLibrary
         picker.delegate = self
         self.presentViewController(picker, animated: true, completion: nil)
     }
+    //代理方法
     func imagePickerController(picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
         var image = UIImage()
         image = (info[UIImagePickerControllerOriginalImage] as? UIImage)!

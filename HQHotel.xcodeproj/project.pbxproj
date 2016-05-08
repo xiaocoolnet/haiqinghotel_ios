@@ -49,6 +49,7 @@
 		F6480C6B1CBF72C300F27866 /* HQHotelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6480C6A1CBF72C300F27866 /* HQHotelUITests.swift */; };
 		F6480C831CBF747C00F27866 /* ScollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6480C821CBF747C00F27866 /* ScollViewController.swift */; };
 		F6480C8D1CBF7B5400F27866 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6480C8C1CBF7B5400F27866 /* HomeViewController.swift */; };
+		F64CB8071CDDF13D00BD0210 /* ConnectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F64CB8061CDDF13D00BD0210 /* ConnectModel.m */; };
 		F64D73B01CC470210048B855 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64D73AF1CC470210048B855 /* RoomViewController.swift */; };
 		F64D73BA1CC47D180048B855 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64D73B91CC47D180048B855 /* NewsTableViewCell.swift */; };
 		F64D73C71CC4C12B0048B855 /* MallCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64D73C51CC4C12B0048B855 /* MallCollectionViewCell.swift */; };
@@ -163,6 +164,8 @@
 		F6480C6C1CBF72C300F27866 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6480C821CBF747C00F27866 /* ScollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScollViewController.swift; path = ../ScollViewController.swift; sourceTree = "<group>"; };
 		F6480C8C1CBF7B5400F27866 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
+		F64CB8051CDDF13D00BD0210 /* ConnectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectModel.h; path = HQHotel/file/ConnectModel.h; sourceTree = SOURCE_ROOT; };
+		F64CB8061CDDF13D00BD0210 /* ConnectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectModel.m; path = HQHotel/file/ConnectModel.m; sourceTree = SOURCE_ROOT; };
 		F64D73AF1CC470210048B855 /* RoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
 		F64D73B91CC47D180048B855 /* NewsTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NewsTableViewCell.swift; sourceTree = "<group>"; };
 		F64D73C51CC4C12B0048B855 /* MallCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MallCollectionViewCell.swift; sourceTree = "<group>"; };
@@ -401,6 +404,8 @@
 		F6480C791CBF741400F27866 /* file */ = {
 			isa = PBXGroup;
 			children = (
+				F64CB8051CDDF13D00BD0210 /* ConnectModel.h */,
+				F64CB8061CDDF13D00BD0210 /* ConnectModel.m */,
 				F6E7866D1CD1A7D000B269BF /* image */,
 				F6E7864E1CD1A76500B269BF /* ZFCalendar */,
 			);
@@ -837,6 +842,7 @@
 				F66283F11CC0D2FB00198CB3 /* MyViewController.swift in Sources */,
 				F63C5ECF1CDB267F005A7230 /* FoodViewController.swift in Sources */,
 				F61DC2A51CD84B7E000F87E1 /* NewsViewController.swift in Sources */,
+				F64CB8071CDDF13D00BD0210 /* ConnectModel.m in Sources */,
 				F63373911CC763D200F63FC1 /* HotelDetailsViewController.swift in Sources */,
 				F6443BBC1CC1D1820078627B /* Facilitiescell.swift in Sources */,
 				18D4B1321CDC9F980036C08B /* GoodListModel.swift in Sources */,
@@ -1024,7 +1030,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiaocool.HQHotel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/apple/Desktop/haiqinghotel_ios/HQHotel/Tool/OC_Header.h;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/xiaocool/Desktop/haiqinghotel_ios/HQHotel/Tool/OC_Header.h;
 			};
 			name = Debug;
 		};
@@ -1041,7 +1047,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiaocool.HQHotel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/apple/Desktop/haiqinghotel_ios/HQHotel/Tool/OC_Header.h;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/xiaocool/Desktop/haiqinghotel_ios/HQHotel/Tool/OC_Header.h;
 			};
 			name = Release;
 		};

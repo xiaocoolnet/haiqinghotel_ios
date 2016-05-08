@@ -8,23 +8,28 @@
 
 import Foundation
 
-class CaterModel: JSONJoy{
-    var status:String?
-    var data:CaterInfo?
-    var errorData:String?
-    var datastring:String?
-    init(){
+class CaterModel: JSONJoy {
+    var objectlist: [CaterInfo]
+    var count: Int{
+        return self.objectlist.count
     }
-    required init(_ decoder:JSONDecoder){
-        status = decoder["status"].string
-        if status == "success"{
-            data = CaterInfo(decoder["data"])
-        }else{
-            errorData = decoder["data"].string
-        }
+    
+    init(){
+        objectlist = Array<CaterInfo>()
+    }
+    required init(_ decoder: JSONDecoder) {
         
+        objectlist = Array<CaterInfo>()
+        for useids: JSONDecoder in decoder.array!{
+            objectlist.append(CaterInfo(useids))
+        }
+    }
+    
+    func append(list: [CaterInfo]){
+        self.objectlist = list + self.objectlist
     }
 }
+
 class CaterInfo: JSONJoy{
     var foodId:String?
     var foodName: String?
@@ -35,7 +40,7 @@ class CaterInfo: JSONJoy{
     var foodPicture:String?
     var foodShowid:String?
     var foodTime:String?
-    var goodList:JSONDecoder?
+    var goodListtt:JSONDecoder?
     
     
     init() {
@@ -51,7 +56,7 @@ class CaterInfo: JSONJoy{
         foodPicture = decoder["picture"].string
         foodShowid=decoder["showid"].string
         foodTime=decoder["time"].string
-        goodList = decoder["goodlist"]
+        goodListtt = decoder["goodlist"]
     }
     
 }

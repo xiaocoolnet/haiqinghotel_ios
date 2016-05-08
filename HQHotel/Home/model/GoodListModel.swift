@@ -8,7 +8,8 @@
 
 import Foundation
 
-class PictureList: JSONJoy {
+class GoodListModel: JSONJoy {
+
     var picturelist: [GoodListInfo]
     var count: Int{
         return self.picturelist.count

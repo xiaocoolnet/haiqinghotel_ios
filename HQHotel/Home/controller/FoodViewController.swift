@@ -23,7 +23,6 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
     let priceOld = UILabel()
     let xiuhuijia = UILabel()
     let priceNew = UILabel()
-
     let shimenjia = UILabel()
     let youhuijia = UILabel()
     let priceMen = UILabel()
@@ -38,10 +37,14 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
     var caterSoutce = CaterModel()
     
     var count = Int()
+    var goodSource = GoodListModel()
+    var dic = NSMutableDictionary()
     
     
     override func viewDidLoad() {
+        
         self.scrollViewGet()
+        
         
         shimenjia.frame = CGRectMake(0, self.view.bounds.width*0.5+94, WIDTH/3, 20)
         shimenjia.textColor = UIColor.grayColor()
@@ -105,6 +108,7 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         
         jianjieView.addSubview(busContact)
         
+        
         taocanTable.frame = CGRectMake(0, self.view.bounds.width*0.5+294, WIDTH, 136)
         taocanTable.delegate = self
         taocanTable.dataSource = self
@@ -139,24 +143,36 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
     }
     
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return count+1
+        return self.caterSoutce.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)as!BreakTableViewCell
         cell.selectionStyle = .None
+        let goodList = self.caterSoutce.objectlist[indexPath.section]
         
-        cell.content.text = "刷卡的"
-        cell.guige.text = "2分"
-        cell.danjia.text = "¥22"
+        self.goodSource=GoodListModel(goodList.goodListtt!)
+        let goodInfo = self.goodSource.picturelist[indexPath.row]
+        cell.content.text=goodInfo.name
+        cell.guige.text=goodInfo.unit
+        cell.danjia.text=goodInfo.price
         
-        if indexPath.row == 0 {
+        
+        switch indexPath.row {
+        case 0:
             cell.content.textColor = UIColor.grayColor()
             cell.danjia.textColor = UIColor.grayColor()
             cell.guige.textColor = UIColor.grayColor()
             cell.content.text = "套餐内容"
             cell.guige.text = "规格"
             cell.danjia.text = "单价"
+        default:
+            break
+//            cell.content.text = goodlistInfo.name
+//            cell.guige.text = goodlistInfo.unit
+//            cell.danjia.text = goodlistInfo.price
         }
+        
+       
         
         
         return cell
@@ -245,7 +261,9 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
     }
     //餐饮界面
     func GetDate(){
+
         let url = apiUrl+"showcateringinfo"
+        
         //        let userid = NSUserDefaults.standardUserDefaults()
         //        let uid = userid.stringForKey("userid")
         let param = [
@@ -255,30 +273,70 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
             if(error != nil){
             }
             else{
-                
-                let status = CaterModel(JSONDecoder(json!))
+                print("request是")
+                print(request!)
+                print("====================")
+                let status = Http(JSONDecoder(json!))
                 print("状态是")
                 print(status.status)
                 if(status.status == "error"){
                     let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-                    hud.mode = MBProgressHUDMode.Text;
+                    hud.mode = MBProgressHUDMode.Text
                     hud.labelText = status.errorData
                     hud.margin = 10.0
                     hud.removeFromSuperViewOnHide = true
                     hud.hide(true, afterDelay: 1)
                 }
-                if(status.status == "success"){
-                    print("Success")
-                    self.priceMen.text = status.data?.foodOprice
-                    self.priceHui.text = status.data?.foodPrice
-                    self.busContact.text = status.data?.foodDescription
-                    self.priceOld.text = "¥"+(status.data?.foodOprice)!
-                    self.priceNew.text = "¥"+(status.data?.foodPrice)!
-                    self.count = (status.data?.goodList?.array?.count)!
-                }
                 
+                if(status.status == "success"){
+                    self.caterSoutce = CaterModel(status.data!)
+                    //                    将分区组的标题和每个分区的cell的数目作为字典存起来
+                    if self.caterSoutce.count != 0{
+                        for i in 0..<self.caterSoutce.count {
+                            let addInfo = self.caterSoutce.objectlist[i]
+                            //                            let teacherList = self.addSource.objectlist[i]
+                            self.goodSource = GoodListModel(CaterInfo.init().goodListtt!)
+//                            self.dic.setValue(self.goodSource.count, forKey:CaterInfo.init().foodName! )
+                        }
+                    }
+                    self.taocanTable.reloadData()
+                }
             }
         }
+//        Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
+//            if(error != nil){
+//                
+//            }
+//            else{
+//               
+//                let status = CaterModel(JSONDecoder(json!))
+//                print("状态是")
+//                print(status.status)
+//                if(status.status == "error"){
+//                    let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+//                    hud.mode = MBProgressHUDMode.Text;
+//                    hud.labelText = status.errorData
+//                    hud.margin = 10.0
+//                    hud.removeFromSuperViewOnHide = true
+//                    hud.hide(true, afterDelay: 1)
+//                }
+//                if(status.status == "success"){
+//                    print("Success")
+////                    self.caterSoutce = CaterModel(status.data!)
+//                    self.priceMen.text = status.data?.foodOprice
+//                    self.priceHui.text = status.data?.foodPrice
+//                    self.busContact.text = status.data?.foodDescription
+//                    self.priceOld.text = "¥"+(status.data?.foodOprice)!
+//                    self.priceNew.text = "¥"+(status.data?.foodPrice)!
+//                    self.count = (status.data?.goodList?.array?.count)!
+//                    
+////                    self.caterSoutce = status.data!
+////                    print(self.caterSoutce)
+//                    
+//                }
+//                
+//            }
+//        }
     }
 
 //    override func viewWillDisappear(animated: Bool) {
@@ -289,15 +347,5 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         // Dispose of any resources that can be recreated.
     }
     
-    
-    /*
-     // MARK: - Navigation
-     
-     // In a storyboard-based application, you will often want to do a little preparation before navigation
-     override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-     // Get the new view controller using segue.destinationViewController.
-     // Pass the selected object to the new view controller.
-     }
-     */
     
 }

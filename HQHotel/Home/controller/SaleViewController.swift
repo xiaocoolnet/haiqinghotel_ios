@@ -41,6 +41,7 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
     var repast=String()
     var network=String()
     var price=String()
+    var zongjiaL=UILabel()
 
     private var scrollView:UIScrollView!
     private let numOfPages=4
@@ -48,21 +49,7 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
     
     override func viewDidLoad() {
         
-//        let room = NSUserDefaults.standardUserDefaults()
-//        price = room.stringForKey("price")!
-//        name = room.stringForKey("name")!
-//        let oprice = room.stringForKey("oprice")
-//
-//        let floor = room.stringForKey("floor")
-//        let acreage = room.stringForKey("acreage")
-////        bedsize = room.stringForKey("bedsize")!
-////        repast = room.stringForKey("repast")!
-////        network = room.stringForKey("network")!
-//        let window = room.stringForKey("window")
-//        let peoplenumber = room.stringForKey("peoplenumbe")
-//        let bathroom = room.stringForKey("bathroom")
-//
-//
+
         if repast=="1" {
             zaocanIV.image=UIImage(named: "ic_zaocan-1")
         }else{
@@ -70,14 +57,6 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
         }
         
        
-
-        
-        
-        
-        
-        
-        
-        
         self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
@@ -129,10 +108,10 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
         priceL.backgroundColor=UIColor.whiteColor()
         priceL.text="  总价："
         self.view.addSubview(priceL)
-        let zongjiaL = UILabel(frame: CGRectMake(70,self.view.bounds.height-40,self.view.bounds.width/2-70,40))
+        zongjiaL = UILabel(frame: CGRectMake(70,self.view.bounds.height-40,self.view.bounds.width/2-70,40))
         zongjiaL.backgroundColor=UIColor.whiteColor()
-        zongjiaL.text="¥"+price
         zongjiaL.textColor=UIColor.init(red: 39/255, green: 178/255, blue: 252/255, alpha: 1)
+        
         self.view.addSubview(zongjiaL)
         let yudingBT = UIButton(frame: CGRectMake(self.view.bounds.width/2,self.view.bounds.height-40,self.view.bounds.width/2,40))
         yudingBT.backgroundColor=UIColor.init(red: 250/255, green: 140/255, blue: 61/255, alpha: 1)
@@ -165,7 +144,7 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
                 }
                 if(status.status == "success"){
                     print("Success")
-//                    let room = NSUserDefaults.standardUserDefaults()
+
                     
                     self.chuangxingL.text = status.data?.roombedsize
                     self.youhuijiaL.text = status.data?.roomprice
@@ -176,27 +155,10 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
                     self.chuanghuL.text = status.data?.roomwindow
                     self.weiyuL.text = status.data?.roombathroom
                     self.mianjiL.text = status.data?.roomacreage
-                    
-//                    room.setValue(status.data?.roomprice, forKey: "price")
-//                    room.setValue(status.data?.roomcount, forKey: "count")
-//                    room.setValue(status.data?.roomname, forKey: "name")
-//                    room.setValue(status.data?.roomoprice, forKey: "oprice")
-//                    
-//                    room.setValue(status.data?.roomdaynum, forKey: "daynum")
-//                    room.setValue(status.data?.roomdaysurplus, forKey: "daysurplus")
-//                    room.setValue(status.data?.roompicture, forKey: "picture")
-//                    room.setValue(status.data?.roomshowid, forKey: "showid")
-//                    room.setValue(status.data?.roomtime, forKey: "time")
-//                    room.setValue(status.data?.roomlimit, forKey: "limit")
-//                    room.setValue(status.data?.roomfloor, forKey: "floor")
-//                    room.setValue(status.data?.roomacreage, forKey: "acreage")
-//                    room.setValue(status.data?.roombedsize, forKey: "bedsize")
-//                    room.setValue(status.data?.roomrepast, forKey: "repast")
-//                    room.setValue(status.data?.roomnetwork, forKey: "network")
-//                    room.setValue(status.data?.roomwindow, forKey: "window")
-//                    room.setValue(status.data?.roompeoplenumber, forKey: "peoplenumbe")
-//                    room.setValue(status.data?.roombathroom, forKey: "bathroom")
-//                    room.setValue(status.data?.roomstatus, forKey: "status")
+                    self.price=(status.data?.roomprice)!
+                    self.zongjiaL.text="¥"+self.price
+                    self.name=(status.data?.roomname)!
+
                 }
             }
         }
@@ -241,7 +203,7 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
         reserve.repast=repast
         reserve.startTime=startTime
         reserve.endTime=endTime
-        reserve.price=price
+        reserve.price = self.price
         
         self.navigationController?.pushViewController(reserve, animated: true)
         

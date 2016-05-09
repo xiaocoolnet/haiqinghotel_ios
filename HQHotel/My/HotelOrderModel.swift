@@ -9,21 +9,25 @@
 import Foundation
 
 
-class HotelOrderModel: JSONJoy{
-    var status:String?
-    var data:HotelOrderInfo?
-    var errorData:String?
-    var datastring:String?
-    init(){
+class HotelOrderModel: JSONJoy {
+    var orderlist: [HotelOrderInfo]
+    var count: Int{
+        return self.orderlist.count
     }
-    required init(_ decoder:JSONDecoder){
-        status = decoder["status"].string
-        if status == "success"{
-            data = HotelOrderInfo(decoder["data"])
-        }else{
-            errorData = decoder["data"].string
+    
+    init(){
+        orderlist = Array<HotelOrderInfo>()
+    }
+    required init(_ decoder: JSONDecoder) {
+        //        status = decoder["status"].string
+        orderlist = Array<HotelOrderInfo>()
+        for childs: JSONDecoder in decoder.array!{
+            orderlist.append(HotelOrderInfo(childs))
         }
-        
+    }
+    
+    func append(list: [HotelOrderInfo]){
+        self.orderlist = list + self.orderlist
     }
 }
 class HotelOrderInfo: JSONJoy{

@@ -34,6 +34,12 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
     @IBOutlet weak var tableview: UITableView!
 
     var saleSource = SaleModel()
+    var count = Int()
+    var photoSource = roomphotolistInfo()
+    var photoAry = NSMutableArray()
+    
+    
+    
     internal var startTime=String()
     internal var endTime=String()
     var name=String()
@@ -159,6 +165,13 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
                     self.zongjiaL.text="¥"+self.price
                     self.name=(status.data?.roomname)!
 
+                    self.count = (status.data?.count)!
+                    for item in 0..<self.count{
+                        self.photoSource = (status.data?.roomphotolist[item])!
+                        self.photoAry.addObject(self.photoSource)
+                        print(self.photoSource.photo)
+                    }
+                    
                 }
             }
         }

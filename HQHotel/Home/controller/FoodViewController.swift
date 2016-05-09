@@ -43,9 +43,10 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
     var countTwo = Int()
     var photoSource = photolistInfo()
     var phoneArr = NSMutableArray()
+    var photoUrl = String()
     
     override func viewDidLoad() {
-        
+        self.GetDate()
         self.scrollViewGet()
         
         
@@ -198,7 +199,12 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         
         //滚动式图添加图片
         for index  in 0..<numOfPages {
-            let imageView = UIImageView(image: UIImage(named: "food\(index+1).png"))
+            let imageView = UIImageView()
+            var imageurl=String()
+//            imageurl = imageUrl+self.photoSource.photo!
+            imageView.sd_setImageWithURL(NSURL(string: imageurl), placeholderImage: UIImage(named: "food1.png"))
+            print(imageurl)
+
             imageView.frame = CGRect(x: frame.size.width * CGFloat(index), y: 0, width: frame.size.width, height: scrollview_h)
             scrollView.addSubview(imageView)
         }
@@ -251,10 +257,12 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
     }
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden=true
+        
+        
         self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
-        self.GetDate()
+        
         
     }
     //餐饮界面
@@ -305,9 +313,11 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
                         self.photoSource = (status.data?.photolist[i])!
                         
                         self.phoneArr.addObject(self.photoSource)
+                        print(self.photoSource.photo)
+                       
                     }
                     self.taocanTable.reloadData()
-                    print(self.photoSource.photo)
+                    
                    
                     
                 }
@@ -316,6 +326,7 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         }
     }
 
+    
 //    override func viewWillDisappear(animated: Bool) {
 //        self.tabBarController?.tabBar.hidden=false
 //    }

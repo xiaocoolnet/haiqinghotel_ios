@@ -104,19 +104,7 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
         let time1:NSTimeInterval = (date1?.timeIntervalSince1970)!
         endzheng = Int(time1)
         print(endzheng)
-        
-       // 时间戳转时间
-//        let dateformate = NSDateFormatter()
-//        dateformate.dateFormat = "yyyy-MM-dd HH:mm"//获得日期
-//        let date = NSDate(timeIntervalSince1970: NSTimeInterval("1462464000")!)
-//        let str:String = dateformate.stringFromDate(date)
-//        print(str)
-//        
-        
-        
-        
-        
-        
+   
         
     }
 
@@ -292,6 +280,8 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
                     hud.removeFromSuperViewOnHide = true
                     hud.hide(true, afterDelay: 3)
 
+                    let orderVC=HotelOrderViewController()
+                    self.navigationController?.pushViewController(orderVC, animated: true)
                     
                 }
             }

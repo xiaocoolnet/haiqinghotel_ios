@@ -49,14 +49,17 @@ class SaleInfo: JSONJoy{
     var roombathroom:String?
     var roomstatus:String?
 
+    var roomphotolist: [roomphotolistInfo]
         
-    
-    
-    
-    
-    init() {
-        
+    var count: Int{
+        return self.roomphotolist.count
     }
+    
+    init(){
+        
+        roomphotolist = Array<roomphotolistInfo>()
+    }
+
     required init(_ decoder: JSONDecoder){
         roomid = decoder["id"].string
         roomname = decoder["name"].string
@@ -79,9 +82,27 @@ class SaleInfo: JSONJoy{
         roompeoplenumber=decoder["peoplenumbe"].string
         roombathroom=decoder["bathroom"].string
         roomstatus=decoder["status"].string
-        
-       
+        roomphotolist = Array<roomphotolistInfo>()
+        for childs: JSONDecoder in decoder["photolist"].array!{
+            roomphotolist.append(roomphotolistInfo(childs))
+        }
+    }
+        func addpend(list: [roomphotolistInfo]){
+            self.roomphotolist = list + self.roomphotolist
+        }
 
     }
-    
+    class roomphotolistInfo: JSONJoy{
+        var id:String?
+        var photo:String?
+        
+        init() {
+            
+        }
+        required init(_ decoder: JSONDecoder){
+            photo = decoder["photo"].string
+            id = decoder["id"].string
+            
+        }
+
 }

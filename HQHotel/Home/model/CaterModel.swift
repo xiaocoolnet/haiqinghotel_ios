@@ -9,24 +9,20 @@
 import Foundation
 
 class CaterModel: JSONJoy {
-    var objectlist: [CaterInfo]
-    var count: Int{
-        return self.objectlist.count
-    }
-    
+    var status:String?
+    var data:CaterInfo?
+    var errorData:String?
+    var datastring:String?
     init(){
-        objectlist = Array<CaterInfo>()
     }
-    required init(_ decoder: JSONDecoder) {
-        
-        objectlist = Array<CaterInfo>()
-        for useids: JSONDecoder in decoder.array!{
-            objectlist.append(CaterInfo(useids))
+    required init(_ decoder:JSONDecoder){
+        status = decoder["status"].string
+        if status == "success"{
+            data = CaterInfo(decoder["data"])
+        }else{
+            errorData = decoder["data"].string
         }
-    }
-    
-    func append(list: [CaterInfo]){
-        self.objectlist = list + self.objectlist
+        
     }
 }
 
@@ -40,12 +36,23 @@ class CaterInfo: JSONJoy{
     var foodPicture:String?
     var foodShowid:String?
     var foodTime:String?
-    var goodListtt:JSONDecoder?
     
+    var goodlist: [GoodListInfo]
+    var photolist: [photolistInfo]
     
-    init() {
-        
+    var countTwo: Int{
+        return self.photolist.count
     }
+    
+    var count: Int{
+        return self.goodlist.count
+    }
+    
+    init(){
+        goodlist = Array<GoodListInfo>()
+        photolist = Array<photolistInfo>()
+    }
+    
     required init(_ decoder: JSONDecoder){
         foodId = decoder["id"].string
         foodName = decoder["name"].string
@@ -56,7 +63,56 @@ class CaterInfo: JSONJoy{
         foodPicture = decoder["picture"].string
         foodShowid=decoder["showid"].string
         foodTime=decoder["time"].string
-        goodListtt = decoder["goodlist"]
+        
+        goodlist = Array<GoodListInfo>()
+        for childs: JSONDecoder in decoder["goodlist"].array!{
+            goodlist.append(GoodListInfo(childs))
+        }
+        photolist = Array<photolistInfo>()
+        for childs: JSONDecoder in decoder["photolist"].array!{
+            photolist.append(photolistInfo(childs))
+        }
+
+    }
+    
+    func append(list: [GoodListInfo]){
+        self.goodlist = list + self.goodlist
+    }
+    func addpend(list: [photolistInfo]){
+        self.photolist = list + self.photolist
+    }
+    
+    
+}
+class GoodListInfo: JSONJoy{
+    var id:String?
+    var name:String?
+    var unit: String?
+    var price: String?
+    init() {
+        
+    }
+    required init(_ decoder: JSONDecoder){
+        name = decoder["name"].string
+        id = decoder["id"].string
+        unit = decoder["unit"].string
+        price = decoder["price"].string
     }
     
 }
+class photolistInfo: JSONJoy{
+    var id:String?
+    var photo:String?
+   
+    init() {
+        
+    }
+    required init(_ decoder: JSONDecoder){
+        photo = decoder["photo"].string
+        id = decoder["id"].string
+       
+    }
+    
+}
+
+

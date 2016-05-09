@@ -37,9 +37,12 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
     var caterSoutce = CaterModel()
     
     var count = Int()
-    var goodSource = GoodListModel()
-    var dic = NSMutableDictionary()
+    var goodSource = GoodListInfo()
+    var muArr = NSMutableArray()
     
+    var countTwo = Int()
+    var photoSource = photolistInfo()
+    var phoneArr = NSMutableArray()
     
     override func viewDidLoad() {
         
@@ -149,37 +152,26 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return self.caterSoutce.count
+        return count+1
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCellWithIdentifier("cell", forIndexPath: indexPath)as!BreakTableViewCell
         cell.selectionStyle = .None
-        let goodList = self.caterSoutce.objectlist[indexPath.section]
         
-        self.goodSource=GoodListModel(goodList.goodListtt!)
-        let goodInfo = self.goodSource.picturelist[indexPath.row]
-        cell.content.text=goodInfo.name
-        cell.guige.text=goodInfo.unit
-        cell.danjia.text=goodInfo.price
-        
-        
-        switch indexPath.row {
-        case 0:
+        if indexPath.row == 0 {
             cell.content.textColor = UIColor.grayColor()
             cell.danjia.textColor = UIColor.grayColor()
             cell.guige.textColor = UIColor.grayColor()
             cell.content.text = "套餐内容"
             cell.guige.text = "规格"
             cell.danjia.text = "单价"
-        default:
-            break
-//            cell.content.text = goodlistInfo.name
-//            cell.guige.text = goodlistInfo.unit
-//            cell.danjia.text = goodlistInfo.price
+        }else{
+            let data = muArr[indexPath.row-1]as!GoodListInfo
+            
+            cell.content.text=data.name
+            cell.guige.text=data.unit
+            cell.danjia.text=data.price
         }
-        
-       
-        
         
         return cell
     }
@@ -277,72 +269,51 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         ]
         Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
             if(error != nil){
+                
             }
             else{
-                print("request是")
-                print(request!)
-                print("====================")
-                let status = Http(JSONDecoder(json!))
+               
+                let status = CaterModel(JSONDecoder(json!))
                 print("状态是")
                 print(status.status)
                 if(status.status == "error"){
                     let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-                    hud.mode = MBProgressHUDMode.Text
+                    hud.mode = MBProgressHUDMode.Text;
                     hud.labelText = status.errorData
                     hud.margin = 10.0
                     hud.removeFromSuperViewOnHide = true
                     hud.hide(true, afterDelay: 1)
                 }
-                
                 if(status.status == "success"){
-                    self.caterSoutce = CaterModel(status.data!)
-                    //                    将分区组的标题和每个分区的cell的数目作为字典存起来
-                    if self.caterSoutce.count != 0{
-                        for i in 0..<self.caterSoutce.count {
-                            let addInfo = self.caterSoutce.objectlist[i]
-                            //                            let teacherList = self.addSource.objectlist[i]
-                            self.goodSource = GoodListModel(CaterInfo.init().goodListtt!)
-//                            self.dic.setValue(self.goodSource.count, forKey:CaterInfo.init().foodName! )
-                        }
+                    print("Success")
+
+                    self.priceMen.text = status.data?.foodOprice
+                    self.priceHui.text = status.data?.foodPrice
+                    self.busContact.text = status.data?.foodDescription
+                    self.priceOld.text = "¥"+(status.data?.foodOprice)!
+                    self.priceNew.text = "¥"+(status.data?.foodPrice)!
+                    
+                    self.count = (status.data?.count)!
+                    for i in 0..<self.count {
+                        self.goodSource = (status.data?.goodlist[i])!
+                        
+                        self.muArr.addObject(self.goodSource)
+                    }
+                    
+                    self.countTwo = (status.data?.countTwo)!
+                    for i in 0..<self.countTwo {
+                        self.photoSource = (status.data?.photolist[i])!
+                        
+                        self.phoneArr.addObject(self.photoSource)
                     }
                     self.taocanTable.reloadData()
+                    print(self.photoSource.photo)
+                   
+                    
                 }
+                
             }
         }
-//        Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
-//            if(error != nil){
-//                
-//            }
-//            else{
-//               
-//                let status = CaterModel(JSONDecoder(json!))
-//                print("状态是")
-//                print(status.status)
-//                if(status.status == "error"){
-//                    let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//                    hud.mode = MBProgressHUDMode.Text;
-//                    hud.labelText = status.errorData
-//                    hud.margin = 10.0
-//                    hud.removeFromSuperViewOnHide = true
-//                    hud.hide(true, afterDelay: 1)
-//                }
-//                if(status.status == "success"){
-//                    print("Success")
-////                    self.caterSoutce = CaterModel(status.data!)
-//                    self.priceMen.text = status.data?.foodOprice
-//                    self.priceHui.text = status.data?.foodPrice
-//                    self.busContact.text = status.data?.foodDescription
-//                    self.priceOld.text = "¥"+(status.data?.foodOprice)!
-//                    self.priceNew.text = "¥"+(status.data?.foodPrice)!
-//                    self.count = (status.data?.goodList?.array?.count)!
-//                    
-////                    self.caterSoutce = status.data!
-////                    print(self.caterSoutce)
-//                    
-//                }
-//                
-//            }
-//        }
     }
 
 //    override func viewWillDisappear(animated: Bool) {

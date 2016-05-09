@@ -11,7 +11,6 @@
 		18AC3E201CDAE55900AB3E45 /* ReservationsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18AC3E1F1CDAE55900AB3E45 /* ReservationsModel.swift */; };
 		18D4B12E1CDC7FF00036C08B /* BreakTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D4B12D1CDC7FF00036C08B /* BreakTableViewCell.swift */; };
 		18D4B1301CDC85AB0036C08B /* CaterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D4B12F1CDC85AB0036C08B /* CaterModel.swift */; };
-		18D4B1321CDC9F980036C08B /* GoodListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 18D4B1311CDC9F980036C08B /* GoodListModel.swift */; };
 		A9627948B1B7B966F4E66770 /* Pods.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 321589B9B34B4BA119F867F7 /* Pods.framework */; };
 		F61DC2A51CD84B7E000F87E1 /* NewsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F61DC2A41CD84B7E000F87E1 /* NewsViewController.swift */; };
 		F61DC2A71CD8745F000F87E1 /* 海参.jpg in Resources */ = {isa = PBXBuildFile; fileRef = F61DC2A61CD8745F000F87E1 /* 海参.jpg */; };
@@ -117,7 +116,6 @@
 		18AC3E1F1CDAE55900AB3E45 /* ReservationsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReservationsModel.swift; sourceTree = "<group>"; };
 		18D4B12D1CDC7FF00036C08B /* BreakTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = BreakTableViewCell.swift; path = HQHotel/Facilities/view/BreakTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		18D4B12F1CDC85AB0036C08B /* CaterModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CaterModel.swift; sourceTree = "<group>"; };
-		18D4B1311CDC9F980036C08B /* GoodListModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodListModel.swift; sourceTree = "<group>"; };
 		2BD5FEA6F436DD938995E20A /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
 		321589B9B34B4BA119F867F7 /* Pods.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		5B97422F80AB5194E72BFD9B /* Pods.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.debug.xcconfig; path = "Pods/Target Support Files/Pods/Pods.debug.xcconfig"; sourceTree = "<group>"; };
@@ -540,7 +538,6 @@
 				18AC3E1F1CDAE55900AB3E45 /* ReservationsModel.swift */,
 				F63C5ED71CDB2A4A005A7230 /* SaleModel.swift */,
 				18D4B12F1CDC85AB0036C08B /* CaterModel.swift */,
-				18D4B1311CDC9F980036C08B /* GoodListModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -845,7 +842,6 @@
 				F64CB8071CDDF13D00BD0210 /* ConnectModel.m in Sources */,
 				F63373911CC763D200F63FC1 /* HotelDetailsViewController.swift in Sources */,
 				F6443BBC1CC1D1820078627B /* Facilitiescell.swift in Sources */,
-				18D4B1321CDC9F980036C08B /* GoodListModel.swift in Sources */,
 				F64EAB201CC60D200084A795 /* ShopListViewController.swift in Sources */,
 				F64EAB1E1CC60CEA0084A795 /* CollectViewController.swift in Sources */,
 				F6E786631CD1A76500B269BF /* CalendarDayCell.m in Sources */,
@@ -1030,7 +1026,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiaocool.HQHotel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/apple/Desktop/haiqinghotel_ios/HQHotel/Tool/OC_Header.h;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/xiaocool/Desktop/haiqinghotel_ios/HQHotel/Tool/OC_Header.h;
 			};
 			name = Debug;
 		};
@@ -1047,7 +1043,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = xiaocool.HQHotel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_OBJC_BRIDGING_HEADER = /Users/apple/Desktop/haiqinghotel_ios/HQHotel/Tool/OC_Header.h;
+				SWIFT_OBJC_BRIDGING_HEADER = /Users/xiaocool/Desktop/haiqinghotel_ios/HQHotel/Tool/OC_Header.h;
 			};
 			name = Release;
 		};

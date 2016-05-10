@@ -148,7 +148,8 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
     }
     
     func getYuDing() {
-        print("立即预订")
+        let orderfVC = OrderFoodViewController()
+        self.navigationController?.pushViewController(orderfVC, animated: true)
         
         
     }

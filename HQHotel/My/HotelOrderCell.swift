@@ -13,12 +13,9 @@ class HotelOrderCell: UITableViewCell {
  
 
     @IBOutlet weak var imageview=UIImageView()
-    
-    
+ 
     @IBOutlet weak var fangxingL=UILabel()
-    
 
-    
     @IBOutlet weak var shuliangL=UILabel()
     @IBOutlet weak var zongjiaL=UILabel()
     

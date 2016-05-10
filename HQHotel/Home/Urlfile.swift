@@ -13,4 +13,6 @@ let WIDTH = UIScreen.mainScreen().bounds.size.width
 var apiUrl = "http://hq.xiaocool.net/index.php?g=apps&m=index&a="
 
 var imageUrl = "http://hq.xiaocool.net"
+
+var bkColor = UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         

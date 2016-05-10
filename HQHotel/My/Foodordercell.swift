@@ -10,6 +10,20 @@ import UIKit
 
 class Foodordercell: UITableViewCell {
 
+    @IBOutlet weak var icon: UIImageView!
+ 
+    @IBOutlet weak var nameL: UILabel!
+  
+    @IBOutlet weak var numL: UILabel!
+    
+    @IBOutlet weak var deleteBT: UIButton!
+    
+    @IBOutlet weak var priceL: UILabel!
+    
+    @IBOutlet weak var timeL: UILabel!
+    
+    
+    
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code

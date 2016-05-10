@@ -11,51 +11,29 @@ import Alamofire
 import MBProgressHUD
 class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
     
-    private var tableview:UITableView!
+    private var tableview1:UITableView!
+    private var tableview2:UITableView!
+    
 
     var hotelSource = HotelOrderModel()
+    var FoodSource = FoodOrderModel()
     
     override func viewDidLoad() {
         super.viewDidLoad()
        
+        
+         let appsArray:[String] = ["酒店订单","餐饮订单"]
+        let segment:UISegmentedControl = UISegmentedControl(items: appsArray)
+         segment.frame = CGRectMake(20, 64, 320, 40)
+         self.view.addSubview(segment)
+        segment.selectedSegmentIndex = 1
+        segment.addTarget(self, action:#selector(segmentChange), forControlEvents: UIControlEvents.ValueChanged)
         self.automaticallyAdjustsScrollViewInsets=false
-        tableview=UITableView(frame: CGRectMake(0, 64, self.view.bounds.width, self.view.bounds.height-64))
-        tableview.delegate=self
-        tableview.dataSource=self
-        tableview.rowHeight=95
-        tableview.registerNib((UINib(nibName: "HotelOrderCell",bundle: nil)) ,forCellReuseIdentifier: "cell")
- 
-        self.view.addSubview(tableview)
-         GetorderDate()
+        
+        
     }
     
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return hotelSource.count
-        
-    }
-    //cell
-    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        
-        
-        var cell = HotelOrderCell()
-        cell=tableview.dequeueReusableCellWithIdentifier("cell") as! HotelOrderCell
-        let hotelInfo = hotelSource.orderlist[indexPath.row]
-        cell.fangxingL?.text=hotelInfo.ordername
-        
-        
-        // 时间戳转时间
-                let dateformate = NSDateFormatter()
-                dateformate.dateFormat = "yyyy-MM-dd HH:mm"//获得日期
-                let date = NSDate(timeIntervalSince1970: NSTimeInterval(hotelInfo.ordertime!)!)
-                let str:String = dateformate.stringFromDate(date)
-        
-        
-        cell.timeL?.text=str
-        cell.shuliangL?.text=hotelInfo.ordernumber
-        cell.zongjiaL?.text=hotelInfo.orderprice
-        return cell
-    }
-    func GetorderDate(){
+        func GetroomorderDate(){
         let url = apiUrl+"getbookingorderlist"
         
 //        let userid = NSUserDefaults.standardUserDefaults()
@@ -81,12 +59,134 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
                 }
                 if(status.status == "success"){
                     self.hotelSource = HotelOrderModel(status.data!)
-                    self.tableview.reloadData()
+                    self.tableview1.reloadData()
+                }
+            }
+        }
+    }
+    func GetfoodorderDate(){
+        let url = apiUrl+"getcateringorderlist"
+        
+        //        let userid = NSUserDefaults.standardUserDefaults()
+        //        let uid = userid.stringForKey("userid")
+        let param = [
+            "userid":578
+        ]
+        
+        Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
+            if(error != nil){
+            }
+            else{
+                
+                let status = Http(JSONDecoder(json!))
+                print("状态是")
+                print(status.status)
+                if(status.status == "error"){
+                    let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    hud.mode = MBProgressHUDMode.Text;
+                    hud.margin = 10.0
+                    hud.removeFromSuperViewOnHide = true
+                    hud.hide(true, afterDelay: 1)
+                }
+                if(status.status == "success"){
+                    self.FoodSource = FoodOrderModel(status.data!)
+                    self.tableview2.reloadData()
                 }
             }
         }
     }
     
+
+    func segmentChange(sender:AnyObject?){
+        let segment:UISegmentedControl = sender as! UISegmentedControl
+        switch segment.selectedSegmentIndex {
+        case 0 :
+            tableView1()
+        case 1 :
+            
+            tableView2()
+            
+        default:
+            break
+        }
+    }
+    func tableView1(){
+        tableview1=UITableView(frame: CGRectMake(0, 104, self.view.bounds.width, self.view.bounds.height-64))
+        tableview1.delegate=self
+        tableview1.dataSource=self
+        tableview1.rowHeight=95
+        tableview1.registerNib((UINib(nibName: "HotelOrderCell",bundle: nil)) ,forCellReuseIdentifier: "cell1")
+        
+        self.view.addSubview(tableview1)
+        GetroomorderDate()
+
+    }
+    func tableView2(){
+        tableview2=UITableView(frame: CGRectMake(0, 104, self.view.bounds.width, self.view.bounds.height-64))
+        tableview2.delegate=self
+        tableview2.dataSource=self
+        tableview2.rowHeight=95
+        tableview2.registerNib((UINib(nibName: "Foodordercell",bundle: nil)) ,forCellReuseIdentifier: "cell2")
+        
+        self.view.addSubview(tableview2)
+        GetfoodorderDate()
+
+    }
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        if tableView==tableview1 {
+            return hotelSource.count
+        }else{
+            return FoodSource.count
+        }
+    }
+    //cell
+    func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
+        
+        if tableView==tableview1 {
+            
+            
+            var cell = HotelOrderCell()
+            cell=tableview1.dequeueReusableCellWithIdentifier("cell1") as! HotelOrderCell
+            let hotelInfo = hotelSource.orderlist[indexPath.row]
+            cell.fangxingL?.text=hotelInfo.ordername
+            
+            
+            // 时间戳转时间
+            let dateformate = NSDateFormatter()
+            dateformate.dateFormat = "yyyy-MM-dd HH:mm"//获得日期
+            let date = NSDate(timeIntervalSince1970: NSTimeInterval(hotelInfo.ordertime!)!)
+            let str:String = dateformate.stringFromDate(date)
+            
+            
+            cell.timeL?.text=str
+            cell.shuliangL?.text=hotelInfo.ordernumber
+            cell.zongjiaL?.text=hotelInfo.orderprice
+            return cell
+        }else {
+            
+            
+            var cell = Foodordercell()
+            cell=tableview2.dequeueReusableCellWithIdentifier("cell2") as! Foodordercell
+            let foodInfo = FoodSource.orderlist[indexPath.row]
+            cell.nameL?.text=foodInfo.foodordername
+            
+            
+            // 时间戳转时间
+            let dateformate = NSDateFormatter()
+            dateformate.dateFormat = "yyyy-MM-dd HH:mm"//获得日期
+            let date = NSDate(timeIntervalSince1970: NSTimeInterval(foodInfo.foodordertime!)!)
+            let str:String = dateformate.stringFromDate(date)
+            
+            
+            cell.timeL?.text=str
+            cell.numL?.text=foodInfo.foodordernumber
+            cell.priceL?.text=foodInfo.foodorderprice
+            return cell
+            
+            
+        }
+    }
+
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden=true
     }

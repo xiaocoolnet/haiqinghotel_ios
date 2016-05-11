@@ -12,6 +12,8 @@ class MarkViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.backItem?.title=""
 
         // Do any additional setup after loading the view.
     }

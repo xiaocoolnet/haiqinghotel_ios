@@ -54,7 +54,9 @@ class ReserveViewController: UIViewController,UITableViewDataSource,UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
-        
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.backItem?.title=""
+
         tableView.delegate=self
         tableView.dataSource=self
         tableView.scrollEnabled=false

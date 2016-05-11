@@ -13,6 +13,8 @@ class MallViewController: UIViewController,UICollectionViewDelegate ,UICollectio
     private var searchbar=UISearchBar()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.backItem?.title=""
 
         //searchbar
         searchbar=UISearchBar(frame: CGRectMake(20, 70, self.view.bounds.width-40, 30))

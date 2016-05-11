@@ -49,7 +49,9 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         self.GetDate()
         self.scrollViewGet()
         
-        
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.backItem?.title=""
+
         shimenjia.frame = CGRectMake(0, self.view.bounds.width*0.5+94, WIDTH/3, 20)
         shimenjia.textColor = UIColor.grayColor()
         shimenjia.textAlignment = .Center

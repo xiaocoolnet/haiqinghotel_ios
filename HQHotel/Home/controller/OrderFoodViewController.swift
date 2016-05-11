@@ -31,7 +31,9 @@ class OrderFoodViewController: UIViewController ,UITableViewDelegate,UITableView
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationItem.title="立即预订"
-        
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.backItem?.title=""
+
         
 //tableView
         

@@ -26,6 +26,9 @@ class LoginViewController: UIViewController ,UITextFieldDelegate{
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.backItem?.title=""
+
         self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
 //        XKeyBoard.registerKeyBoardHide(self)
 //        XKeyBoard.registerKeyBoardShow(self)

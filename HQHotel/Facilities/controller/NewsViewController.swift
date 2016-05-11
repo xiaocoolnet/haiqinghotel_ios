@@ -62,6 +62,9 @@ class NewsViewController: UIViewController {
     }
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden=true
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.backItem?.title=""
+
     }
     }
 

@@ -13,6 +13,8 @@ class RoomViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
     private var tableView=UITableView()
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.backItem?.title=""
 
         tableView=UITableView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height))
         tableView.dataSource=self

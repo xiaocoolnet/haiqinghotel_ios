@@ -12,6 +12,8 @@ class HotelDetailsViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.backItem?.title=""
 
         self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         let imageV = UIImageView(frame: CGRectMake(0, 44, self.view.bounds.width, self.view.bounds.width*0.6))

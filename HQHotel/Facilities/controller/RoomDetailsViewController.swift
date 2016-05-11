@@ -79,6 +79,9 @@ class RoomDetailsViewController: UIViewController {
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden=true
         self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.backItem?.title=""
+
     }
     override func viewWillDisappear(animated: Bool) {
         self.tabBarController?.tabBar.hidden=false

@@ -13,8 +13,14 @@ class OrderDetailsViewController: UIViewController ,UITableViewDelegate,UITableV
 
     private var tableview1=UITableView()
     private var tableview2=UITableView()
+    internal var orderid=String()
+    internal var ordername=String()
+    internal var orderpeople=String()
+    internal var ordernum=String()
+    internal var orderohone=String()
+    internal var ordermark=String()
     internal var type=Int()
-    internal var hang = Int()
+    
     
     var hotelSource = HotelOrderModel()
     var FoodSource = FoodOrderModel()
@@ -23,6 +29,9 @@ class OrderDetailsViewController: UIViewController ,UITableViewDelegate,UITableV
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.backItem?.title=""
 
         self.view.backgroundColor=bkColor
         self.automaticallyAdjustsScrollViewInsets=false
@@ -73,29 +82,31 @@ class OrderDetailsViewController: UIViewController ,UITableViewDelegate,UITableV
         if indexPath.section==0 {
             cell.textLabel?.text="订单号"
             
-            lable.text="ga"
+            lable.text=orderid
         }else if indexPath.section==1 {
             if indexPath.row==0 {
                 cell.textLabel?.text="房型"
                
-                 lable.text="订单号"
+                 lable.text=ordername
                 
             }else if indexPath.row==1{
                 cell.textLabel?.text="入住人"
-             
+             lable.text=orderpeople
             }
             else if indexPath.row==2{
                 cell.textLabel?.text="房间数"
-           
+           lable.text=ordernum
             }
         }else
         {
             if indexPath.row==0 {
                 cell.textLabel?.text="联系方式"
+                lable.text=orderohone
        
             }else if indexPath.row==1
             {
                 cell.textLabel?.text="备注"
+                lable.text=ordermark
                 
             }
         }
@@ -104,10 +115,7 @@ class OrderDetailsViewController: UIViewController ,UITableViewDelegate,UITableV
             
             let  identifier2 = "cell2"
             let  cell = UITableViewCell(style: .Default, reuseIdentifier: identifier2)
-            
-
-//            let foodInfo = FoodSource.orderlist
-            
+        
             cell.textLabel?.textColor=textColor
             let lable = UILabel(frame: CGRectMake(self.view.bounds.width/4,5,self.view.bounds.width/4*3,34))
             lable.text="订单号"
@@ -117,31 +125,29 @@ class OrderDetailsViewController: UIViewController ,UITableViewDelegate,UITableV
             if indexPath.section==0 {
                 cell.textLabel?.text="订单号"
                 
-                lable.text="ga"
+                lable.text=orderid
             }else if indexPath.section==1 {
                 if indexPath.row==0 {
                     cell.textLabel?.text="类型"
-                    
-//                    lable.text=foodInfo.foodordername
-                    
+                    lable.text=ordername
                 }else if indexPath.row==1{
                     cell.textLabel?.text="预定人"
-                    lable.text=""
+                    lable.text=orderpeople
                 }
                 else if indexPath.row==2{
                     cell.textLabel?.text="预定数量"
-//                    lable.text=foodInfo.foodordernumber
+                    lable.text=ordernum
                 }
             }else
             {
                 if indexPath.row==0 {
                     cell.textLabel?.text="联系方式"
-//                    lable.text=foodInfo.foodordermobile
+                    lable.text=orderohone
                     
                 }else if indexPath.row==1
                 {
                     cell.textLabel?.text="备注"
-//                    lable.text=foodInfo.foodorderremarks
+                    lable.text=ordermark
                     
                 }
 

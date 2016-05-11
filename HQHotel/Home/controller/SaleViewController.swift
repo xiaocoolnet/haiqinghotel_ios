@@ -269,12 +269,7 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
         self.GetDate()
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.backItem?.title=""
-//        let button = UIButton(frame: CGRectMake(0,0,40,20))
 
-//        button.setBackgroundImage(UIImage(named: "ic_jiantou"), forState: UIControlState.Normal)
-//        let backBT = UIBarButtonItem(customView: button)
-//        self.navigationItem.backBarButtonItem=backBT
-//        
         
 }
     override func  viewWillDisappear(animated: Bool) {

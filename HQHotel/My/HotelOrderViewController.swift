@@ -22,6 +22,9 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
     override func viewDidLoad() {
         super.viewDidLoad()
        
+       
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.backItem?.title=""
         
          let appsArray:[String] = ["酒店订单","餐饮订单"]
         let segment:UISegmentedControl = UISegmentedControl(items: appsArray)
@@ -195,18 +198,42 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
         let detailsVC = OrderDetailsViewController()
         if tableView==tableview1 {
             detailsVC.type=1
+            let hotelInfo = hotelSource.orderlist[indexPath.row]
+            
+            detailsVC.orderid=hotelInfo.ordername!
+            detailsVC.ordername=hotelInfo.ordername!
+            detailsVC.orderpeople=hotelInfo.ordername!
+            detailsVC.ordernum=hotelInfo.ordername!
+            detailsVC.orderohone=hotelInfo.ordername!
+            detailsVC.ordermark=hotelInfo.ordername!
+
         }else
         {
-        
-           detailsVC.hang=indexPath.row
+            
+            
+        let foodInfo = FoodSource.orderlist[indexPath.row]
+            
+            detailsVC.orderid=foodInfo.foodordername!
+            detailsVC.ordername=foodInfo.foodordername!
+            detailsVC.orderpeople=foodInfo.foodordername!
+            detailsVC.ordernum=foodInfo.foodordernumber!
+            detailsVC.orderohone=foodInfo.foodordermobile!
+            detailsVC.ordermark=foodInfo.foodordername!
+            
             detailsVC.type=2
         }
+        
         self.navigationController?.pushViewController(detailsVC, animated: true)
         
     }
 
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden=true
+      
+        
+        
+        self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
+
     }
     override func viewWillDisappear(animated: Bool) {
         self.tabBarController?.tabBar.hidden=false

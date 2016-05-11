@@ -25,7 +25,9 @@ class ScollViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.backItem?.title=""
+
         let frame = self.view.bounds
         startBT.layer.borderWidth = 2.0
         startBT.layer.borderColor = UIColor(red: 54.0 / 255.0, green: 190.0 / 255.0, blue: 100.0 / 255.0, alpha: 1.0).CGColor
@@ -56,8 +58,8 @@ class ScollViewController: UIViewController{
 //        startBT.alpha = 0.0
     }
     func touchMe(){
-        let homeVC = TabbarViewController()
-        self.presentViewController(homeVC, animated: true, completion: nil)
+//        let homeVC = TabbarViewController()
+//        self.presentViewController(homeVC, animated: true, completion: nil)
         
         
     

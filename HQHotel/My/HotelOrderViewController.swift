@@ -13,6 +13,7 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
     
     private var tableview1:UITableView!
     private var tableview2:UITableView!
+    private var segment:UISegmentedControl!
     
 
     var hotelSource = HotelOrderModel()
@@ -24,11 +25,15 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
         
          let appsArray:[String] = ["酒店订单","餐饮订单"]
         let segment:UISegmentedControl = UISegmentedControl(items: appsArray)
-         segment.frame = CGRectMake(20, 64, 320, 40)
+         segment.frame = CGRectMake(0, 0, self.view.bounds.width/2, 30)
+        segment.selectedSegmentIndex=0
+         segmentChange(segment)
          self.view.addSubview(segment)
-        segment.selectedSegmentIndex = 1
         segment.addTarget(self, action:#selector(segmentChange), forControlEvents: UIControlEvents.ValueChanged)
         self.automaticallyAdjustsScrollViewInsets=false
+
+        
+        self.navigationItem.titleView=segment
         
         
     }
@@ -96,9 +101,9 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
         }
     }
     
-
     func segmentChange(sender:AnyObject?){
         let segment:UISegmentedControl = sender as! UISegmentedControl
+       
         switch segment.selectedSegmentIndex {
         case 0 :
             tableView1()
@@ -111,7 +116,7 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
         }
     }
     func tableView1(){
-        tableview1=UITableView(frame: CGRectMake(0, 104, self.view.bounds.width, self.view.bounds.height-64))
+        tableview1=UITableView(frame: CGRectMake(0, 64, self.view.bounds.width, self.view.bounds.height-64))
         tableview1.delegate=self
         tableview1.dataSource=self
         tableview1.rowHeight=95
@@ -122,7 +127,7 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
 
     }
     func tableView2(){
-        tableview2=UITableView(frame: CGRectMake(0, 104, self.view.bounds.width, self.view.bounds.height-64))
+        tableview2=UITableView(frame: CGRectMake(0, 64, self.view.bounds.width, self.view.bounds.height-64))
         tableview2.delegate=self
         tableview2.dataSource=self
         tableview2.rowHeight=95
@@ -185,6 +190,19 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
             
             
         }
+    }
+    func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
+        let detailsVC = OrderDetailsViewController()
+        if tableView==tableview1 {
+            detailsVC.type=1
+        }else
+        {
+        
+           detailsVC.hang=indexPath.row
+            detailsVC.type=2
+        }
+        self.navigationController?.pushViewController(detailsVC, animated: true)
+        
     }
 
     override func viewWillAppear(animated: Bool) {

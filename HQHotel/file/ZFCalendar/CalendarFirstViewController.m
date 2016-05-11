@@ -122,11 +122,8 @@
         lable.text=[NSString stringWithFormat:@"%@入住---%@离店 共%d晚",[dataArray objectAtIndex:0],[dataArray objectAtIndex:1],days];
         
         if (_str) {
-//            SaleViewController *saleVC=[[SaleViewController alloc]init];
             str1=[dataArray objectAtIndex:0];
             str2=[dataArray objectAtIndex:1];
-//            saleVC.startTime=str1;
-//            saleVC.endTime=str2;
             NSUserDefaults *chuanzhi = NSUserDefaults.standardUserDefaults;
             
             [chuanzhi setObject:str1 forKey:@"startTime"];

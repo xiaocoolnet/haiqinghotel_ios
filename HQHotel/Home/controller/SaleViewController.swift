@@ -260,17 +260,28 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
             let timeFormatter1 = NSDateFormatter()
             timeFormatter1.dateFormat = "yyyy-MM-dd"
             endTime = timeFormatter.stringFromDate(date1) as String
-        }else{
+        }else {
         startTime = chuanzhi.stringForKey("startTime")!
         endTime = chuanzhi.stringForKey("endTime")!
         }
         
         tableview.reloadData()
         self.GetDate()
-    }
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.backItem?.title=""
+//        let button = UIButton(frame: CGRectMake(0,0,40,20))
+
+//        button.setBackgroundImage(UIImage(named: "ic_jiantou"), forState: UIControlState.Normal)
+//        let backBT = UIBarButtonItem(customView: button)
+//        self.navigationItem.backBarButtonItem=backBT
+//        
+        
+}
     override func  viewWillDisappear(animated: Bool) {
         self.navigationController?.navigationBarHidden=true
         self.tabBarController?.tabBar.hidden=false
+        
+        
         
     }
 }

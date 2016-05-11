@@ -82,6 +82,7 @@
 		F65D56B31CD2EF8E008BB73E /* 设施3.png in Resources */ = {isa = PBXBuildFile; fileRef = F65D56AF1CD2EF8E008BB73E /* 设施3.png */; };
 		F65D56B51CD32691008BB73E /* ScheduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65D56B41CD32691008BB73E /* ScheduleTableViewCell.swift */; };
 		F65D56B71CD33FF8008BB73E /* RoomDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65D56B61CD33FF8008BB73E /* RoomDetailsViewController.swift */; };
+		F65E70F71CE3088F00E3E10B /* OrderDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F65E70F61CE3088F00E3E10B /* OrderDetailsViewController.swift */; };
 		F66283ED1CC0D2E100198CB3 /* FacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66283EC1CC0D2E100198CB3 /* FacilitiesViewController.swift */; };
 		F66283EF1CC0D2F000198CB3 /* MallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66283EE1CC0D2F000198CB3 /* MallViewController.swift */; };
 		F66283F11CC0D2FB00198CB3 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66283F01CC0D2FB00198CB3 /* MyViewController.swift */; };
@@ -234,6 +235,7 @@
 		F65D56AF1CD2EF8E008BB73E /* 设施3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "设施3.png"; sourceTree = "<group>"; };
 		F65D56B41CD32691008BB73E /* ScheduleTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScheduleTableViewCell.swift; path = HQHotel/Facilities/view/ScheduleTableViewCell.swift; sourceTree = SOURCE_ROOT; };
 		F65D56B61CD33FF8008BB73E /* RoomDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomDetailsViewController.swift; sourceTree = "<group>"; };
+		F65E70F61CE3088F00E3E10B /* OrderDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderDetailsViewController.swift; sourceTree = "<group>"; };
 		F66283EC1CC0D2E100198CB3 /* FacilitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacilitiesViewController.swift; path = ../FacilitiesViewController.swift; sourceTree = "<group>"; };
 		F66283EE1CC0D2F000198CB3 /* MallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MallViewController.swift; path = ../MallViewController.swift; sourceTree = "<group>"; };
 		F66283F01CC0D2FB00198CB3 /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
@@ -548,6 +550,7 @@
 				F64EAB1F1CC60D200084A795 /* ShopListViewController.swift */,
 				F64EAB211CC60DCB0084A795 /* InformationViewController.swift */,
 				F63C93551CD9F6310095BF18 /* HotelOrderViewController.swift */,
+				F65E70F61CE3088F00E3E10B /* OrderDetailsViewController.swift */,
 				F63C93571CD9F6430095BF18 /* MallOrderViewController.swift */,
 				F63C93591CD9F6820095BF18 /* MarkViewController.swift */,
 				F6D26E3A1CDC9DA2002A28F5 /* model */,
@@ -975,6 +978,7 @@
 				F6E786651CD1A76500B269BF /* CalendarFirstViewController.m in Sources */,
 				F63C933B1CD98D7C0095BF18 /* Http.swift in Sources */,
 				F63C5EB61CDAF580005A7230 /* HotelOrderCell.swift in Sources */,
+				F65E70F71CE3088F00E3E10B /* OrderDetailsViewController.swift in Sources */,
 				F64D73BA1CC47D180048B855 /* NewsTableViewCell.swift in Sources */,
 				F64EAB1C1CC5CEBE0084A795 /* GoodsViewController.swift in Sources */,
 				F63C933F1CD9C8430095BF18 /* LoginViewController.swift in Sources */,

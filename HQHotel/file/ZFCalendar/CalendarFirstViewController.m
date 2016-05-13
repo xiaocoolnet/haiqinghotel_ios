@@ -124,11 +124,13 @@
         if (_str) {
             str1=[dataArray objectAtIndex:0];
             str2=[dataArray objectAtIndex:1];
+            int a=1;
             NSUserDefaults *chuanzhi = NSUserDefaults.standardUserDefaults;
             
             [chuanzhi setObject:str1 forKey:@"startTime"];
             [chuanzhi setObject:str2 forKey:@"endTime"];
-            
+            [chuanzhi setInteger:days forKey:@"num"];
+            [chuanzhi setInteger:a forKey:@"a"];
             [chuanzhi synchronize];
             [[self navigationController]popViewControllerAnimated:YES];
         }else{

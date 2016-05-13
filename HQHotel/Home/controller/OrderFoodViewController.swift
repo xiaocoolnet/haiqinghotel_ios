@@ -15,6 +15,7 @@ class OrderFoodViewController: UIViewController ,UITableViewDelegate,UITableView
     private var imageView=UIImageView()
     private var num = Int()
     internal var price=String()
+    internal var name=String()
     private var numL = UILabel()
     private var delBT=UIButton()
     private var addBT=UIButton()
@@ -91,10 +92,9 @@ class OrderFoodViewController: UIViewController ,UITableViewDelegate,UITableView
         cell.selectionStyle = .None
         if indexPath.section == 0 {
             if indexPath.row == 0 {
-                cell.textLabel?.text="经典西式早餐"
+                cell.textLabel?.text=name
                 cell.textLabel?.textColor=UIColor.init(red: 57/255, green: 58/255, blue: 59/255, alpha: 1)
                 let priceL = UILabel(frame: CGRectMake(self.view.bounds.width-90,5,80,44-10))
-                price="30"
                 priceL.text="¥\(price)/份"
                 priceL.textColor=UIColor.init(red: 57/255, green: 58/255, blue: 59/255, alpha: 1)
                 priceL.textAlignment = .Right
@@ -179,7 +179,7 @@ class OrderFoodViewController: UIViewController ,UITableViewDelegate,UITableView
                 tableView.rowHeight=44
             }
             else if indexPath.row==2{
-                cell.textLabel?.text="就餐人数"
+                cell.textLabel?.text="房间号"
                 cell.textLabel?.textColor=UIColor.init(red: 57/255, green: 58/255, blue: 59/255, alpha: 1)
                 numTF = UITextField(frame: CGRectMake(self.view.bounds.width-300,5,300,44-10))
                 numTF.clearButtonMode=UITextFieldViewMode.Always
@@ -189,7 +189,7 @@ class OrderFoodViewController: UIViewController ,UITableViewDelegate,UITableView
                 tableView.rowHeight=44
             }
             else if indexPath.row==3{
-                cell.textLabel?.text="就餐日期"
+                cell.textLabel?.text="就餐人数"
                 cell.textLabel?.textColor=UIColor.init(red: 57/255, green: 58/255, blue: 59/255, alpha: 1)
                 riqiTF = UITextField(frame: CGRectMake(self.view.bounds.width-300,5,300,44-10))
                 riqiTF.clearButtonMode=UITextFieldViewMode.Always

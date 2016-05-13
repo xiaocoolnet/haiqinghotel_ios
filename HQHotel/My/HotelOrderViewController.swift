@@ -204,8 +204,8 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
             detailsVC.ordername=hotelInfo.ordername!
             detailsVC.orderpeople=hotelInfo.ordername!
             detailsVC.ordernum=hotelInfo.ordername!
-            detailsVC.orderohone=hotelInfo.ordername!
-            detailsVC.ordermark=hotelInfo.ordername!
+            detailsVC.orderohone=hotelInfo.ordermobile!
+            detailsVC.ordermark=hotelInfo.orderremarks!
 
         }else
         {

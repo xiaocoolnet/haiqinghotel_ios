@@ -42,15 +42,19 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
     
     internal var startTime=String()
     internal var endTime=String()
+    internal var roomnum=Int()
     var name=String()
     var bedsize=String()
     var repast=String()
     var network=String()
     var price=String()
     var zongjiaL=UILabel()
-
+var chuanzhi = NSUserDefaults.standardUserDefaults()
     private var scrollView:UIScrollView!
     private let numOfPages=4
+    private var str=String()
+    private var str1=String()
+    private var aa=Int()
     var num=0
     
     override func viewDidLoad() {
@@ -124,6 +128,7 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
         yudingBT.setTitle("立即预订", forState: UIControlState.Normal)
         yudingBT.addTarget(self, action: #selector(yuding), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(yudingBT)
+        NSNotificationCenter.defaultCenter().addObserver(self, selector: #selector(SaleViewController.chuanzhi(_:)), name: "backchuanzhi", object: nil)
     }
     //酒店房间接口
     func GetDate(){
@@ -162,7 +167,9 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
                     self.weiyuL.text = status.data?.roombathroom
                     self.mianjiL.text = status.data?.roomacreage
                     self.price=(status.data?.roomprice)!
-                    self.zongjiaL.text="¥"+self.price
+                    let zongjia=Int(self.price)!*self.roomnum
+                    
+                    self.zongjiaL.text="¥"+String(zongjia)
                     self.name=(status.data?.roomname)!
 
                     self.count = (status.data?.count)!
@@ -216,7 +223,7 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
         reserve.repast=repast
         reserve.startTime=startTime
         reserve.endTime=endTime
-        reserve.price = self.price
+        reserve.price = zongjiaL.text!
         
         self.navigationController?.pushViewController(reserve, animated: true)
         
@@ -243,13 +250,22 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
         self.navigationController?.pushViewController(riliVC, animated: true)
         
     }
+    func chuanzhi(title:NSNotification){
+       
+        str = title.object as! String
+        aa=2
+        
+    }
     
     
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBarHidden=false
         self.tabBarController?.tabBar.hidden=true
 
-        let chuanzhi = NSUserDefaults.standardUserDefaults()
+        chuanzhi = NSUserDefaults.standardUserDefaults()
+        var a = Int()
+        a=chuanzhi.integerForKey("a")
+        
         if startTime=="" {
             let date = NSDate()
             let timeFormatter = NSDateFormatter()
@@ -260,9 +276,13 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
             let timeFormatter1 = NSDateFormatter()
             timeFormatter1.dateFormat = "yyyy-MM-dd"
             endTime = timeFormatter.stringFromDate(date1) as String
-        }else {
+        }else if a==1{
         startTime = chuanzhi.stringForKey("startTime")!
         endTime = chuanzhi.stringForKey("endTime")!
+        roomnum = chuanzhi.integerForKey("num")
+            
+        }else if aa==2{
+            startTime=str
         }
         
         tableview.reloadData()

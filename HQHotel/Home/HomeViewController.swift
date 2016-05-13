@@ -297,6 +297,13 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         let reservationInfo = resrvationSource.objectlist[indexPath.row]
         if  reservationInfo.type == 1{
             let cuxiaoV = SaleViewController(nibName: "SaleViewController", bundle: nil)
+            switch tianshu {
+            case 0:
+                cuxiaoV.roomnum=1
+            default:
+                cuxiaoV.roomnum=tianshu
+
+            }
           
             self.navigationController?.pushViewController(cuxiaoV, animated: true)
 
@@ -390,7 +397,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
             strNowTime1 = timeFormatter.stringFromDate(date1) as String
         timeleftBT.setTitle(strNowTime, forState: UIControlState.Normal)
         endtimeBT.setTitle(strNowTime1, forState: UIControlState.Normal)
-         daysL.text=""
+         daysL.text="1天"
         }
         
     }

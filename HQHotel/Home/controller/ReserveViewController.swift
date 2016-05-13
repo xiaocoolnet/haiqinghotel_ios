@@ -48,6 +48,7 @@ class ReserveViewController: UIViewController,UITableViewDataSource,UITableViewD
     private var numArray=NSArray()
     private var timeArray=NSArray()
     private var button=UIButton()
+    private var zongjiaL=UILabel()
     var startzheng=Int()
     var endzheng=Int()
     
@@ -78,7 +79,7 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
         priceL.backgroundColor=UIColor.whiteColor()
         priceL.text="  总价："
         self.view.addSubview(priceL)
-        let zongjiaL = UILabel(frame: CGRectMake(70,self.view.bounds.height-40,self.view.bounds.width/2-70,40))
+        zongjiaL = UILabel(frame: CGRectMake(70,self.view.bounds.height-40,self.view.bounds.width/2-70,40))
         zongjiaL.backgroundColor=UIColor.whiteColor()
         zongjiaL.text=price
         self.view.addSubview(zongjiaL)
@@ -107,9 +108,15 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
         endzheng = Int(time1)
         print(endzheng)
    
+        self.navigationItem.backBarButtonItem?.action=#selector(back)
         
     }
-
+    func back()
+    {
+        NSNotificationCenter.defaultCenter().postNotificationName("backchuanzhi", object: startTime)
+        NSNotificationCenter.defaultCenter().postNotificationName("backchuanzhi", object: endTime)
+        self.navigationController?.popViewControllerAnimated(true)
+    }
    
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         if tableView==tableView1 {
@@ -160,6 +167,12 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if tableView==tableView1 {
             roomNumL.text=numArray.objectAtIndex(indexPath.row) as? String
+            
+            
+            
+            
+            
+            
             button.frame=CGRectMake(0, 0, 0, 0)
             tableView.frame=CGRectMake(0, 0, 0, 0)
         }

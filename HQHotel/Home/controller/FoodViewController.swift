@@ -44,13 +44,14 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
     var photoSource = photolistInfo()
     var phoneArr = NSMutableArray()
     var photoUrl = String()
+    let orderfVC = OrderFoodViewController()
+
     
     override func viewDidLoad() {
         self.GetDate()
         self.scrollViewGet()
         
-        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.backItem?.title=""
+     
 
         shimenjia.frame = CGRectMake(0, self.view.bounds.width*0.5+94, WIDTH/3, 20)
         shimenjia.textColor = UIColor.grayColor()
@@ -149,13 +150,7 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         
     }
     
-    func getYuDing() {
-        let orderfVC = OrderFoodViewController()
-        self.navigationController?.pushViewController(orderfVC, animated: true)
-        
-        
-    }
-    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return count+1
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -266,7 +261,8 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
         
-        
+        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+        self.navigationController?.navigationBar.backItem?.title=""
     }
     //餐饮界面
     func GetDate(){
@@ -303,7 +299,8 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
                     self.busContact.text = status.data?.foodDescription
                     self.priceOld.text = "¥"+(status.data?.foodOprice)!
                     self.priceNew.text = "¥"+(status.data?.foodPrice)!
-                    
+                    self.orderfVC.name=(status.data?.foodName)!
+                    self.orderfVC.price=(status.data?.foodPrice)!
                     self.count = (status.data?.count)!
                     for i in 0..<self.count {
                         self.goodSource = (status.data?.goodlist[i])!
@@ -329,7 +326,11 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         }
     }
 
-    
+    func getYuDing() {
+     
+        self.navigationController?.pushViewController(orderfVC, animated: true)
+    }
+
 //    override func viewWillDisappear(animated: Bool) {
 //        self.tabBarController?.tabBar.hidden=false
 //    }

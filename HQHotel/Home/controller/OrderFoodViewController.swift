@@ -41,7 +41,7 @@ class OrderFoodViewController: UIViewController ,UITableViewDelegate,UITableView
         tableView=UITableView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height), style: UITableViewStyle.Grouped)
         tableView.delegate=self
         tableView.dataSource=self
-//        tableView.registerClass(UITableViewCell.self, forCellReuseIdentifier: "cell")
+
 //UIimageView
         imageView=UIImageView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.width*0.5))
         imageView.image=UIImage(named: "food1.png")

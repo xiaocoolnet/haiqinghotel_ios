@@ -85,6 +85,8 @@
 		F66283ED1CC0D2E100198CB3 /* FacilitiesViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66283EC1CC0D2E100198CB3 /* FacilitiesViewController.swift */; };
 		F66283EF1CC0D2F000198CB3 /* MallViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66283EE1CC0D2F000198CB3 /* MallViewController.swift */; };
 		F66283F11CC0D2FB00198CB3 /* MyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F66283F01CC0D2FB00198CB3 /* MyViewController.swift */; };
+		F692FDFC1CE56D540008C807 /* ShoppingModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692FDFB1CE56D540008C807 /* ShoppingModel.swift */; };
+		F692FE021CE5C9340008C807 /* GoodsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F692FE011CE5C9340008C807 /* GoodsModel.swift */; };
 		F6D26E3C1CDC9DE6002A28F5 /* HotelOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6D26E3B1CDC9DE6002A28F5 /* HotelOrderModel.swift */; };
 		F6E7864A1CD1A5B600B269BF /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E786491CD1A5B600B269BF /* AppDelegate.swift */; };
 		F6E7864C1CD1A5BB00B269BF /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E7864B1CD1A5BB00B269BF /* ViewController.swift */; };
@@ -110,6 +112,7 @@
 		F6E7868C1CD1A83A00B269BF /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6E7868A1CD1A83A00B269BF /* LaunchScreen.storyboard */; };
 		F6E7868F1CD1A83E00B269BF /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = F6E7868D1CD1A83E00B269BF /* Main.storyboard */; };
 		F6E786911CD1A87D00B269BF /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = F6E786901CD1A87D00B269BF /* Assets.xcassets */; };
+		F6E9262C1CE5DF5B00DC400F /* mallOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6E9262B1CE5DF5B00DC400F /* mallOrderViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -236,6 +239,8 @@
 		F66283EC1CC0D2E100198CB3 /* FacilitiesViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = FacilitiesViewController.swift; path = ../FacilitiesViewController.swift; sourceTree = "<group>"; };
 		F66283EE1CC0D2F000198CB3 /* MallViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = MallViewController.swift; path = ../MallViewController.swift; sourceTree = "<group>"; };
 		F66283F01CC0D2FB00198CB3 /* MyViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MyViewController.swift; sourceTree = "<group>"; };
+		F692FDFB1CE56D540008C807 /* ShoppingModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ShoppingModel.swift; path = HQHotel/My/ShoppingModel.swift; sourceTree = SOURCE_ROOT; };
+		F692FE011CE5C9340008C807 /* GoodsModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GoodsModel.swift; sourceTree = SOURCE_ROOT; };
 		F6D26E3B1CDC9DE6002A28F5 /* HotelOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelOrderModel.swift; sourceTree = "<group>"; };
 		F6E786491CD1A5B600B269BF /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = AppDelegate.swift; path = HQHotel/AppDelegate.swift; sourceTree = SOURCE_ROOT; };
 		F6E7864B1CD1A5BB00B269BF /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ViewController.swift; path = HQHotel/ViewController.swift; sourceTree = SOURCE_ROOT; };
@@ -271,6 +276,7 @@
 		F6E7868B1CD1A83A00B269BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HQHotel/Base.lproj/LaunchScreen.storyboard; sourceTree = SOURCE_ROOT; };
 		F6E7868E1CD1A83E00B269BF /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = HQHotel/Base.lproj/Main.storyboard; sourceTree = SOURCE_ROOT; };
 		F6E786901CD1A87D00B269BF /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; name = Assets.xcassets; path = HQHotel/Assets.xcassets; sourceTree = SOURCE_ROOT; };
+		F6E9262B1CE5DF5B00DC400F /* mallOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = mallOrderViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -592,6 +598,7 @@
 			children = (
 				F66283EE1CC0D2F000198CB3 /* MallViewController.swift */,
 				F64EAB1B1CC5CEBE0084A795 /* GoodsViewController.swift */,
+				F6E9262B1CE5DF5B00DC400F /* mallOrderViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -599,6 +606,8 @@
 		F64D73BC1CC4B8720048B855 /* model */ = {
 			isa = PBXGroup;
 			children = (
+				F692FDFB1CE56D540008C807 /* ShoppingModel.swift */,
+				F692FE011CE5C9340008C807 /* GoodsModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -942,12 +951,15 @@
 				F63C93361CD98CA30095BF18 /* Urlfile.swift in Sources */,
 				F63C93561CD9F6310095BF18 /* HotelOrderViewController.swift in Sources */,
 				F66283ED1CC0D2E100198CB3 /* FacilitiesViewController.swift in Sources */,
+				F692FE021CE5C9340008C807 /* GoodsModel.swift in Sources */,
 				F6E7866C1CD1A76500B269BF /* NSDate+WQCalendarLogic.m in Sources */,
 				F6423A191CE0302400A57B19 /* UIButton+WebCache.m in Sources */,
 				F6423A1F1CE0302400A57B19 /* UIView+WebCacheOperation.m in Sources */,
 				F66283F11CC0D2FB00198CB3 /* MyViewController.swift in Sources */,
 				F63C5ECF1CDB267F005A7230 /* FoodViewController.swift in Sources */,
+				F6E9262C1CE5DF5B00DC400F /* mallOrderViewController.swift in Sources */,
 				F61DC2A51CD84B7E000F87E1 /* NewsViewController.swift in Sources */,
+				F692FDFC1CE56D540008C807 /* ShoppingModel.swift in Sources */,
 				F64CB8071CDDF13D00BD0210 /* ConnectModel.m in Sources */,
 				F63373911CC763D200F63FC1 /* HotelDetailsViewController.swift in Sources */,
 				F6443BBC1CC1D1820078627B /* Facilitiescell.swift in Sources */,
@@ -1142,6 +1154,7 @@
 				);
 				INFOPLIST_FILE = HQHotel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = xiaocool.HQHotel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/xiaocool/Desktop/haiqinghotel_ios/HQHotel/Tool/OC_Header.h;
@@ -1159,6 +1172,7 @@
 				);
 				INFOPLIST_FILE = HQHotel/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				ONLY_ACTIVE_ARCH = YES;
 				PRODUCT_BUNDLE_IDENTIFIER = xiaocool.HQHotel;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/xiaocool/Desktop/haiqinghotel_ios/HQHotel/Tool/OC_Header.h;

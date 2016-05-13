@@ -7,10 +7,27 @@
 //
 
 import UIKit
-
+import Alamofire
+import MBProgressHUD
 class MallViewController: UIViewController,UICollectionViewDelegate ,UICollectionViewDataSource,UICollectionViewDelegateFlowLayout,UISearchBarDelegate{
 
     private var searchbar=UISearchBar()
+    private var collectionView:UICollectionView?
+    var shoppingSource = ShoppingModel()
+    private var id=String()
+    private var name=String()
+    private var price=String()
+    private var oprice=String()
+    private var unit=String()
+    private var descriptionn=String()
+    private var showid=String()
+    private var time=String()
+    private var picture=String()
+    
+    var count = Int()
+    var photoSource = goodphotolistInfo()
+    var photoAry = NSMutableArray()
+
     override func viewDidLoad() {
         super.viewDidLoad()
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
@@ -35,32 +52,116 @@ class MallViewController: UIViewController,UICollectionViewDelegate ,UICollectio
         self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
     
         let layout = UICollectionViewFlowLayout()
-        let collectionView = UICollectionView(frame: CGRectMake(0, 100, self.view.bounds.width, self.view.bounds.height-90), collectionViewLayout: layout)
-        collectionView.backgroundColor=UIColor.clearColor()
-        collectionView.delegate=self
-        collectionView.dataSource=self
-        collectionView.registerClass(MallCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
-        self.view.addSubview(collectionView)
+        collectionView = UICollectionView(frame: CGRectMake(0, 100, self.view.bounds.width, self.view.bounds.height-90), collectionViewLayout: layout)
+        collectionView!.backgroundColor=UIColor.clearColor()
+        collectionView!.delegate=self
+        collectionView!.dataSource=self
+        collectionView!.registerClass(MallCollectionViewCell.self, forCellWithReuseIdentifier: "cell")
+        
+        self.view.addSubview(collectionView!)
+        
     }
 
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
+    func GetDate(){
+        let url = apiUrl+"getshoppinglist"
+ 
+        print(url)
+        Alamofire.request(.GET, url, parameters: nil).response { request, response, json, error in
+            if(error != nil){
+            }
+            else{
+                
+                let status = Http(JSONDecoder(json!))
+                print("状态是")
+                print(status.status)
+                if(status.status == "error"){
+                    let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    hud.mode = MBProgressHUDMode.Text;
+                    hud.margin = 10.0
+                    hud.removeFromSuperViewOnHide = true
+                    hud.hide(true, afterDelay: 1)
+                }
+                if(status.status == "success"){
+                    self.shoppingSource = ShoppingModel(status.data!)
+                    self.collectionView!.reloadData()
+                }
+            }
+        }
+    }
+    //获取商品详情
+    func GetgoodDate(){
+        let url = apiUrl+"showcateringinfo"
+        
+        let param = [
+            "id":12
+        ]
+        Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
+            if(error != nil){
+            }
+            else{
+                
+                let status = GoodsModel(JSONDecoder(json!))
+                print("状态是")
+                print(status.status)
+                if(status.status == "error"){
+                    let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    hud.mode = MBProgressHUDMode.Text;
+                    hud.labelText = status.errorData
+                    hud.margin = 10.0
+                    hud.removeFromSuperViewOnHide = true
+                    hud.hide(true, afterDelay: 1)
+                }
+                if(status.status == "success"){
+                    print("Success")
+                    
+                    
+                    self.id = (status.data?.goodid)!
+                    self.name = (status.data?.goodname)!
+                    self.price = (status.data?.goodprice)!
+                    self.oprice = (status.data?.goodoprice)!
+                    self.unit = (status.data?.goodunit)!
+                    self.descriptionn = (status.data?.gooddescription)!
+                    self.picture = (status.data?.goodpicture)!
+                    self.showid = (status.data?.goodshowid)!
+                    self.time = (status.data?.goodtime)!
+                    
+                    for item in 0..<self.count{
+                        self.photoSource = (status.data?.goodphotolist[item])!
+                        self.photoAry.addObject(self.photoSource)
+                        print(self.photoSource.photo)
+                    }
+                    
+                }
+            }
+        }
+    }
+    
+
     //组数
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
         return 1
     }
     //每组返回多少个cell
     func collectionView(collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int{
-        return 10
+        return shoppingSource.count
     }
     //cell的设置
     func collectionView(collectionView: UICollectionView, cellForItemAtIndexPath indexPath: NSIndexPath) -> UICollectionViewCell{
         
         
         let cell : MallCollectionViewCell=collectionView.dequeueReusableCellWithReuseIdentifier("cell", forIndexPath: indexPath) as! MallCollectionViewCell
-  
+        
+        let shopInfo = shoppingSource.objectlist[indexPath.row]
+        
+        cell.imageView.image=UIImage(named: "")
+        cell.nameL.text=shopInfo.shopname
+        cell.jianjieL.text=descriptionn
+        print(descriptionn)
+        cell.priceL.text=shopInfo.shopprice
         return cell
     }
     //每个cell的尺寸
@@ -112,6 +213,10 @@ class MallViewController: UIViewController,UICollectionViewDelegate ,UICollectio
     func viewtap(){
         self.view.endEditing(true)
         //
+    }
+    override func viewWillAppear(animated: Bool) {
+        self.GetDate()
+        self.GetgoodDate()
     }
 
    

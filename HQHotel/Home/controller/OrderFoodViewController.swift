@@ -24,7 +24,7 @@ class OrderFoodViewController: UIViewController ,UITableViewDelegate,UITableView
     private var nameTF=UITextField()
     private var phoneTF=UITextField()
     private var numTF=UITextField()
-    private var riqiTF=UITextField()
+    private var peoplenumTF=UITextField()
     private var timeTF=UITextField()
     private var textView=UITextView()
     private var zongjiaL=UILabel()
@@ -63,6 +63,10 @@ class OrderFoodViewController: UIViewController ,UITableViewDelegate,UITableView
         yudingBT.setTitle("提交订单", forState: UIControlState.Normal)
         yudingBT.addTarget(self, action: #selector(nowYuding), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(yudingBT)
+        //添加手势，点击空白处收回键盘
+        let tap = UITapGestureRecognizer(target: self, action: #selector(viewtap))
+        tap.cancelsTouchesInView=false
+        self.view.addGestureRecognizer(tap)
         
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int{
@@ -174,6 +178,7 @@ class OrderFoodViewController: UIViewController ,UITableViewDelegate,UITableView
                 phoneTF = UITextField(frame: CGRectMake(self.view.bounds.width-300,5,300,44-10))
                 phoneTF.clearButtonMode=UITextFieldViewMode.Always
                 phoneTF.textAlignment = .Right
+                phoneTF.keyboardType = .NumberPad
                 phoneTF.textColor=UIColor.init(red: 57/255, green: 58/255, blue: 59/255, alpha: 1)
                 cell.addSubview(phoneTF)
                 tableView.rowHeight=44
@@ -191,11 +196,12 @@ class OrderFoodViewController: UIViewController ,UITableViewDelegate,UITableView
             else if indexPath.row==3{
                 cell.textLabel?.text="就餐人数"
                 cell.textLabel?.textColor=UIColor.init(red: 57/255, green: 58/255, blue: 59/255, alpha: 1)
-                riqiTF = UITextField(frame: CGRectMake(self.view.bounds.width-300,5,300,44-10))
-                riqiTF.clearButtonMode=UITextFieldViewMode.Always
-                riqiTF.textAlignment = .Right
-                riqiTF.textColor=UIColor.init(red: 57/255, green: 58/255, blue: 59/255, alpha: 1)
-                cell.addSubview(riqiTF)
+                peoplenumTF = UITextField(frame: CGRectMake(self.view.bounds.width-300,5,300,44-10))
+                peoplenumTF.clearButtonMode=UITextFieldViewMode.Always
+                peoplenumTF.textAlignment = .Right
+                peoplenumTF.keyboardType = .NumberPad
+                peoplenumTF.textColor=UIColor.init(red: 57/255, green: 58/255, blue: 59/255, alpha: 1)
+                cell.addSubview(peoplenumTF)
                tableView.rowHeight=44
             }
             else if indexPath.row==4{
@@ -295,16 +301,16 @@ class OrderFoodViewController: UIViewController ,UITableViewDelegate,UITableView
         if(numTF.text!.isEmpty){
             let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             hud.mode = MBProgressHUDMode.Text
-            hud.labelText = "请输入就餐人数"
+            hud.labelText = "请输入房间号"
             hud.margin = 10.0
             hud.removeFromSuperViewOnHide = true
             hud.hide(true, afterDelay: 1)
             return false
         }
-        if(riqiTF.text!.isEmpty){
+        if(peoplenumTF.text!.isEmpty){
             let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             hud.mode = MBProgressHUDMode.Text
-            hud.labelText = "请输入就餐日期"
+            hud.labelText = "请输入就餐人数"
             hud.margin = 10.0
             hud.removeFromSuperViewOnHide = true
             hud.hide(true, afterDelay: 1)
@@ -333,11 +339,14 @@ class OrderFoodViewController: UIViewController ,UITableViewDelegate,UITableView
             let param = [
                 "userid":578,
                 "goodsid":"12",
-                "repasttime":timeTF,
-                "goodnum":numL,
-                "peoplenum":numTF,
-                "mobile":phoneTF,
-                "remark":textView
+                "repasttime":timeTF.text!,
+                "peoplename":nameTF.text!,
+                "roomname":numTF.text!,
+                "goodnum":numL.text!,
+                "peoplenum":peoplenumTF.text!,
+                "mobile":phoneTF.text!,
+                "remark":textView.text!,
+                "money":zongjiaL.text!
                 
                 
             ]
@@ -379,22 +388,10 @@ class OrderFoodViewController: UIViewController ,UITableViewDelegate,UITableView
             }
         }
     }
-
-   
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    //隐藏键盘的方法
+    func viewtap(){
+        self.view.endEditing(true)
     }
+
     
-
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) {
-        // Get the new view controller using segue.destinationViewController.
-        // Pass the selected object to the new view controller.
-    }
-    */
-
 }

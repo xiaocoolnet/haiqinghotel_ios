@@ -200,26 +200,33 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
             detailsVC.type=1
             let hotelInfo = hotelSource.orderlist[indexPath.row]
             
-            detailsVC.orderid=hotelInfo.ordername!
+            detailsVC.orderid=hotelInfo.order_num!
             detailsVC.ordername=hotelInfo.ordername!
-            detailsVC.orderpeople=hotelInfo.ordername!
-            detailsVC.ordernum=hotelInfo.ordername!
+            detailsVC.orderpeople=hotelInfo.orderpeoplename!
+            detailsVC.ordernum=hotelInfo.ordernumber!
             detailsVC.orderohone=hotelInfo.ordermobile!
+            if hotelInfo.orderremarks==nil {
+                detailsVC.ordermark="无"
+            }else{
             detailsVC.ordermark=hotelInfo.orderremarks!
 
+            }
         }else
         {
             
             
         let foodInfo = FoodSource.orderlist[indexPath.row]
             
-            detailsVC.orderid=foodInfo.foodordername!
+            detailsVC.orderid=foodInfo.foodordernum!
             detailsVC.ordername=foodInfo.foodordername!
-            detailsVC.orderpeople=foodInfo.foodordername!
+            detailsVC.orderpeople=foodInfo.foodpeoplename!
             detailsVC.ordernum=foodInfo.foodordernumber!
             detailsVC.orderohone=foodInfo.foodordermobile!
-            detailsVC.ordermark=foodInfo.foodordername!
-            
+            if foodInfo.foodorderremarks==nil {
+                detailsVC.ordermark="无"
+            }else {
+            detailsVC.ordermark=foodInfo.foodorderremarks!
+            }
             detailsVC.type=2
         }
         

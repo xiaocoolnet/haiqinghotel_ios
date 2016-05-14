@@ -31,14 +31,16 @@ class HotelOrderModel: JSONJoy {
     }
 }
 class HotelOrderInfo: JSONJoy{
-        
+    
+    var order_num : String?
+    
     var ordergid:String?
     var ordername: String?
     var orderid:String?
     var ordertime:String?
     var orderstate:String?
     var ordertype:String?
-    var ordermobile : String?
+    var ordermobile:String?
     var orderprice:String?
     var orderpicture:String?
     var ordernumber:String?
@@ -48,6 +50,9 @@ class HotelOrderInfo: JSONJoy{
     var orderarrivetime:String?
     var orderremarks:String?
     var orderpeoplenumber:String?
+    var orderpeoplename : String?
+    
+    
 
     
     
@@ -56,6 +61,7 @@ class HotelOrderInfo: JSONJoy{
     }
     required init(_ decoder: JSONDecoder){
        
+        order_num=decoder["order_num"].string
         ordergid = decoder["gid"].string
         ordername = decoder["name"].string
         orderid = decoder["rid"].string
@@ -72,6 +78,7 @@ class HotelOrderInfo: JSONJoy{
         orderarrivetime = decoder["arrivetime"].string
         orderremarks = decoder["remarks"].string
         orderpeoplenumber = decoder["peoplenumber"].string
+        orderpeoplename=decoder["peoplename"].string
 
     }
     

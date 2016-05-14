@@ -49,13 +49,16 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
     var network=String()
     var price=String()
     var zongjiaL=UILabel()
-var chuanzhi = NSUserDefaults.standardUserDefaults()
+    var chuanzhi = NSUserDefaults.standardUserDefaults()
     private var scrollView:UIScrollView!
     private let numOfPages=4
     private var str=String()
     private var str1=String()
     private var aa=Int()
+    private var nume=Int()
     var num=0
+    var zongjia = Int()
+    
     
     override func viewDidLoad() {
         
@@ -167,9 +170,9 @@ var chuanzhi = NSUserDefaults.standardUserDefaults()
                     self.weiyuL.text = status.data?.roombathroom
                     self.mianjiL.text = status.data?.roomacreage
                     self.price=(status.data?.roomprice)!
-                    let zongjia=Int(self.price)!*self.roomnum
+                    self.zongjia=Int(self.price)!*self.roomnum
                     
-                    self.zongjiaL.text="¥"+String(zongjia)
+                    self.zongjiaL.text="¥"+String(self.zongjia)
                     self.name=(status.data?.roomname)!
 
                     self.count = (status.data?.count)!
@@ -216,14 +219,14 @@ var chuanzhi = NSUserDefaults.standardUserDefaults()
     //预订按钮
     func yuding(){
         
-        let reserve = ReserveViewController(nibName: "ReserveViewController", bundle: nil)
+        let reserve = ReserveViewController()
         reserve.name=name
         reserve.bedsize=bedsize
         reserve.network=network
         reserve.repast=repast
         reserve.startTime=startTime
         reserve.endTime=endTime
-        reserve.price = zongjiaL.text!
+        reserve.price = String(zongjia)
         
         self.navigationController?.pushViewController(reserve, animated: true)
         
@@ -247,6 +250,7 @@ var chuanzhi = NSUserDefaults.standardUserDefaults()
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let riliVC = CalendarFirstViewController()
         riliVC.str="1"
+        nume=2
         self.navigationController?.pushViewController(riliVC, animated: true)
         
     }
@@ -263,8 +267,7 @@ var chuanzhi = NSUserDefaults.standardUserDefaults()
         self.tabBarController?.tabBar.hidden=true
 
         chuanzhi = NSUserDefaults.standardUserDefaults()
-        var a = Int()
-        a=chuanzhi.integerForKey("a")
+       
         
         if startTime=="" {
             let date = NSDate()
@@ -276,13 +279,11 @@ var chuanzhi = NSUserDefaults.standardUserDefaults()
             let timeFormatter1 = NSDateFormatter()
             timeFormatter1.dateFormat = "yyyy-MM-dd"
             endTime = timeFormatter.stringFromDate(date1) as String
-        }else if a==1{
+        }else if nume==2{
         startTime = chuanzhi.stringForKey("startTime")!
         endTime = chuanzhi.stringForKey("endTime")!
         roomnum = chuanzhi.integerForKey("num")
             
-        }else if aa==2{
-            startTime=str
         }
         
         tableview.reloadData()

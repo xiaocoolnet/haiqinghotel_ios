@@ -10,30 +10,7 @@ import UIKit
 import Alamofire
 import MBProgressHUD
 class ReserveViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
-    @IBOutlet weak var roomname = UILabel()
 
-    @IBOutlet weak var bed = UILabel()
-    
-    @IBOutlet weak var wifi = UILabel()
-    
-    @IBOutlet weak var food = UILabel()
-    
-    @IBOutlet weak var foodIV: UIImageView!
-    
- 
-    @IBOutlet weak var tableView: UITableView!
-    
-    @IBOutlet weak var nameTF: UITextField!
-    
-    @IBOutlet weak var phoneTF: UITextField!
-    
-    @IBOutlet weak var beizhuTV: UITextView!
-    
-    
-    @IBOutlet weak var roomNumL: UILabel!
-    
-    @IBOutlet weak var getToL: UILabel!
-    
     internal var name=String()
     internal var bedsize=String()
     internal var repast=String()
@@ -41,14 +18,22 @@ class ReserveViewController: UIViewController,UITableViewDataSource,UITableViewD
     internal var startTime=String()
     internal var endTime=String()
     internal var price=String()
-    
+    private var tableView0=UITableView()
     private var tableView1=UITableView()
     private var tableView2=UITableView()
+ 
     
     private var numArray=NSArray()
     private var timeArray=NSArray()
     private var button=UIButton()
     private var zongjiaL=UILabel()
+    private var peoplenameTF=UITextField()
+    private var peoplenumTF=UITextField()
+    private var phoneTF=UITextField()
+    private var remarkTV=UITextView()
+    private var roomnumL=UILabel()
+    private var arrivetimeL=UILabel()
+    private var Zprice=Int()
     var startzheng=Int()
     var endzheng=Int()
     
@@ -58,20 +43,45 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.backItem?.title=""
 
-        tableView.delegate=self
-        tableView.dataSource=self
-        tableView.scrollEnabled=false
-        roomname?.text=name
-        bed?.text=bedsize
-        wifi?.text=network
+        let view = UIView(frame: CGRectMake(0,64,self.view.bounds.width,60))
+        view.backgroundColor=bkColor
+        let nameL = UILabel(frame: CGRectMake(10,10,self.view.bounds.width-20,20))
+        nameL.text=name
+        nameL.textColor=textColor
+        view.addSubview(nameL)
+        let bedL = UILabel(frame: CGRectMake(10,30,self.view.bounds.width/4,20))
+        bedL.textColor=textColor
+        bedL.text=bedsize
+        view.addSubview(bedL)
+        let wifiL = UILabel(frame: CGRectMake(10+self.view.bounds.width/4,30,self.view.bounds.width/4,20))
+        wifiL.text=network
+        wifiL.textColor=textColor
+        view.addSubview(wifiL)
+        let foodL = UILabel(frame: CGRectMake(10+self.view.bounds.width/2,30,self.view.bounds.width/4,20))
+        foodL.textColor=textColor
         
+        foodL.textAlignment = .Right
+        view.addSubview(foodL)
+        let foodIV = UIImageView(frame: CGRectMake(10+(self.view.bounds.width/4*3),30,20,20))
+        view.addSubview(foodIV)
         if repast=="1" {
-            food?.text="含早餐"
+            foodL.text="含早餐"
             foodIV.image=UIImage(named: "ic_zaocan-1")
         }else{
-            food?.text="不含早餐"
+            foodL.text="不含早餐"
             foodIV.image=UIImage(named: "ic_zaocan")
         }
+
+        tableView0=UITableView(frame: CGRectMake(0, 64, self.view.bounds.width, self.view.bounds.height-64), style: .Grouped)
+        tableView0.delegate=self
+        tableView0.dataSource=self
+        tableView0.scrollEnabled=true
+        tableView0.backgroundColor=bkColor
+
+        tableView0.tableHeaderView=view
+
+        self.view.addSubview(tableView0)
+        
         numArray=["1间","2间","3间","4间","5间","6间"]
         timeArray=["18:00之前","20:00之前","23:59之前","次日凌晨六点之前"]
         self.automaticallyAdjustsScrollViewInsets=false
@@ -88,13 +98,12 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
         yudingBT.setTitle("立即预订", forState: UIControlState.Normal)
         yudingBT.addTarget(self, action: #selector(nowYuding), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(yudingBT)
-        
-        beizhuTV.layer.borderWidth=1
-        beizhuTV.layer.borderColor=UIColor.grayColor().CGColor
-        beizhuTV.layer.masksToBounds=true
-        beizhuTV.layer.cornerRadius=6
-        
-        //时间转时间戳
+
+        //添加手势，点击空白处收回键盘
+        let tap = UITapGestureRecognizer(target: self, action: #selector(viewtap))
+        tap.cancelsTouchesInView=false
+        self.view.addGestureRecognizer(tap)
+       // 时间转时间戳
          let dateformate = NSDateFormatter()
          dateformate.dateFormat = "yyyy-MM-dd"
          let date = dateformate.dateFromString(startTime)
@@ -108,17 +117,18 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
         endzheng = Int(time1)
         print(endzheng)
    
-        self.navigationItem.backBarButtonItem?.action=#selector(back)
+
         
     }
-    func back()
-    {
-        NSNotificationCenter.defaultCenter().postNotificationName("backchuanzhi", object: startTime)
-        NSNotificationCenter.defaultCenter().postNotificationName("backchuanzhi", object: endTime)
-        self.navigationController?.popViewControllerAnimated(true)
+    func numberOfSectionsInTableView(tableView: UITableView) -> Int{
+        if tableView==tableView0 {
+            return 2
+        }else{
+            return 1
+        }
     }
-   
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
+        
         if tableView==tableView1 {
             return numArray.count
         }
@@ -126,9 +136,13 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
             return timeArray.count
         }
         else{
-            return 3
+            
+            if section==0{
+                return 3
+            }else{
+                return 4
+            }
         }
-        
         
     }
     
@@ -147,41 +161,121 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
             
         }
         else{
-        let cell = UITableViewCell()
+            if indexPath.section==0 {
+                
+                let identi = "cell0"
+                
+        let cell = UITableViewCell(style: .Default, reuseIdentifier: identi)
         cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
         
+                
+             
+                
                switch indexPath.row {
+              
         case 0:
             
             cell.textLabel?.text=startTime+"入住"+endTime+"离店"
+            cell.textLabel?.textColor=textColor
+                tableView0.rowHeight=44
+                
+                
         case 1:
             cell.textLabel?.text="房间数"
-                cell.textLabel?.textColor=UIColor.grayColor()
+            cell.textLabel?.textColor=textColor
+                tableView0.rowHeight=44
+                roomnumL = UILabel(frame: CGRectMake(self.view.bounds.width/2,10,self.view.bounds.width/2-30,24))
+                cell.addSubview(roomnumL)
         default:
             
-             cell.textLabel?.text="预计到达"
-                cell.textLabel?.textColor=UIColor.grayColor()
+            cell.textLabel?.text="预计到达"
+            cell.textLabel?.textColor=textColor
+                tableView0.rowHeight=44
+                arrivetimeL = UILabel(frame: CGRectMake(self.view.bounds.width/2,10,self.view.bounds.width/2-30,24))
+                cell.addSubview(arrivetimeL)
             }
-            return cell}
+                return cell
+            }else
+            {
+                let identifier = "cell"
+                let cell = UITableViewCell(style: .Default, reuseIdentifier: identifier)
+                if indexPath.row==0 {
+                    cell.textLabel?.text="预定人姓名"
+                    cell.textLabel?.textColor=textColor
+                    tableView0.rowHeight=44
+                    peoplenameTF = UITextField(frame: CGRectMake(self.view.bounds.width-200,5,200,44-10))
+                    peoplenameTF.clearButtonMode=UITextFieldViewMode.Always
+                    peoplenameTF.textAlignment = .Right
+                    cell.addSubview(peoplenameTF)
+                }else if indexPath.row==1 {
+                    cell.textLabel?.text="入住人数"
+                    cell.textLabel?.textColor=textColor
+                    tableView0.rowHeight=44
+                    peoplenumTF = UITextField(frame: CGRectMake(self.view.bounds.width-200,5,200,44-10))
+                    peoplenumTF.clearButtonMode=UITextFieldViewMode.Always
+                    peoplenumTF.textAlignment = .Right
+                    cell.addSubview(peoplenumTF)
+
+                }else if indexPath.row==2 {
+                    cell.textLabel?.text="预定人手机号"
+                    cell.textLabel?.textColor=textColor
+                    tableView0.rowHeight=44
+                    phoneTF = UITextField(frame: CGRectMake(self.view.bounds.width-200,5,200,44-10))
+                    phoneTF.clearButtonMode=UITextFieldViewMode.Always
+                    phoneTF.textAlignment = .Right
+                    cell.addSubview(phoneTF)
+
+                }else if indexPath.row==3 {
+                    cell.textLabel?.text="备注"
+                    cell.textLabel?.textColor=textColor
+                    tableView0.rowHeight=80
+                    remarkTV = UITextView(frame: CGRectMake(60, 10, self.view.bounds.width-70, 50))
+                    remarkTV.layer.borderColor=textColor.CGColor
+                    remarkTV.layer.borderWidth=1
+                    remarkTV.layer.cornerRadius=6
+                    remarkTV.layer.masksToBounds=true
+                    cell.addSubview(remarkTV)
+
+                }
+
+                return cell
+            }
+
+        }
     }
+    
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         if tableView==tableView1 {
-            roomNumL.text=numArray.objectAtIndex(indexPath.row) as? String
             
+            roomnumL.text = numArray.objectAtIndex(indexPath.row)as? String
+            if roomnumL.text=="1间" {
+                 Zprice=Int(price)!
+            }else if roomnumL.text=="2间"{
+                Zprice=Int(price)!*2
+            }else if roomnumL.text=="3间"{
+                Zprice=Int(price)!*3
+            }else if roomnumL.text=="4间"{
+                Zprice=Int(price)!*4
+            }else if roomnumL.text=="5间"{
+                Zprice=Int(price)!*5
+            }else if roomnumL.text=="6间"{
+                Zprice=Int(price)!*6
+            }
             
-            
-            
-            
-            
+            zongjiaL.text=String(Zprice)
+
             button.frame=CGRectMake(0, 0, 0, 0)
             tableView.frame=CGRectMake(0, 0, 0, 0)
         }
         else if tableView==tableView2{
-            getToL.text=timeArray.objectAtIndex(indexPath.row) as? String
+            arrivetimeL.text=timeArray.objectAtIndex(indexPath.row) as? String
             button.frame=CGRectMake(0, 0, 0, 0)
             tableView.frame=CGRectMake(0, 0, 0, 0)
         }
         else{
+            if indexPath.section==0 {
+                
+        
         switch indexPath.row {
         case 0:
             break
@@ -202,10 +296,10 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
             button.backgroundColor=UIColor.init(red: 200/255, green: 200/255, blue: 200/255, alpha: 0.5)
             self.view.addSubview(button)
             self.view.addSubview(tableView2)
-            }}
+                }}}
     }
     func PandKong()->Bool{
-        if(roomNumL.text!.isEmpty){
+        if(roomnumL.text!.isEmpty){
             let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             hud.mode = MBProgressHUDMode.Text
             hud.labelText = "请选择房间数量"
@@ -214,7 +308,7 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
             hud.hide(true, afterDelay: 1)
             return false
         }
-        if(getToL.text!.isEmpty){
+        if(arrivetimeL.text!.isEmpty){
             let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             hud.mode = MBProgressHUDMode.Text
             hud.labelText = "请选择到达时间"
@@ -223,7 +317,7 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
             hud.hide(true, afterDelay: 1)
             return false
         }
-        if(nameTF.text!.isEmpty){
+        if(peoplenameTF.text!.isEmpty){
             let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             hud.mode = MBProgressHUDMode.Text
             hud.labelText = "请输入联系人"
@@ -232,6 +326,16 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
             hud.hide(true, afterDelay: 1)
             return false
         }
+        if(peoplenumTF.text!.isEmpty){
+            let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            hud.mode = MBProgressHUDMode.Text
+            hud.labelText = "请输入入住人数"
+            hud.margin = 10.0
+            hud.removeFromSuperViewOnHide = true
+            hud.hide(true, afterDelay: 1)
+            return false
+        }
+
         if(phoneTF.text!.isEmpty){
             let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             hud.mode = MBProgressHUDMode.Text
@@ -256,11 +360,13 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
             "goodsid":"12",
             "begintime":startzheng,
             "endtime":endzheng,
-            "arrivetime":self.getToL.text!,
-            "goodnum":self.roomNumL.text!,
-            "peoplenum":"",
+            "arrivetime":arrivetimeL.text!,
+            "goodnum":roomnumL.text!,
+            "peoplenum":peoplenumTF.text!,
             "mobile":self.phoneTF.text!,
-            "remark":self.beizhuTV.text!
+            "remark":self.remarkTV.text!,
+            "money":zongjiaL.text!,
+            "peoplename":peoplenameTF.text!
             
             
         ]
@@ -295,8 +401,8 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
                     hud.removeFromSuperViewOnHide = true
                     hud.hide(true, afterDelay: 3)
 
-                    let orderVC=HotelOrderViewController()
-                    self.navigationController?.pushViewController(orderVC, animated: true)
+//                    let orderVC=HotelOrderViewController()
+//                    self.navigationController?.pushViewController(orderVC, animated: true)
                     
                 }
             }
@@ -309,5 +415,11 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
         self.tabBarController?.tabBar.hidden=true
         
     }
-   
+    //隐藏键盘的方法
+    func viewtap(){
+        self.view.endEditing(true)
+        //
+    }
+
+
 }

@@ -43,6 +43,14 @@ class FoodOrderInfo: JSONJoy{
     var foodordermoney:String?
     var foodorderremarks:String?
     var foodorderrepasttime:String?
+    var foodroomname : String?
+    var foodpeoplenum:String?
+    var  username : String?
+    var foodmoney : String?
+    var foodpeoplename : String?
+    var  foodordernum  : String?
+    
+    
     
     
     
@@ -53,7 +61,7 @@ class FoodOrderInfo: JSONJoy{
         
         foodordergid = decoder["gid"].string
         foodordername = decoder["name"].string
-        foodorderid = decoder["rid"].string
+        foodorderid = decoder["id"].string
         foodordertime = decoder["time"].string
         foodorderstate = decoder["state"].string
         foodordertype = decoder["type"].string
@@ -64,7 +72,12 @@ class FoodOrderInfo: JSONJoy{
         foodordermoney = decoder["money"].string
         foodorderremarks = decoder["remarks"].string
         foodorderrepasttime = decoder["repasttime"].string
-        
+        foodpeoplenum=decoder["peoplenumber"].string
+        foodroomname=decoder["roomname"].string
+        username=decoder["username"].string
+        foodmoney=decoder["money"].string
+        foodpeoplename=decoder["peoplename"].string
+        foodordernum=decoder["order_num"].string
     }
     
 }

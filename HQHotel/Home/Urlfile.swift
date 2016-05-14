@@ -17,4 +17,6 @@ var imageUrl = "http://hq.xiaocool.net"
 var bkColor = UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
 
 var textColor = UIColor.init(red: 57/255, green: 58/255, blue: 59/255, alpha: 1)
+
+var BTColor = UIColor.init(red: 253/255, green: 139/255, blue: 61/255, alpha: 1)
         

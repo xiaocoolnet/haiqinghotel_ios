@@ -149,7 +149,9 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
         print("已加入收藏")
     }
     func yuding(){
-        print("yuding")
+        let mallVC = mallOrderViewController()
+        self.navigationController?.pushViewController(mallVC, animated: true)
+        
     }
     func gouwuche(){
         print("gouwuche")

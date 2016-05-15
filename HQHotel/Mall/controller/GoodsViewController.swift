@@ -14,7 +14,7 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
     private var tableview=UITableView()
     private let numOfPages=4
     var num=0
-    
+    internal var price=String()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -70,7 +70,7 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
             cell.addSubview(lable)
             let priceL = UILabel(frame: CGRectMake(5,60,self.view.bounds.width/2,25))
             priceL.textColor=textColor
-            priceL.text="¥7898"
+            priceL.text=price
             cell.addSubview(priceL)
             let loveBT = UIButton(frame: CGRectMake(self.view.bounds.width-40,50,40,20))
             loveBT.setImage(UIImage(named: "爱心"), forState: UIControlState.Normal)
@@ -150,6 +150,7 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
     }
     func yuding(){
         let mallVC = mallOrderViewController()
+        mallVC.price=Int(price)!
         self.navigationController?.pushViewController(mallVC, animated: true)
         
     }

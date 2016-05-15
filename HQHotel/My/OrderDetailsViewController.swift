@@ -19,6 +19,7 @@ class OrderDetailsViewController: UIViewController ,UITableViewDelegate,UITableV
     internal var ordernum=String()
     internal var orderohone=String()
     internal var ordermark=String()
+    internal var orderroomnum=String()
     internal var type=Int()
     
     
@@ -43,7 +44,7 @@ class OrderDetailsViewController: UIViewController ,UITableViewDelegate,UITableV
             tableview1.scrollEnabled=false
             self.view.addSubview(tableview1)
         }else if type==2{
-            tableview2=UITableView(frame: CGRectMake(0, 58, self.view.bounds.width, 300), style: UITableViewStyle.Grouped)
+            tableview2=UITableView(frame: CGRectMake(0, 58, self.view.bounds.width, 340), style: UITableViewStyle.Grouped)
             tableview2.delegate=self
             tableview2.dataSource=self
             tableview2.backgroundColor=bkColor
@@ -58,13 +59,22 @@ class OrderDetailsViewController: UIViewController ,UITableViewDelegate,UITableV
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     
-    {
+    {if tableView==tableview2{
+        if section==0 {
+            return 1
+        }else if section==1{
+            return 4
+        }else{
+            return 2
+        }}
+    else{
         if section==0 {
             return 1
         }else if section==1{
             return 3
         }else{
             return 2
+        }
         }
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
@@ -128,7 +138,7 @@ class OrderDetailsViewController: UIViewController ,UITableViewDelegate,UITableV
                 lable.text=orderid
             }else if indexPath.section==1 {
                 if indexPath.row==0 {
-                    cell.textLabel?.text="类型"
+                    cell.textLabel?.text="名称"
                     lable.text=ordername
                 }else if indexPath.row==1{
                     cell.textLabel?.text="预定人"
@@ -137,6 +147,10 @@ class OrderDetailsViewController: UIViewController ,UITableViewDelegate,UITableV
                 else if indexPath.row==2{
                     cell.textLabel?.text="预定数量"
                     lable.text=ordernum
+                    
+                }else if indexPath.row==3{
+                    cell.textLabel?.text="房间号"
+                    lable.text=orderroomnum
                 }
             }else
             {

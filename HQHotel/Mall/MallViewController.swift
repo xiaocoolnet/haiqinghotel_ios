@@ -178,6 +178,7 @@ class MallViewController: UIViewController,UICollectionViewDelegate ,UICollectio
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
         let goodsVC = GoodsViewController()
+        goodsVC.price=self.price
         self.navigationController?.pushViewController(goodsVC, animated: true)
         
     }

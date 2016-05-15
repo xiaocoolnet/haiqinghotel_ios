@@ -169,6 +169,10 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
             cell.timeL?.text=str
             cell.shuliangL?.text=hotelInfo.ordernumber
             cell.zongjiaL?.text=hotelInfo.orderprice
+            let image = hotelInfo.orderpicture
+            let IVurl = imageUrl+image!
+            print(IVurl)
+            cell.imageview!.sd_setImageWithURL(NSURL(string: IVurl ),placeholderImage: UIImage(named: "kb3.png"))
             return cell
         }else {
             
@@ -189,6 +193,10 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
             cell.timeL?.text=str
             cell.numL?.text=foodInfo.foodordernumber
             cell.priceL?.text=foodInfo.foodorderprice
+            let image = foodInfo.foodorderpicture
+            let IVurl = imageUrl+image!
+            print(IVurl)
+            cell.icon.sd_setImageWithURL(NSURL(string: IVurl ),placeholderImage: UIImage(named: "kb3.png"))
             return cell
             
             
@@ -222,6 +230,7 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
             detailsVC.orderpeople=foodInfo.foodpeoplename!
             detailsVC.ordernum=foodInfo.foodordernumber!
             detailsVC.orderohone=foodInfo.foodordermobile!
+            detailsVC.orderroomnum=foodInfo.foodroomname!
             if foodInfo.foodorderremarks==nil {
                 detailsVC.ordermark="无"
             }else {

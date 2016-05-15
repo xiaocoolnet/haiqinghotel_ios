@@ -7,7 +7,8 @@
 //
 
 import UIKit
-
+import Alamofire
+import MBProgressHUD
 class mallOrderViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
 
     private var tableView=UITableView()
@@ -17,6 +18,11 @@ class mallOrderViewController: UIViewController ,UITableViewDelegate,UITableView
     private var numL=UILabel()
     private var num=Int()
     private var textView=UITextView()
+    private var nameTF=UITextField()
+    private var roomnumTF=UITextField()
+    private var phoneTF=UITextField()
+    internal var price=Int()
+    private var pricenum=Int()
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -40,20 +46,26 @@ class mallOrderViewController: UIViewController ,UITableViewDelegate,UITableView
         tableView.dataSource=self
         tableView.backgroundColor=bkColor
         self.view.addSubview(tableView)
-        let price = UILabel(frame: CGRectMake(0,self.view.bounds.height-40,self.view.bounds.width/2,40))
-        price.backgroundColor=UIColor.whiteColor()
-        price.text="  总价："
-        self.view.addSubview(price)
+        let pricell = UILabel(frame: CGRectMake(0,self.view.bounds.height-40,self.view.bounds.width/2,40))
+        pricell.backgroundColor=UIColor.whiteColor()
+        pricell.text="  总价："
+        self.view.addSubview(pricell)
         zongjiaL = UILabel(frame: CGRectMake(70,self.view.bounds.height-40,self.view.bounds.width/2-70,40))
         zongjiaL.backgroundColor=UIColor.whiteColor()
         zongjiaL.textColor=UIColor.init(red: 39/255, green: 178/255, blue: 252/255, alpha: 1)
-        
+        zongjiaL.text=String(price)
         self.view.addSubview(zongjiaL)
         let yudingBT = UIButton(frame: CGRectMake(self.view.bounds.width/2,self.view.bounds.height-40,self.view.bounds.width/2,40))
         yudingBT.backgroundColor=UIColor.init(red: 250/255, green: 140/255, blue: 61/255, alpha: 1)
         yudingBT.setTitle("立即预订", forState: UIControlState.Normal)
         yudingBT.addTarget(self, action: #selector(yuding), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(yudingBT)
+
+        //添加手势，点击空白处收回键盘
+        let tap = UITapGestureRecognizer(target: self, action: #selector(viewtap))
+        tap.cancelsTouchesInView=false
+        self.view.addGestureRecognizer(tap)
+        
 
         
     }
@@ -105,12 +117,27 @@ class mallOrderViewController: UIViewController ,UITableViewDelegate,UITableView
 
         }else if indexPath.row==1 {
             cell.textLabel?.text="联系人"
+            nameTF = UITextField(frame: CGRectMake(self.view.bounds.width-200,5,200,44-10))
+            nameTF.clearButtonMode=UITextFieldViewMode.Always
+            nameTF.textAlignment = .Right
+            nameTF.textColor=UIColor.init(red: 57/255, green: 58/255, blue: 59/255, alpha: 1)
+            cell.addSubview(nameTF)
             tableView.rowHeight=44
         }else if indexPath.row==2{
             cell.textLabel?.text="房间号"
+            roomnumTF = UITextField(frame: CGRectMake(self.view.bounds.width-200,5,200,44-10))
+            roomnumTF.clearButtonMode=UITextFieldViewMode.Always
+            roomnumTF.textAlignment = .Right
+            roomnumTF.textColor=UIColor.init(red: 57/255, green: 58/255, blue: 59/255, alpha: 1)
+            cell.addSubview(roomnumTF)
             tableView.rowHeight=44
         }else if indexPath.row==3{
             cell.textLabel?.text="手机号"
+            phoneTF = UITextField(frame: CGRectMake(self.view.bounds.width-200,5,200,44-10))
+            phoneTF.clearButtonMode=UITextFieldViewMode.Always
+            phoneTF.textAlignment = .Right
+            phoneTF.textColor=UIColor.init(red: 57/255, green: 58/255, blue: 59/255, alpha: 1)
+            cell.addSubview(phoneTF)
             tableView.rowHeight=44
         }else{
             cell.textLabel?.text="备注"
@@ -137,24 +164,116 @@ class mallOrderViewController: UIViewController ,UITableViewDelegate,UITableView
             delBT.userInteractionEnabled=true
         }
         numL.text = String(num)
-//        pricenum = Int(price)!*num
-//        priceZ.text=String(pricenum)
-//        zongjiaL.text=String(pricenum)
+        pricenum = price*num
+
+        zongjiaL.text=String(pricenum)
         
     }
     func addNum(){
         print("加")
         num+=1
         numL.text = String(num)
-//        pricenum = Int(price)!*num
-//        priceZ.text=String(pricenum)
-//        zongjiaL.text=String(pricenum)
-//        
+        pricenum = price*num
+
+        zongjiaL.text=String(pricenum)
+
     }
 
+    func PandKong()->Bool{
+        if(nameTF.text!.isEmpty){
+            let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            hud.mode = MBProgressHUDMode.Text
+            hud.labelText = "请输入联系人"
+            hud.margin = 10.0
+            hud.removeFromSuperViewOnHide = true
+            hud.hide(true, afterDelay: 1)
+            return false
+        }
+        if(phoneTF.text!.isEmpty){
+            let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            hud.mode = MBProgressHUDMode.Text
+            hud.labelText = "请输入手机号"
+            hud.margin = 10.0
+            hud.removeFromSuperViewOnHide = true
+            hud.hide(true, afterDelay: 1)
+            return false
+        }
+        if(roomnumTF.text!.isEmpty){
+            let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+            hud.mode = MBProgressHUDMode.Text
+            hud.labelText = "请输入房间号"
+            hud.margin = 10.0
+            hud.removeFromSuperViewOnHide = true
+            hud.hide(true, afterDelay: 1)
+            return false
+        }
+        
+        
+        return true
+    }
+    
+    
     func yuding(){
         
+        if PandKong()==true{
+            
+            let url = apiUrl+"bookingshopping"
+            let param = [
+                "userid":578,
+                "goodsid":"12",
+                "roomname":roomnumTF.text!,
+                "peoplename":nameTF.text!,
+                "goodnum":numL.text!,
+                "mobile":phoneTF.text!,
+                "remark":textView.text!,
+                "money":zongjiaL.text!
+                
+                
+            ]
+            print(url)
+            Alamofire.request(.GET, url, parameters: param as? [String : NSObject]).response { request, response, json, error in
+                if(error != nil){
+                }
+                else{
+                    print("request是")
+                    print(request!)
+                    print("====================")
+                    let status = Httpresult(JSONDecoder(json!))
+                    print(JSONDecoder(json!))
+                    print("状态是")
+                    print(status.status)
+                    if(status.status == "error"){
+                        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                        hud.mode = MBProgressHUDMode.Text;
+                        hud.labelText = status.errorData
+                        hud.margin = 10.0
+                        hud.removeFromSuperViewOnHide = true
+                        hud.hide(true, afterDelay: 3)
+                    }
+                    if(status.status == "success"){
+                        let userid = NSUserDefaults.standardUserDefaults()
+                        userid.setValue(status.data?.id, forKey: "userid")
+                        print("预定成功")
+                        let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                        hud.mode = MBProgressHUDMode.Text
+                        hud.labelText = "恭喜您预定成功"
+                        hud.margin = 10.0
+                        hud.removeFromSuperViewOnHide = true
+                        hud.hide(true, afterDelay: 3)
+                        
+                        
+                        
+                    }
+                }
+            }
+        }
     }
+    //隐藏键盘的方法
+    func viewtap(){
+        self.view.endEditing(true)
+        
+    }
+
     override func viewWillAppear(animated: Bool) {
         self.tabBarController?.tabBar.hidden=true
     }

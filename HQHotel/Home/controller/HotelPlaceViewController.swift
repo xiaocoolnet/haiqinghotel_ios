@@ -22,6 +22,7 @@ class HotelPlaceViewController: UIViewController {
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.backItem?.title=""
 
+        self.navigationItem.title="位置"
         
         self.navigationItem.rightBarButtonItem = UIBarButtonItem(title: "导航", style: UIBarButtonItemStyle.Plain, target: self, action: #selector(daohang))
         self.navigationItem
@@ -60,6 +61,8 @@ class HotelPlaceViewController: UIViewController {
         self.navigationController?.navigationBarHidden=false
         self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
         self.tabBarController?.tabBar.hidden=true
+        
+        
     }
     //视图将要消失的时候显示导航栏
     override func viewWillDisappear(animated: Bool) {

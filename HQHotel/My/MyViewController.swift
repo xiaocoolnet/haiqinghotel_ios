@@ -32,14 +32,25 @@ class MyViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
         iconImage.frame=CGRectMake(0, 0, self.view.bounds.width/4, self.view.bounds.width/4)
         iconImage.center=topView.center
         iconImage.image=UIImage(named: "ic_touxiang")
+        let nameL = UILabel(frame: CGRectMake(0,topView_h-(topView_h/2-self.view.bounds.width/8),self.view.bounds.width,20))
+        nameL.text="海情"
+        nameL.textAlignment = .Center
+        nameL.textColor=UIColor.whiteColor()
+        topView.addSubview(nameL)
+        
         //设置按钮
         setupBT.frame=CGRectMake(topView.bounds.width-40, 30, 30, 30)
         setupBT.setImage(UIImage(named: "ic_shezhi"), forState: UIControlState.Normal)
+        setupBT.addTarget(self, action: #selector(setUp), forControlEvents: .TouchUpInside)
         // 循环创建三个按钮
         for item in 0...2 {
             let button_w = self.view.bounds.width/3
-       
+
+            let view = UIView(frame: CGRectMake(0+CGFloat(item)*button_w,topView_h,button_w-1,40))
+            view.backgroundColor=UIColor.whiteColor()
+            
             let button = UIButton(frame: CGRectMake(0+CGFloat(item)*button_w,topView_h,button_w,40))
+            
             //按钮图标
             let imageV = UIImageView(frame: CGRectMake(20+button_w*CGFloat(item), topView_h+15, 20, 18))
             
@@ -67,6 +78,7 @@ class MyViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
             default:
                 break
             }
+            self.view.addSubview(view)
             self.view.addSubview(xiangqingL)
             self.view.addSubview(imageV)
             self.view.addSubview(button)
@@ -137,6 +149,13 @@ class MyViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
             self.navigationController?.pushViewController(markVC, animated: true)
             
         }
+    }
+    //设置按钮
+    func setUp(){
+        
+        let setVC = SetUpViewController()
+        self.navigationController?.pushViewController(setVC, animated: true)
+        
     }
     override func viewWillAppear(animated: Bool) {
         self.navigationController?.navigationBar.hidden=true

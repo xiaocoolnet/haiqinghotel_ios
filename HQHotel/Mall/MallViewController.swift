@@ -30,9 +30,8 @@ class MallViewController: UIViewController,UICollectionViewDelegate ,UICollectio
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.backItem?.title=""
-
+        self.title="商城"
+        self.view.backgroundColor=bkColor
         //searchbar
         searchbar=UISearchBar(frame: CGRectMake(20, 70, self.view.bounds.width-40, 30))
         searchbar.searchBarStyle=UISearchBarStyle.Minimal
@@ -92,54 +91,7 @@ class MallViewController: UIViewController,UICollectionViewDelegate ,UICollectio
             }
         }
     }
-    //获取商品详情
-    func GetgoodDate(){
-        let url = apiUrl+"showcateringinfo"
         
-        let param = [
-            "id":12
-        ]
-        Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
-            if(error != nil){
-            }
-            else{
-                
-                let status = GoodsModel(JSONDecoder(json!))
-                print("状态是")
-                print(status.status)
-                if(status.status == "error"){
-                    let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-                    hud.mode = MBProgressHUDMode.Text;
-                    hud.labelText = status.errorData
-                    hud.margin = 10.0
-                    hud.removeFromSuperViewOnHide = true
-                    hud.hide(true, afterDelay: 1)
-                }
-                if(status.status == "success"){
-                    print("Success")
-                    
-                    
-                    self.id = (status.data?.goodid)!
-                    self.name = (status.data?.goodname)!
-                    self.price = (status.data?.goodprice)!
-                    self.oprice = (status.data?.goodoprice)!
-                    self.unit = (status.data?.goodunit)!
-                    self.descriptionn = (status.data?.gooddescription)!
-                    self.picture = (status.data?.goodpicture)!
-                    self.showid = (status.data?.goodshowid)!
-                    self.time = (status.data?.goodtime)!
-                    
-                    for item in 0..<self.count{
-                        self.photoSource = (status.data?.goodphotolist[item])!
-                        self.photoAry.addObject(self.photoSource)
-                        print(self.photoSource.photo)
-                    }
-                    
-                }
-            }
-        }
-    }
-    
 
     //组数
     func numberOfSectionsInCollectionView(collectionView: UICollectionView) -> Int {
@@ -157,11 +109,15 @@ class MallViewController: UIViewController,UICollectionViewDelegate ,UICollectio
         
         let shopInfo = shoppingSource.objectlist[indexPath.row]
         
-        cell.imageView.image=UIImage(named: "")
+        
         cell.nameL.text=shopInfo.shopname
-        cell.jianjieL.text=descriptionn
+//        cell.jianjieL.text=shopInfo.shop
         print(descriptionn)
-        cell.priceL.text=shopInfo.shopprice
+        cell.priceL.text="¥"+shopInfo.shopprice!+"/g"
+        let image = shopInfo.shoppicture
+        let IVurl = imageUrl+image!
+        print(IVurl)
+        cell.imageView.sd_setImageWithURL(NSURL(string: IVurl ),placeholderImage: UIImage(named: "kb3.png"))
         return cell
     }
     //每个cell的尺寸
@@ -177,8 +133,11 @@ class MallViewController: UIViewController,UICollectionViewDelegate ,UICollectio
     //cell的点击事件
 
     func collectionView(collectionView: UICollectionView, didSelectItemAtIndexPath indexPath: NSIndexPath) {
+        let shopInfo = shoppingSource.objectlist[indexPath.row]
         let goodsVC = GoodsViewController()
-        goodsVC.price=self.price
+        goodsVC.price=shopInfo.shopprice!
+        goodsVC.goodname=shopInfo.shopname!
+        goodsVC.goodid=shopInfo.shopid!
         self.navigationController?.pushViewController(goodsVC, animated: true)
         
     }
@@ -217,7 +176,7 @@ class MallViewController: UIViewController,UICollectionViewDelegate ,UICollectio
     }
     override func viewWillAppear(animated: Bool) {
         self.GetDate()
-        self.GetgoodDate()
+        
     }
 
    

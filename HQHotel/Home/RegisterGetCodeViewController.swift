@@ -29,11 +29,7 @@ class RegisterGetCodeViewController: UIViewController ,UIImagePickerControllerDe
     var timeNamal:NSTimer!
     var timeNow:NSTimer!
     var count:Int = 60
-    var alerView0:UIAlertView!
-    var alerView1:UIAlertView!
-    var alerView2:UIAlertView!
-    var alerView3:UIAlertView!
-    var alerView4:UIAlertView!
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -215,10 +211,12 @@ class RegisterGetCodeViewController: UIViewController ,UIImagePickerControllerDe
         let param = [
             "phone":self.phoneNumberText.text!,
             ]
+        
         Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
             if(error != nil){
             }
             else{
+                print(url)
             }
         }
     }

@@ -27,7 +27,7 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
         self.navigationController?.navigationBar.backItem?.title=""
         
          let appsArray:[String] = ["酒店订单","餐饮订单"]
-        let segment:UISegmentedControl = UISegmentedControl(items: appsArray)
+         segment = UISegmentedControl(items: appsArray)
          segment.frame = CGRectMake(0, 0, self.view.bounds.width/2, 30)
         segment.selectedSegmentIndex=0
          segmentChange(segment)
@@ -37,8 +37,13 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
 
         
         self.navigationItem.titleView=segment
+        self.navigationItem.leftBarButtonItem=UIBarButtonItem(title: "<", style: .Done, target: self, action: #selector(back))
         
         
+    }
+    func back(){
+        
+        self.tabBarController?.selectedIndex=3
     }
     
         func GetroomorderDate(){
@@ -250,6 +255,8 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
         
         self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
 
+        self.navigationController?.navigationBar.titleTextAttributes =
+            [NSForegroundColorAttributeName: UIColor.whiteColor()]
     }
     override func viewWillDisappear(animated: Bool) {
         self.tabBarController?.tabBar.hidden=false

@@ -12,12 +12,13 @@ import MBProgressHUD
 class ReserveViewController: UIViewController,UITableViewDataSource,UITableViewDelegate {
 
     internal var name=String()
-    internal var bedsize=String()
+    internal var bedsize1=String()
     internal var repast=String()
-    internal var network=String()
+    internal var network1=String()
     internal var startTime=String()
     internal var endTime=String()
     internal var price=String()
+    internal var roomnum=Int()
     private var tableView0=UITableView()
     private var tableView1=UITableView()
     private var tableView2=UITableView()
@@ -40,29 +41,34 @@ class ReserveViewController: UIViewController,UITableViewDataSource,UITableViewD
     override func viewDidLoad() {
         super.viewDidLoad()
 self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
-        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.backItem?.title=""
-
+        
         let view = UIView(frame: CGRectMake(0,64,self.view.bounds.width,60))
         view.backgroundColor=bkColor
         let nameL = UILabel(frame: CGRectMake(10,10,self.view.bounds.width-20,20))
         nameL.text=name
         nameL.textColor=textColor
         view.addSubview(nameL)
-        let bedL = UILabel(frame: CGRectMake(10,30,self.view.bounds.width/4,20))
-        bedL.textColor=textColor
-        bedL.text=bedsize
-        view.addSubview(bedL)
-        let wifiL = UILabel(frame: CGRectMake(10+self.view.bounds.width/4,30,self.view.bounds.width/4,20))
-        wifiL.text=network
-        wifiL.textColor=textColor
-        view.addSubview(wifiL)
-        let foodL = UILabel(frame: CGRectMake(10+self.view.bounds.width/2,30,self.view.bounds.width/4,20))
-        foodL.textColor=textColor
+        let bedL = UILabel(frame: CGRectMake(10,30,self.view.bounds.width/6,20))
+        bedL.textColor=UIColor.grayColor()
+        bedL.font=UIFont.systemFontOfSize(14)
+        bedL.text=bedsize1
         
-        foodL.textAlignment = .Right
+        bedL.textAlignment = .Left
+        view.addSubview(bedL)
+        let wifiL = UILabel(frame: CGRectMake(10+self.view.bounds.width/6,30,self.view.bounds.width/5,20))
+        wifiL.text=network1
+        wifiL.font=UIFont.systemFontOfSize(14)
+        wifiL.textAlignment = .Center
+        
+        wifiL.textColor=UIColor.grayColor()
+        view.addSubview(wifiL)
+        let foodL = UILabel(frame: CGRectMake(10+self.view.bounds.width/6*2,30,self.view.bounds.width/4-20,20))
+        foodL.textColor=UIColor.grayColor()
+        foodL.font=UIFont.systemFontOfSize(14)
+        
+        foodL.textAlignment = .Center
         view.addSubview(foodL)
-        let foodIV = UIImageView(frame: CGRectMake(10+(self.view.bounds.width/4*3),30,20,20))
+        let foodIV = UIImageView(frame: CGRectMake(15+(self.view.bounds.width/6*3),32,15,15))
         view.addSubview(foodIV)
         if repast=="1" {
             foodL.text="含早餐"
@@ -91,11 +97,12 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
         self.view.addSubview(priceL)
         zongjiaL = UILabel(frame: CGRectMake(70,self.view.bounds.height-40,self.view.bounds.width/2-70,40))
         zongjiaL.backgroundColor=UIColor.whiteColor()
-        zongjiaL.text=price
+        zongjiaL.text="¥"+price
+        zongjiaL.textColor=blueColor
         self.view.addSubview(zongjiaL)
         let yudingBT = UIButton(frame: CGRectMake(self.view.bounds.width/2,self.view.bounds.height-40,self.view.bounds.width/2,40))
         yudingBT.backgroundColor=UIColor.init(red: 250/255, green: 140/255, blue: 61/255, alpha: 1)
-        yudingBT.setTitle("立即预订", forState: UIControlState.Normal)
+        yudingBT.setTitle("提交订单", forState: UIControlState.Normal)
         yudingBT.addTarget(self, action: #selector(nowYuding), forControlEvents: UIControlEvents.TouchUpInside)
         self.view.addSubview(yudingBT)
 
@@ -117,7 +124,6 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
         endzheng = Int(time1)
         print(endzheng)
    
-
         
     }
     func numberOfSectionsInTableView(tableView: UITableView) -> Int{
@@ -150,13 +156,14 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
         if tableView==tableView1 {
             let cell = UITableViewCell()
             cell.textLabel?.text=numArray.objectAtIndex(indexPath.row) as? String
-            
+            cell.selectionStyle = .None
             return cell
             
         }
         else if tableView==tableView2{
             let cell = UITableViewCell()
             cell.textLabel?.text=timeArray.objectAtIndex(indexPath.row) as? String
+            cell.selectionStyle = .None
             return cell
             
         }
@@ -167,15 +174,14 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
                 
         let cell = UITableViewCell(style: .Default, reuseIdentifier: identi)
         cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
-        
-                
-             
-                
+        cell.textLabel?.font=UIFont.systemFontOfSize(14)
+                cell.textLabel?.textColor=UIColor.grayColor()
+                cell.selectionStyle = .None
                switch indexPath.row {
               
         case 0:
             
-            cell.textLabel?.text=startTime+"入住"+endTime+"离店"
+            cell.textLabel?.text=startTime+"入住"+endTime+"离店,共"+String(self.roomnum)+"晚"
             cell.textLabel?.textColor=textColor
                 tableView0.rowHeight=44
                 
@@ -183,6 +189,7 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
         case 1:
             cell.textLabel?.text="房间数"
             cell.textLabel?.textColor=textColor
+            
                 tableView0.rowHeight=44
                 roomnumL = UILabel(frame: CGRectMake(self.view.bounds.width/2,10,self.view.bounds.width/2-30,24))
                 cell.addSubview(roomnumL)
@@ -199,6 +206,8 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
             {
                 let identifier = "cell"
                 let cell = UITableViewCell(style: .Default, reuseIdentifier: identifier)
+                cell.textLabel?.font=UIFont.systemFontOfSize(14)
+                cell.selectionStyle = .None
                 if indexPath.row==0 {
                     cell.textLabel?.text="预定人姓名"
                     cell.textLabel?.textColor=textColor
@@ -229,7 +238,7 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
                     cell.textLabel?.text="备注"
                     cell.textLabel?.textColor=textColor
                     tableView0.rowHeight=80
-                    remarkTV = UITextView(frame: CGRectMake(60, 10, self.view.bounds.width-70, 50))
+                    remarkTV = UITextView(frame: CGRectMake(60, 10, self.view.bounds.width-70, 60))
                     remarkTV.layer.borderColor=textColor.CGColor
                     remarkTV.layer.borderWidth=1
                     remarkTV.layer.cornerRadius=6
@@ -394,16 +403,27 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
                     let userid = NSUserDefaults.standardUserDefaults()
                     userid.setValue(status.data?.id, forKey: "userid")
                     print("预定成功")
-                    let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-                    hud.mode = MBProgressHUDMode.Text
-                    hud.labelText = "恭喜您预定成功"
-                    hud.margin = 10.0
-                    hud.removeFromSuperViewOnHide = true
-                    hud.hide(true, afterDelay: 3)
 
-//                    let orderVC=HotelOrderViewController()
-//                    self.navigationController?.pushViewController(orderVC, animated: true)
+
+                    let alertController=UIAlertController(title: "提示", message: "您已预定成功", preferredStyle: .ActionSheet)
+                    let cancelAction = UIAlertAction(title: "拨打酒店电话", style: .Cancel, handler: {
+                        action in
+
+                        UIApplication.sharedApplication().openURL(NSURL(string :"tel://0532-85087238")!)
                     
+                    })
+                    let okAction = UIAlertAction(title: "查看预订列表", style: .Default,
+                        handler: {
+                            action in
+                            let orderVC=HotelOrderViewController()
+                            
+                            self.navigationController?.pushViewController(orderVC, animated: true)
+                    })
+                    alertController.addAction(cancelAction)
+                    alertController.addAction(okAction)
+                    self.presentViewController(alertController, animated: true, completion: nil)
+                    
+
                 }
             }
         }
@@ -413,6 +433,10 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
         self.navigationController?.navigationBarHidden=false
         self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
         self.tabBarController?.tabBar.hidden=true
+            self.title="立即预订"
+            self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
+            self.navigationController?.navigationBar.backItem?.title=""
+
         
     }
     //隐藏键盘的方法

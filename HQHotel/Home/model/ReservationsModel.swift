@@ -35,6 +35,8 @@ class ReservationsInfo: JSONJoy{
     var name: String?
     var price:String?
     var picture:String?
+    var adtitle:String?
+    
     var type:Int?
     init() {
         
@@ -45,6 +47,7 @@ class ReservationsInfo: JSONJoy{
         price = decoder["price"].string
         picture = decoder["picture"].string
         type = decoder["type"].integer
+        adtitle=decoder["adtitle"].string
     }
     
 }

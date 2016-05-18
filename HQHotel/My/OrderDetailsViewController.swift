@@ -84,6 +84,7 @@ class OrderDetailsViewController: UIViewController ,UITableViewDelegate,UITableV
         let  identifier = "cell1"
         let  cell = UITableViewCell(style: .Default, reuseIdentifier: identifier)
         cell.textLabel?.textColor=textColor
+            cell.selectionStyle = .None
         let lable = UILabel(frame: CGRectMake(self.view.bounds.width/4,5,self.view.bounds.width/4*3,34))
         lable.text="订单号"
         lable.textColor=textColor
@@ -125,7 +126,7 @@ class OrderDetailsViewController: UIViewController ,UITableViewDelegate,UITableV
             
             let  identifier2 = "cell2"
             let  cell = UITableViewCell(style: .Default, reuseIdentifier: identifier2)
-        
+            cell.selectionStyle = .None
             cell.textLabel?.textColor=textColor
             let lable = UILabel(frame: CGRectMake(self.view.bounds.width/4,5,self.view.bounds.width/4*3,34))
             lable.text="订单号"

@@ -17,12 +17,18 @@ class CallMeViewController: UIViewController {
 
         self.view.backgroundColor=UIColor.whiteColor()
         for item in 1...3 {
-            let tubiao_h = 25+70*CGFloat(item)
+            let tubiao_h = 25+65*CGFloat(item)
+            if item==3 {
+                let tubiao_imageV = UIImageView(frame: CGRectMake(20, tubiao_h,  12, 20))
+                tubiao_imageV.image=UIImage(named: "callme-\(item)")
+                self.view.addSubview(tubiao_imageV)
+            }else{
+            let tubiao_imageV = UIImageView(frame: CGRectMake(20, tubiao_h,  20, 20))
+            tubiao_imageV.image=UIImage(named: "callme-\(item)")
             
-            let tubiao_imageV = UIImageView(frame: CGRectMake(20, tubiao_h,  20, 25))
-            tubiao_imageV.image=UIImage(named: "phone-\(item)")
             self.view.addSubview(tubiao_imageV)
-            let biaoti_Lable = UILabel(frame: CGRectMake(60, 30+70*CGFloat(item), 100, 20))
+            }
+            let biaoti_Lable = UILabel(frame: CGRectMake(50, 25+65*CGFloat(item), 100, 20))
             biaoti_Lable.textColor=UIColor.init(colorLiteralRed: 82/255, green: 82/255, blue: 82/255, alpha: 1)
             switch item {
             case 1:
@@ -33,9 +39,11 @@ class CallMeViewController: UIViewController {
                 biaoti_Lable.text="酒店地址"
             }
             self.view.addSubview(biaoti_Lable)
-            let neirong_lable = UILabel(frame: CGRectMake(20,30+70*CGFloat(item)+20,self.view.bounds.width,20))
-            neirong_lable.font=UIFont.boldSystemFontOfSize(16)
-            neirong_lable.textColor=UIColor.grayColor()
+            let neirong_lable = UILabel(frame: CGRectMake(20,30+65*CGFloat(item)+20,self.view.bounds.width,20))
+            
+            neirong_lable.font=UIFont.systemFontOfSize(14)
+            neirong_lable.textColor=textColor
+            
             switch item {
             case 1:
                 neirong_lable.text="0532-85087238"
@@ -58,6 +66,7 @@ class CallMeViewController: UIViewController {
         self.navigationController?.navigationBarHidden=false
         self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
         self.tabBarController?.tabBar.hidden=true
+        self.title="联系我们"
     }
 
     

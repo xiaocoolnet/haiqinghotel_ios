@@ -75,7 +75,7 @@
                 <outlet property="priceL" destination="zGa-a6-JGp" id="HrB-kb-swK"/>
                 <outlet property="timeL" destination="0Ko-en-eSb" id="7Gr-hN-soP"/>
             </connections>
-            <point key="canvasLocation" x="514" y="408"/>
+            <point key="canvasLocation" x="285" y="403"/>
         </tableViewCell>
     </objects>
 </document>

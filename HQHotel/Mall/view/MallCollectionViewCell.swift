@@ -27,21 +27,21 @@ class MallCollectionViewCell: UICollectionViewCell {
         super.init(frame: frame)
         
         imageView=UIImageView(frame: CGRectMake(0, 0, frame.width, frame.height-80))
-        imageView.image=UIImage(named: "海参.jpg")
-        nameL=UILabel(frame: CGRectMake(0, frame.height-80, frame.width, 30))
-        nameL.text="野生海参"
+        
+        nameL=UILabel(frame: CGRectMake(5, frame.height-80, frame.width, 30))
+        nameL.textColor=textColor
         nameL.adjustsFontSizeToFitWidth=true
         nameL.baselineAdjustment = UIBaselineAdjustment.AlignBaselines
-        jianjieL=UILabel(frame: CGRectMake(0, frame.height-50, frame.width, 10))
-        jianjieL.text="生鲜送礼佳品"
+        jianjieL=UILabel(frame: CGRectMake(5, frame.height-50, frame.width, 10))
+        jianjieL.textColor=textColor
         jianjieL.font=UIFont.systemFontOfSize(12)
         jianjieL.adjustsFontSizeToFitWidth=true
-        priceL=UILabel(frame: CGRectMake(0, frame.height-35, frame.width, 30))
-        priceL.text="100"
-        priceL.textColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
-        priceL.font=UIFont.systemFontOfSize(15)
-        priceL.adjustsFontSizeToFitWidth=true
+        priceL=UILabel(frame: CGRectMake(5, frame.height-35, frame.width, 30))
         
+        priceL.textColor=blueColor
+        priceL.font=UIFont.systemFontOfSize(17)
+        priceL.adjustsFontSizeToFitWidth=true
+        self.backgroundColor=UIColor.whiteColor()
         self.addSubview(imageView)
         self.addSubview(nameL)
         self.addSubview(jianjieL)

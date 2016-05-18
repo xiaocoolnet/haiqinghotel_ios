@@ -37,6 +37,7 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
     var count = Int()
     var photoSource = roomphotolistInfo()
     var photoAry = NSMutableArray()
+    internal var roomid = String()
     
     
     
@@ -69,7 +70,16 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
             zaocanIV.image=UIImage(named: "ic_zaocan")
         }
         
-       
+       menshijiaL.textAlignment = .Center
+        youhuijiaL.textAlignment = .Center
+        shangwangL.textColor=textColor
+        kezhuL.textColor=textColor
+        loucengL.textColor=textColor
+        chuangxingL.textColor=textColor
+        chuanghuL.textColor=textColor
+        weiyuL.textColor=textColor
+        mianjiL.textColor=textColor
+        
         self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
         super.viewDidLoad()
         self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
@@ -138,7 +148,7 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
         let url = apiUrl+"showbedroominfo"
 
         let param = [
-            "id":12
+            "id":roomid
         ]
         Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
             if(error != nil){
@@ -175,6 +185,9 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
                     self.zongjiaL.text="¥"+String(self.zongjia)
                     self.name=(status.data?.roomname)!
 
+                    self.title=status.data?.roomname!
+                    self.bedsize=(status.data?.roombedsize)!
+                    self.network=(status.data?.roomnetwork)!
                     self.count = (status.data?.count)!
                     for item in 0..<self.count{
                         self.photoSource = (status.data?.roomphotolist[item])!
@@ -216,24 +229,7 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
         
         pageC.currentPage = Int(scrollView.contentOffset.x/frame.width)
     }
-    //预订按钮
-    func yuding(){
-        
-        let reserve = ReserveViewController()
-        reserve.name=name
-        reserve.bedsize=bedsize
-        reserve.network=network
-        reserve.repast=repast
-        reserve.startTime=startTime
-        reserve.endTime=endTime
-        reserve.price = String(zongjia)
-        
-        self.navigationController?.pushViewController(reserve, animated: true)
-        
-        
-        
-    }
-     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
+        func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int
     {
         return 1
     }
@@ -242,11 +238,32 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
         let cell = UITableViewCell(style: UITableViewCellStyle.Default, reuseIdentifier: "cell")
         cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
         cell.imageView?.image=UIImage(named: "ic_rili")
-        cell.textLabel?.text=startTime+"入住，"+endTime+"退房"
+        cell.textLabel?.text=startTime+"入住，"+endTime+"退房，共"+String(self.roomnum)+"晚"
+        
+        
+        cell.textLabel?.font=UIFont.systemFontOfSize(14)
         return cell
         
         
     }
+    //预订按钮
+    func yuding(){
+        
+        let reserve = ReserveViewController()
+        reserve.name=name
+        reserve.bedsize1=bedsize
+        reserve.network1=network
+        reserve.repast=repast
+        reserve.startTime=startTime
+        reserve.endTime=endTime
+        reserve.price = String(zongjia)
+        reserve.roomnum = self.roomnum
+        self.navigationController?.pushViewController(reserve, animated: true)
+        
+        
+        
+    }
+
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {
         let riliVC = CalendarFirstViewController()
         riliVC.str="1"
@@ -291,6 +308,7 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.backItem?.title=""
 
+        
         
 }
     override func  viewWillDisappear(animated: Bool) {

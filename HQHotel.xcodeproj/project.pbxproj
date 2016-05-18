@@ -19,8 +19,15 @@
 		F633738D1CC763B900F63FC1 /* HotelPlaceViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F633738C1CC763B900F63FC1 /* HotelPlaceViewController.swift */; };
 		F633738F1CC763C200F63FC1 /* CallMeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F633738E1CC763C200F63FC1 /* CallMeViewController.swift */; };
 		F63373911CC763D200F63FC1 /* HotelDetailsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63373901CC763D200F63FC1 /* HotelDetailsViewController.swift */; };
+		F636D4A91CE9D85900ED568F /* SaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F636D4A71CE9D85900ED568F /* SaleViewController.swift */; };
+		F636D4AA1CE9D85900ED568F /* SaleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F636D4A81CE9D85900ED568F /* SaleViewController.xib */; };
 		F63814891CE16D9100B9C486 /* OrderFoodViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63814871CE16D9100B9C486 /* OrderFoodViewController.swift */; };
 		F638148C1CE1C88400B9C486 /* FoodOrderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F638148B1CE1C88400B9C486 /* FoodOrderModel.swift */; };
+		F639FC791CEABA4E0095E6A6 /* RoomOrdercell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639FC771CEABA4E0095E6A6 /* RoomOrdercell.swift */; };
+		F639FC7A1CEABA4E0095E6A6 /* RoomOrdercell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F639FC781CEABA4E0095E6A6 /* RoomOrdercell.xib */; };
+		F639FC7C1CEABC410095E6A6 /* RoomOrderViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639FC7B1CEABC410095E6A6 /* RoomOrderViewController.swift */; };
+		F639FC7E1CEABF0F0095E6A6 /* OrderRoomModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639FC7D1CEABF0F0095E6A6 /* OrderRoomModel.swift */; };
+		F639FC801CEB276C0095E6A6 /* CollectionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F639FC7F1CEB276C0095E6A6 /* CollectionCell.swift */; };
 		F63C5EB61CDAF580005A7230 /* HotelOrderCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F63C5EB41CDAF580005A7230 /* HotelOrderCell.swift */; };
 		F63C5EB71CDAF580005A7230 /* HotelOrderCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F63C5EB51CDAF580005A7230 /* HotelOrderCell.xib */; };
 		F63C5EBE1CDB194B005A7230 /* food1.png in Resources */ = {isa = PBXBuildFile; fileRef = F63C5EBD1CDB194B005A7230 /* food1.png */; };
@@ -59,9 +66,12 @@
 		F6423A1F1CE0302400A57B19 /* UIView+WebCacheOperation.m in Sources */ = {isa = PBXBuildFile; fileRef = F6423A0F1CE0302400A57B19 /* UIView+WebCacheOperation.m */; };
 		F6423A8B1CE092F200A57B19 /* Foodordercell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6423A891CE092F200A57B19 /* Foodordercell.swift */; };
 		F6423A8C1CE092F200A57B19 /* Foodordercell.xib in Resources */ = {isa = PBXBuildFile; fileRef = F6423A8A1CE092F200A57B19 /* Foodordercell.xib */; };
-		F643ED111CD0B02300E922BD /* SaleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F643ED0F1CD0B02300E922BD /* SaleViewController.swift */; };
-		F643ED121CD0B02300E922BD /* SaleViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = F643ED101CD0B02300E922BD /* SaleViewController.xib */; };
 		F6443BBC1CC1D1820078627B /* Facilitiescell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6443BBB1CC1D1820078627B /* Facilitiescell.swift */; };
+		F6447E6E1CEC1C300056BB1A /* SetUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6447E6D1CEC1C300056BB1A /* SetUpViewController.swift */; };
+		F6447E701CEC42DE0056BB1A /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6447E6F1CEC42DE0056BB1A /* ChangePasswordViewController.swift */; };
+		F6447E721CEC69A70056BB1A /* ChangeMeansViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6447E711CEC69A70056BB1A /* ChangeMeansViewController.swift */; };
+		F6447E741CEC765A0056BB1A /* MessageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6447E731CEC765A0056BB1A /* MessageViewController.swift */; };
+		F6447E761CEC76DA0056BB1A /* MassageCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6447E751CEC76DA0056BB1A /* MassageCell.swift */; };
 		F6480C601CBF72C300F27866 /* HQHotelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6480C5F1CBF72C300F27866 /* HQHotelTests.swift */; };
 		F6480C6B1CBF72C300F27866 /* HQHotelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6480C6A1CBF72C300F27866 /* HQHotelUITests.swift */; };
 		F6480C831CBF747C00F27866 /* ScollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6480C821CBF747C00F27866 /* ScollViewController.swift */; };
@@ -148,8 +158,15 @@
 		F633738C1CC763B900F63FC1 /* HotelPlaceViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelPlaceViewController.swift; sourceTree = "<group>"; };
 		F633738E1CC763C200F63FC1 /* CallMeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CallMeViewController.swift; sourceTree = "<group>"; };
 		F63373901CC763D200F63FC1 /* HotelDetailsViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelDetailsViewController.swift; sourceTree = "<group>"; };
+		F636D4A71CE9D85900ED568F /* SaleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaleViewController.swift; sourceTree = "<group>"; };
+		F636D4A81CE9D85900ED568F /* SaleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaleViewController.xib; sourceTree = "<group>"; };
 		F63814871CE16D9100B9C486 /* OrderFoodViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderFoodViewController.swift; sourceTree = "<group>"; };
 		F638148B1CE1C88400B9C486 /* FoodOrderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = FoodOrderModel.swift; sourceTree = "<group>"; };
+		F639FC771CEABA4E0095E6A6 /* RoomOrdercell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomOrdercell.swift; sourceTree = SOURCE_ROOT; };
+		F639FC781CEABA4E0095E6A6 /* RoomOrdercell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = RoomOrdercell.xib; sourceTree = SOURCE_ROOT; };
+		F639FC7B1CEABC410095E6A6 /* RoomOrderViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomOrderViewController.swift; sourceTree = "<group>"; };
+		F639FC7D1CEABF0F0095E6A6 /* OrderRoomModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OrderRoomModel.swift; sourceTree = "<group>"; };
+		F639FC7F1CEB276C0095E6A6 /* CollectionCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectionCell.swift; sourceTree = "<group>"; };
 		F63C5EB41CDAF580005A7230 /* HotelOrderCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = HotelOrderCell.swift; sourceTree = "<group>"; };
 		F63C5EB51CDAF580005A7230 /* HotelOrderCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = HotelOrderCell.xib; sourceTree = "<group>"; };
 		F63C5EBD1CDB194B005A7230 /* food1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = food1.png; sourceTree = "<group>"; };
@@ -206,9 +223,12 @@
 		F6423A0F1CE0302400A57B19 /* UIView+WebCacheOperation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+WebCacheOperation.m"; sourceTree = "<group>"; };
 		F6423A891CE092F200A57B19 /* Foodordercell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Foodordercell.swift; sourceTree = "<group>"; };
 		F6423A8A1CE092F200A57B19 /* Foodordercell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = Foodordercell.xib; sourceTree = "<group>"; };
-		F643ED0F1CD0B02300E922BD /* SaleViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SaleViewController.swift; sourceTree = "<group>"; };
-		F643ED101CD0B02300E922BD /* SaleViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SaleViewController.xib; sourceTree = "<group>"; };
 		F6443BBB1CC1D1820078627B /* Facilitiescell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Facilitiescell.swift; sourceTree = "<group>"; };
+		F6447E6D1CEC1C300056BB1A /* SetUpViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SetUpViewController.swift; sourceTree = "<group>"; };
+		F6447E6F1CEC42DE0056BB1A /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		F6447E711CEC69A70056BB1A /* ChangeMeansViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ChangeMeansViewController.swift; sourceTree = "<group>"; };
+		F6447E731CEC765A0056BB1A /* MessageViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MessageViewController.swift; sourceTree = "<group>"; };
+		F6447E751CEC76DA0056BB1A /* MassageCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MassageCell.swift; sourceTree = "<group>"; };
 		F6480C471CBF72C300F27866 /* HQHotel.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = HQHotel.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F6480C561CBF72C300F27866 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; name = Info.plist; path = HQHotel/Info.plist; sourceTree = "<group>"; };
 		F6480C5B1CBF72C300F27866 /* HQHotelTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = HQHotelTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -338,6 +358,8 @@
 				F6423A891CE092F200A57B19 /* Foodordercell.swift */,
 				F6423A8A1CE092F200A57B19 /* Foodordercell.xib */,
 				F63C5EB51CDAF580005A7230 /* HotelOrderCell.xib */,
+				F639FC7F1CEB276C0095E6A6 /* CollectionCell.swift */,
+				F6447E751CEC76DA0056BB1A /* MassageCell.swift */,
 			);
 			name = view;
 			sourceTree = "<group>";
@@ -555,6 +577,10 @@
 				F65E70F61CE3088F00E3E10B /* OrderDetailsViewController.swift */,
 				F63C93571CD9F6430095BF18 /* MallOrderViewController.swift */,
 				F63C93591CD9F6820095BF18 /* MarkViewController.swift */,
+				F6447E6D1CEC1C300056BB1A /* SetUpViewController.swift */,
+				F6447E6F1CEC42DE0056BB1A /* ChangePasswordViewController.swift */,
+				F6447E711CEC69A70056BB1A /* ChangeMeansViewController.swift */,
+				F6447E731CEC765A0056BB1A /* MessageViewController.swift */,
 				F6D26E3A1CDC9DA2002A28F5 /* model */,
 				F63C5EB81CDAF585005A7230 /* view */,
 			);
@@ -624,8 +650,8 @@
 			isa = PBXGroup;
 			children = (
 				F6480C8C1CBF7B5400F27866 /* HomeViewController.swift */,
-				F643ED0F1CD0B02300E922BD /* SaleViewController.swift */,
-				F643ED101CD0B02300E922BD /* SaleViewController.xib */,
+				F636D4A71CE9D85900ED568F /* SaleViewController.swift */,
+				F636D4A81CE9D85900ED568F /* SaleViewController.xib */,
 				F6480C821CBF747C00F27866 /* ScollViewController.swift */,
 				F63C5ECD1CDB267F005A7230 /* FoodViewController.swift */,
 				F63814871CE16D9100B9C486 /* OrderFoodViewController.swift */,
@@ -634,6 +660,7 @@
 				F633738C1CC763B900F63FC1 /* HotelPlaceViewController.swift */,
 				F633738E1CC763C200F63FC1 /* CallMeViewController.swift */,
 				F63373901CC763D200F63FC1 /* HotelDetailsViewController.swift */,
+				F639FC7B1CEABC410095E6A6 /* RoomOrderViewController.swift */,
 			);
 			path = controller;
 			sourceTree = "<group>";
@@ -644,6 +671,7 @@
 				18AC3E1F1CDAE55900AB3E45 /* ReservationsModel.swift */,
 				F63C5ED71CDB2A4A005A7230 /* SaleModel.swift */,
 				18D4B12F1CDC85AB0036C08B /* CaterModel.swift */,
+				F639FC7D1CEABF0F0095E6A6 /* OrderRoomModel.swift */,
 			);
 			path = model;
 			sourceTree = "<group>";
@@ -654,6 +682,8 @@
 				18AC3E1D1CDADC7C00AB3E45 /* HotelmallTableViewCell.swift */,
 				F65D56B41CD32691008BB73E /* ScheduleTableViewCell.swift */,
 				18D4B12D1CDC7FF00036C08B /* BreakTableViewCell.swift */,
+				F639FC771CEABA4E0095E6A6 /* RoomOrdercell.swift */,
+				F639FC781CEABA4E0095E6A6 /* RoomOrdercell.xib */,
 			);
 			path = view;
 			sourceTree = "<group>";
@@ -793,7 +823,6 @@
 				TargetAttributes = {
 					F6480C461CBF72C300F27866 = {
 						CreatedOnToolsVersion = 7.3;
-						DevelopmentTeam = TB5TQ2MXGN;
 					};
 					F6480C5A1CBF72C300F27866 = {
 						CreatedOnToolsVersion = 7.3;
@@ -831,6 +860,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				F65D56B31CD2EF8E008BB73E /* 设施3.png in Resources */,
+				F639FC7A1CEABA4E0095E6A6 /* RoomOrdercell.xib in Resources */,
 				F63C5EB71CDAF580005A7230 /* HotelOrderCell.xib in Resources */,
 				F63C5EC61CDB1A1F005A7230 /* food3.png in Resources */,
 				F61DC2A71CD8745F000F87E1 /* 海参.jpg in Resources */,
@@ -846,9 +876,9 @@
 				F63C5EBE1CDB194B005A7230 /* food1.png in Resources */,
 				F63C5ED01CDB267F005A7230 /* FoodViewController.xib in Resources */,
 				F6E7868C1CD1A83A00B269BF /* LaunchScreen.storyboard in Resources */,
-				F643ED121CD0B02300E922BD /* SaleViewController.xib in Resources */,
 				F6E786821CD1A7D000B269BF /* 酒店详情.jpg in Resources */,
 				F65D56B21CD2EF8E008BB73E /* 设施2.png in Resources */,
+				F636D4AA1CE9D85900ED568F /* SaleViewController.xib in Resources */,
 				F6E786881CD1A7D000B269BF /* 青岛海情-1.JPG in Resources */,
 				F6E786891CD1A7D000B269BF /* 青岛海情-2.JPG in Resources */,
 				F65D56B01CD2EF8E008BB73E /* 设施0.png in Resources */,
@@ -937,10 +967,12 @@
 				F6423A1B1CE0302400A57B19 /* UIImage+MultiFormat.m in Sources */,
 				F64EAB221CC60DCB0084A795 /* InformationViewController.swift in Sources */,
 				F63C93331CD988380095BF18 /* RegisterGetCodeViewController.swift in Sources */,
+				F639FC7E1CEABF0F0095E6A6 /* OrderRoomModel.swift in Sources */,
 				F6E786641CD1A76500B269BF /* CalendarDayModel.m in Sources */,
 				F6E786671CD1A76500B269BF /* CalendarLogic.m in Sources */,
 				F633738D1CC763B900F63FC1 /* HotelPlaceViewController.swift in Sources */,
 				F621980C1CD1B11500B749BA /* ReserveViewController.swift in Sources */,
+				F6447E6E1CEC1C300056BB1A /* SetUpViewController.swift in Sources */,
 				F64D73B01CC470210048B855 /* RoomViewController.swift in Sources */,
 				F6E786661CD1A76500B269BF /* CalendarHomeViewController.m in Sources */,
 				18D4B12E1CDC7FF00036C08B /* BreakTableViewCell.swift in Sources */,
@@ -953,8 +985,10 @@
 				F66283ED1CC0D2E100198CB3 /* FacilitiesViewController.swift in Sources */,
 				F692FE021CE5C9340008C807 /* GoodsModel.swift in Sources */,
 				F6E7866C1CD1A76500B269BF /* NSDate+WQCalendarLogic.m in Sources */,
+				F636D4A91CE9D85900ED568F /* SaleViewController.swift in Sources */,
 				F6423A191CE0302400A57B19 /* UIButton+WebCache.m in Sources */,
 				F6423A1F1CE0302400A57B19 /* UIView+WebCacheOperation.m in Sources */,
+				F639FC801CEB276C0095E6A6 /* CollectionCell.swift in Sources */,
 				F66283F11CC0D2FB00198CB3 /* MyViewController.swift in Sources */,
 				F63C5ECF1CDB267F005A7230 /* FoodViewController.swift in Sources */,
 				F6E9262C1CE5DF5B00DC400F /* mallOrderViewController.swift in Sources */,
@@ -965,11 +999,13 @@
 				F6443BBC1CC1D1820078627B /* Facilitiescell.swift in Sources */,
 				F63814891CE16D9100B9C486 /* OrderFoodViewController.swift in Sources */,
 				F6423A1E1CE0302400A57B19 /* UIImageView+WebCache.m in Sources */,
+				F6447E761CEC76DA0056BB1A /* MassageCell.swift in Sources */,
 				F64EAB201CC60D200084A795 /* ShopListViewController.swift in Sources */,
 				F64EAB1E1CC60CEA0084A795 /* CollectViewController.swift in Sources */,
 				F6423A131CE0302400A57B19 /* SDWebImageCompat.m in Sources */,
 				F6423A101CE0302400A57B19 /* MKAnnotationView+WebCache.m in Sources */,
 				F6E786631CD1A76500B269BF /* CalendarDayCell.m in Sources */,
+				F639FC791CEABA4E0095E6A6 /* RoomOrdercell.swift in Sources */,
 				F6480C831CBF747C00F27866 /* ScollViewController.swift in Sources */,
 				F63C933D1CD98D7C0095BF18 /* JSONJoy.swift in Sources */,
 				F63C933C1CD98D7C0095BF18 /* Httpresult.swift in Sources */,
@@ -977,7 +1013,6 @@
 				18D4B1301CDC85AB0036C08B /* CaterModel.swift in Sources */,
 				F6E7864C1CD1A5BB00B269BF /* ViewController.swift in Sources */,
 				F6E7866A1CD1A76500B269BF /* CalendarViewController.m in Sources */,
-				F643ED111CD0B02300E922BD /* SaleViewController.swift in Sources */,
 				F63C93541CD9D1A50095BF18 /* MineModel.swift in Sources */,
 				F633738F1CC763C200F63FC1 /* CallMeViewController.swift in Sources */,
 				F6E786651CD1A76500B269BF /* CalendarFirstViewController.m in Sources */,
@@ -988,6 +1023,7 @@
 				F64EAB1C1CC5CEBE0084A795 /* GoodsViewController.swift in Sources */,
 				F63C933F1CD9C8430095BF18 /* LoginViewController.swift in Sources */,
 				F6E786681CD1A76500B269BF /* CalendarMonthCollectionViewLayout.m in Sources */,
+				F6447E741CEC765A0056BB1A /* MessageViewController.swift in Sources */,
 				F63C93581CD9F6430095BF18 /* MallOrderViewController.swift in Sources */,
 				F6E786691CD1A76500B269BF /* CalendarMonthHeaderView.m in Sources */,
 				F6D26E3C1CDC9DE6002A28F5 /* HotelOrderModel.swift in Sources */,
@@ -999,8 +1035,11 @@
 				F6423A1C1CE0302400A57B19 /* UIImage+WebP.m in Sources */,
 				18AC3E201CDAE55900AB3E45 /* ReservationsModel.swift in Sources */,
 				F65D56B71CD33FF8008BB73E /* RoomDetailsViewController.swift in Sources */,
+				F6447E701CEC42DE0056BB1A /* ChangePasswordViewController.swift in Sources */,
 				F6423A171CE0302400A57B19 /* SDWebImageManager.m in Sources */,
 				F6E7864A1CD1A5B600B269BF /* AppDelegate.swift in Sources */,
+				F639FC7C1CEABC410095E6A6 /* RoomOrderViewController.swift in Sources */,
+				F6447E721CEC69A70056BB1A /* ChangeMeansViewController.swift in Sources */,
 				F66878211CE81B1000D596AF /* MallModel.swift in Sources */,
 				18AC3E1E1CDADC7C00AB3E45 /* HotelmallTableViewCell.swift in Sources */,
 				F63C935A1CD9F6820095BF18 /* MarkViewController.swift in Sources */,
@@ -1077,7 +1116,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1123,7 +1162,7 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1149,8 +1188,8 @@
 			baseConfigurationReference = 5B97422F80AB5194E72BFD9B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HQHotel/Resource",
@@ -1171,8 +1210,8 @@
 			baseConfigurationReference = 2BD5FEA6F436DD938995E20A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "iPhone Developer";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				CODE_SIGN_IDENTITY = "";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HQHotel/Resource",

@@ -559,7 +559,7 @@
         <!--Scoll View Controller-->
         <scene sceneID="TLN-Ky-LKC">
             <objects>
-                <viewController id="OuB-04-66b" customClass="ScollViewController" customModule="HQHotel" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="ScollViewController" id="OuB-04-66b" customClass="ScollViewController" customModule="HQHotel" customModuleProvider="target" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="cd0-jY-tba"/>
                         <viewControllerLayoutGuide type="bottom" id="uF3-Fj-LJD"/>
@@ -586,7 +586,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="UrO-Iy-tqs" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1867.5" y="829"/>
+            <point key="canvasLocation" x="-2096" y="922"/>
         </scene>
         <!--Home View Controller-->
         <scene sceneID="1Py-eo-Aax">
@@ -700,7 +700,7 @@
         <!--我的-->
         <scene sceneID="bj4-z0-Tpz">
             <objects>
-                <navigationController id="cgz-sY-0oR" sceneMemberID="viewController">
+                <navigationController storyboardIdentifier="MineView" id="cgz-sY-0oR" sceneMemberID="viewController">
                     <tabBarItem key="tabBarItem" title="我的" image="tabbar-4" id="fud-FH-nVc"/>
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="RKb-yJ-LN6">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>

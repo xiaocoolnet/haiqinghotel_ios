@@ -20,6 +20,26 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
     func application(application: UIApplication, didFinishLaunchingWithOptions launchOptions: [NSObject: AnyObject]?) -> Bool {
         
+        UINavigationBar.appearance().barTintColor = UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
+        UINavigationBar.appearance().tintColor = UIColor.whiteColor()
+
+        if let barFont = UIFont(name: "ChalkboardSE-Bold", size: 18){
+            UINavigationBar.appearance().titleTextAttributes = [
+                NSForegroundColorAttributeName:UIColor.whiteColor(),
+                NSFontAttributeName : barFont
+            ]
+        }
+
+        let storyboard = UIStoryboard(name: "Main", bundle: nil)
+        // Override point for customization after application launch.
+        //增加标识，用于判断是否是第一次启动应用...
+        if (!(NSUserDefaults.standardUserDefaults().boolForKey("everLaunched"))) {
+            NSUserDefaults.standardUserDefaults().setBool(true, forKey:"everLaunched")
+            let  guideViewController = storyboard.instantiateViewControllerWithIdentifier("ScollViewController") as! ScollViewController
+            self.window?.rootViewController=guideViewController;
+            print("guideview launched!")
+        }
+
     
 //        self.window?.backgroundColor = UIColor .whiteColor()
 //        

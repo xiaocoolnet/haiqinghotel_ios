@@ -13,7 +13,7 @@ class ScollViewController: UIViewController{
     
     private var  scrollView:UIScrollView!
     
-    private let numOfPages=4
+    private let numOfPages=3
     
    
     
@@ -25,13 +25,11 @@ class ScollViewController: UIViewController{
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
-        self.navigationController?.navigationBar.backItem?.title=""
-
+        
         let frame = self.view.bounds
         startBT.layer.borderWidth = 2.0
         startBT.layer.borderColor = UIColor(red: 54.0 / 255.0, green: 190.0 / 255.0, blue: 100.0 / 255.0, alpha: 1.0).CGColor
-        startBT.addTarget(self, action: #selector(touchMe), forControlEvents:.TouchUpInside)
+        
         scrollView = UIScrollView(frame: frame)
         scrollView.pagingEnabled = true
         scrollView.showsHorizontalScrollIndicator = false
@@ -42,10 +40,12 @@ class ScollViewController: UIViewController{
         // 将 scrollView 的 contentSize 设为屏幕宽度的3倍(根据实际情况改变)
         scrollView.contentSize = CGSize(width: frame.size.width * CGFloat(numOfPages), height: frame.size.height)
         
+        
+        
         scrollView.delegate = self
         
         for index  in 0..<numOfPages {
-            let imageView = UIImageView(image: UIImage(named: "\(index + 1).jpg"))
+            let imageView = UIImageView(image: UIImage(named: "food\(index + 1)"))
             imageView.frame = CGRect(x: frame.size.width * CGFloat(index), y: 0, width: frame.size.width, height: frame.size.height)
             scrollView.addSubview(imageView)
         }
@@ -55,15 +55,9 @@ class ScollViewController: UIViewController{
         // 给开始按钮设置圆角
         startBT.layer.cornerRadius = 5.0
         // 隐藏开始按钮
-//        startBT.alpha = 0.0
+        startBT.alpha = 0.0
     }
-    func touchMe(){
-//        let homeVC = TabbarViewController()
-//        self.presentViewController(homeVC, animated: true, completion: nil)
-        
-        
     
-    }
     // 隐藏状态栏
     override func prefersStatusBarHidden() -> Bool {
         return true
@@ -89,3 +83,5 @@ extension ScollViewController: UIScrollViewDelegate {
         }
     }
 }
+
+

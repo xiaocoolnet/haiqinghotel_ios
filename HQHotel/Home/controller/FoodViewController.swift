@@ -28,6 +28,7 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
     let priceMen = UILabel()
     let priceHui = UILabel()
     let line = UILabel()
+    internal var foodid = String()
     
     let business = UILabel()
     let busContact = UILabel()
@@ -36,6 +37,7 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
     
     var caterSoutce = CaterModel()
     
+    
     var count = Int()
     var goodSource = GoodListInfo()
     var muArr = NSMutableArray()
@@ -43,16 +45,18 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
     var countTwo = Int()
     var photoSource = photolistInfo()
     var phoneArr = NSMutableArray()
-    var photoUrl = String()
+    var imageView = UIImageView()
+    
     let orderfVC = OrderFoodViewController()
-
+    private var headerView=UIView()
     
     override func viewDidLoad() {
         
         self.scrollViewGet()
         
-     
-
+        
+        headerView=UIView(frame: CGRectMake(0,0,self.view.bounds.width,self.view.bounds.width*0.5+60+10+150+64+10))
+        headerView.backgroundColor=bkColor
         shimenjia.frame = CGRectMake(0, self.view.bounds.width*0.5+94, WIDTH/3, 20)
         shimenjia.textColor = UIColor.grayColor()
         shimenjia.textAlignment = .Center
@@ -79,12 +83,12 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         
         for i in 0...1 {
             let titLab = UILabel()
-
+            
             titLab.frame = CGRectMake(0+CGFloat(i)*self.view.bounds.width/3, self.view.bounds.width*0.5+64, self.view.bounds.width/3, 60)
             titLab.tag = i
             titLab.backgroundColor = UIColor.whiteColor()
-            self.view.addSubview(titLab)
-    
+            headerView.addSubview(titLab)
+            
         }
         
         reservation.frame = CGRectMake(WIDTH/3*2, self.view.bounds.width*0.5+64, self.view.bounds.width/3, 60)
@@ -94,16 +98,16 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         reservation.titleLabel?.font = UIFont.systemFontOfSize(16)
         reservation.addTarget(self, action: #selector(FoodViewController.getYuDing), forControlEvents: .TouchUpInside)
         
-        self.view.addSubview(shimenjia)
-        self.view.addSubview(youhuijia)
-        self.view.addSubview(line)
-        self.view.addSubview(priceMen)
-        self.view.addSubview(priceHui)
-        self.view.addSubview(reservation)
+        headerView.addSubview(shimenjia)
+        headerView.addSubview(youhuijia)
+        headerView.addSubview(line)
+        headerView.addSubview(priceMen)
+        headerView.addSubview(priceHui)
+        headerView.addSubview(reservation)
         
         jianjieView.frame = CGRectMake(0, self.view.bounds.width*0.5+134, self.view.bounds.width, 150)
         jianjieView.backgroundColor = UIColor.whiteColor()
-        self.view.addSubview(jianjieView)
+        headerView.addSubview(jianjieView)
         
         business.frame = CGRectMake(10, 5, 100, 20)
         business.text = "商品描述"
@@ -117,12 +121,15 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         jianjieView.addSubview(busContact)
         
         
-        taocanTable.frame = CGRectMake(0, self.view.bounds.width*0.5+294, WIDTH, 136)
+        taocanTable.frame = CGRectMake(0, 0, WIDTH, self.view.bounds.height-30)
         taocanTable.delegate = self
         taocanTable.dataSource = self
         taocanTable.registerClass(BreakTableViewCell.self, forCellReuseIdentifier: "cell")
+        
+        taocanTable.scrollEnabled=true
         self.view.addSubview(taocanTable)
-        taocanTable.scrollEnabled = false
+        
+        
         
         bottm.frame = CGRectMake(0, self.view.bounds.height-50, WIDTH, 50)
         bottm.backgroundColor = UIColor.whiteColor()
@@ -147,10 +154,14 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         self.view.addSubview(priceOld)
         self.view.addSubview(xiuhuijia)
         self.view.addSubview(priceNew)
+        //将滚动式图添加到view上
+        headerView.addSubview(scrollView)
+        self.view.addSubview(headerView)
+        taocanTable.tableHeaderView=headerView
         
     }
     
-        func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return count+1
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell {
@@ -175,23 +186,23 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         return cell
     }
     
-//    滚动视图
-       //餐饮界面
+    //    滚动视图
+    //餐饮界面
     func GetDate(){
-
+        
         let url = apiUrl+"showcateringinfo"
         
         //        let userid = NSUserDefaults.standardUserDefaults()
         //        let uid = userid.stringForKey("userid")
         let param = [
-            "id":12
+            "id":foodid
         ]
         Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
             if(error != nil){
                 
             }
             else{
-               
+                
                 let status = CaterModel(JSONDecoder(json!))
                 print("状态是")
                 print(status.status)
@@ -205,7 +216,7 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
                 }
                 if(status.status == "success"){
                     print("Success")
-
+                    
                     self.priceMen.text = status.data?.foodOprice
                     self.priceHui.text = status.data?.foodPrice
                     self.busContact.text = status.data?.foodDescription
@@ -226,13 +237,17 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
                         
                         self.phoneArr.addObject(self.photoSource)
                         print(self.photoSource.photo)
-                       
+
+                        
                     }
                     self.taocanTable.reloadData()
                     
-                   
-                    
                 }
+                var photo=String()
+                photo=imageUrl+(status.data?.foodPicture!)!
+                self.imageView.sd_setImageWithURL(NSURL(string: photo), placeholderImage: UIImage(named: "food1.png"))
+                print(photo)
+
                 
             }
         }
@@ -258,29 +273,25 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         
         //滚动式图添加图片
         for index  in 0..<numOfPages {
-            let imageView = UIImageView()
-            var imageurl=String()
-            //            imageurl = imageUrl+self.photoSource.photo!
-            imageView.sd_setImageWithURL(NSURL(string: imageurl), placeholderImage: UIImage(named: "food1.png"))
-            print(imageurl)
+            
             
             imageView.frame = CGRect(x: frame.size.width * CGFloat(index), y: 0, width: frame.size.width, height: scrollview_h)
             scrollView.addSubview(imageView)
+            
         }
         
         //滚动视图添加小白点
         let pageC = UIPageControl()
-        pageC.frame=CGRectMake(frame.size.width-60, 66+scrollview_h-30, 40, 20)
+        pageC.frame=CGRectMake(frame.size.width-60, scrollview_h-30, 40, 20)
         
         pageC.tag=102
         pageC.numberOfPages=4
         pageC.addTarget(self, action: #selector(dopageC), forControlEvents: UIControlEvents.ValueChanged )
         
-        //将滚动式图添加到view上
-        self.view.addSubview(scrollView)
+      
         
         //将小白点添加到滚动视图
-        self.view.addSubview(pageC)
+        scrollView.addSubview(pageC)
         //定时器
         NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector (doTime), userInfo: nil, repeats: true)
         
@@ -325,16 +336,16 @@ class FoodViewController: UITabBarController,UIScrollViewDelegate,UITableViewDel
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.backItem?.title=""
     }
-
-
+    
+    
     func getYuDing() {
-     
+        
         self.navigationController?.pushViewController(orderfVC, animated: true)
     }
-
-//    override func viewWillDisappear(animated: Bool) {
-//        self.tabBarController?.tabBar.hidden=false
-//    }
+    
+    //    override func viewWillDisappear(animated: Bool) {
+    //        self.tabBarController?.tabBar.hidden=false
+    //    }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.

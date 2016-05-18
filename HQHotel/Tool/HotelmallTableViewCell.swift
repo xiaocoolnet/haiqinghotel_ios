@@ -23,11 +23,10 @@ class HotelmallTableViewCell: UITableViewCell {
         
         
     }
-    
-    
-    
+
     override func setSelected(selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
+        
         imageV.frame=CGRectMake(10, 5, self.bounds.width-20,self.bounds.height-50)
         
         self.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
@@ -50,7 +49,7 @@ class HotelmallTableViewCell: UITableViewCell {
         self.addSubview(backView)
         
         pre.frame = CGRectMake(5, 7.5, 10, 20)
-        pre.text = "$"
+        pre.text = "¥"
         pre.textAlignment = .Center
         pre.textColor = UIColor.whiteColor()
         pre.font = UIFont.systemFontOfSize(11)

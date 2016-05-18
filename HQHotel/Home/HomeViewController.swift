@@ -43,12 +43,13 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         tableView.rowHeight=250
         tableView.showsVerticalScrollIndicator=false
         tableView.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
+        tableView.separatorStyle = .None
         
         self.GetDate()
         
         
         //searchbar
-        searchbar=UISearchBar(frame: CGRectMake(20, 20, frame.width-40, 20))
+        searchbar=UISearchBar(frame: CGRectMake(20, 20, frame.width-40, 30))
         searchbar.searchBarStyle=UISearchBarStyle.Minimal
         searchbar.layer.cornerRadius=14
         searchbar.layer.masksToBounds=true
@@ -100,7 +101,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         let timeV_w = frame.width-20
         
         
-        let timeV = UIView(frame: CGRectMake(10, scrollview_h-10, frame.width-20, timeV_h))
+        let timeV = UIView(frame: CGRectMake(10, scrollview_h-20, frame.width-20, timeV_h))
         timeV.backgroundColor=UIColor.whiteColor()
         
         let ruzhuL = UILabel(frame: CGRectMake(60, 10, 40, 20))
@@ -109,24 +110,28 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         ruzhuL.textColor=UIColor.grayColor()
         let lidianL = UILabel(frame: CGRectMake(frame.width-100, 10, 40, 20))
         lidianL.text="离店"
+        lidianL.textAlignment = .Right
         lidianL.font=UIFont.boldSystemFontOfSize(16)
         lidianL.textColor=UIColor.grayColor()
         daysL = UILabel(frame: CGRectMake(frame.width/2-20, 10, 40, 20))
         daysL.textColor=UIColor.init(colorLiteralRed: 250/255, green: 140/255, blue: 60/255, alpha: 1)
         daysL.font=UIFont.boldSystemFontOfSize(15)
-        timeleftBT = UIButton(frame: CGRectMake(20, 40, 110, 20))
+        timeleftBT = UIButton(frame: CGRectMake(20, 50, 150, 20))
         timeleftBT.setTitleColor(UIColor.init(colorLiteralRed: 0/255, green: 166/255, blue: 251/255, alpha: 1), forState: UIControlState.Normal)
 
+        timeleftBT.titleLabel?.textAlignment = .Left
         timeleftBT.addTarget(self, action: #selector(timeStart), forControlEvents: UIControlEvents.TouchUpInside)
-        endtimeBT = UIButton(frame: CGRectMake((self.view.bounds.width-40-100),40,100,20))
+        endtimeBT = UIButton(frame: CGRectMake((self.view.bounds.width-190),50,150,20))
         
         endtimeBT.setTitleColor(UIColor.init(colorLiteralRed: 0/255, green: 166/255, blue: 251/255, alpha: 1), forState: UIControlState.Normal)
 
+        endtimeBT.titleLabel?.textAlignment = .Right
         endtimeBT.addTarget(self, action: #selector(timeStart), forControlEvents: UIControlEvents.TouchUpInside)
         
         let reserveBT = UIButton(frame: CGRectMake(10,timeV_h-50,timeV_w-20,40))
         reserveBT.setTitle("立即预订", forState: UIControlState.Normal)
         reserveBT.backgroundColor=UIColor.init(colorLiteralRed: 0/255, green: 166/255, blue: 251/255, alpha: 1)
+        reserveBT.addTarget(self, action: #selector(lijiyuding), forControlEvents: .TouchUpInside)
         reserveBT.layer.cornerRadius=5
         
         
@@ -141,6 +146,11 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         timeleftBT.setTitle(starttime, forState: UIControlState.Normal)
         endtimeBT.setTitle(endtime, forState: UIControlState.Normal)
         daysL.text="\(String(tianshu))天"
+        daysL.textAlignment = .Center
+        daysL.layer.borderWidth=1.0
+        daysL.layer.borderColor=UIColor.init(colorLiteralRed: 250/255, green: 140/255, blue: 60/255, alpha: 1).CGColor
+        daysL.layer.cornerRadius=3
+        
         
         
         //将小白点添加到滚动视图
@@ -158,12 +168,12 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
             
             let button_w = frame.width/3
             
-            let button = UIButton(frame: CGRectMake(0+CGFloat(item)*button_w,scrollview_h+timeV_h,button_w-1,40))
+            let button = UIButton(frame: CGRectMake(0+CGFloat(item)*button_w,scrollview_h+timeV_h-10,button_w-1,40))
             let bgView = UIView(frame: button.frame)
             bgView.backgroundColor=UIColor.whiteColor()
             
             
-            let xiangqingL = UILabel(frame: CGRectMake(35+button_w*CGFloat(item),scrollview_h+timeV_h,button_w-40,40))
+            let xiangqingL = UILabel(frame: CGRectMake(35+button_w*CGFloat(item),scrollview_h+timeV_h-10,button_w-40,40))
             xiangqingL.font=UIFont.systemFontOfSize(15)
             xiangqingL.textColor=UIColor.grayColor()
             button.tag=item
@@ -197,7 +207,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
             
         }
         //当前促销
-        let cuxiaoIV = UIImageView(frame: CGRectMake(10, scrollview_h+timeV_h+40+10, self.view.bounds.width-20, 18))
+        let cuxiaoIV = UIImageView(frame: CGRectMake(10, scrollview_h+timeV_h+40, self.view.bounds.width-20, 18))
         cuxiaoIV.image=UIImage(named: "ic_cuxiao")
         headerview.addSubview(cuxiaoIV)
         self.view.addSubview(tableView)
@@ -205,7 +215,37 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         //定时器
         NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector (doTime), userInfo: nil, repeats: true)
     }
+    func lijiyuding(){
+        let room = RoomOrderViewController()
+        switch tianshu {
+        case 0:
+            room.roomTimeNum=1
+        default:
+            room.roomTimeNum=tianshu
+        }
+        if starttime=="" {
+            let date = NSDate()
+            let timeFormatter = NSDateFormatter()
+            timeFormatter.dateFormat = "yyyy-MM-dd"
+            strNowTime = timeFormatter.stringFromDate(date) as String
+            
+            let date1 = NSDate(timeIntervalSinceNow: 24*60*60)
+            let timeFormatter1 = NSDateFormatter()
+            timeFormatter1.dateFormat = "yyyy-MM-dd"
+            strNowTime1 = timeFormatter.stringFromDate(date1) as String
+            timeleftBT.setTitle(strNowTime, forState: UIControlState.Normal)
+            endtimeBT.setTitle(strNowTime1, forState: UIControlState.Normal)
+            room.roomStartTime=strNowTime
+            room.roomEndTime=strNowTime1
     
+        }else{
+
+        room.roomStartTime=starttime
+        room.roomEndTime=endtime
+        }
+        self.navigationController?.pushViewController(room, animated: true)
+        
+    }
     //酒店预订接口
     func GetDate(){
         let url = apiUrl+"getpromotionlist"
@@ -280,7 +320,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         
         
         hotelcell.titName.text = reservationInfo.name
-        hotelcell.size.text = "14*14"
+        hotelcell.size.text = reservationInfo.adtitle
         hotelcell.priceLab.text = reservationInfo.price
         if reservationInfo.type == 1 {
             hotelcell.prie.text = "起/晚"
@@ -297,19 +337,26 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         let reservationInfo = resrvationSource.objectlist[indexPath.row]
         if  reservationInfo.type == 1{
             let cuxiaoV = SaleViewController(nibName: "SaleViewController", bundle: nil)
+            
             switch tianshu {
             case 0:
                 cuxiaoV.roomnum=1
+                
             default:
                 cuxiaoV.roomnum=tianshu
 
             }
-          
+          cuxiaoV.roomid=reservationInfo.idLab!
             self.navigationController?.pushViewController(cuxiaoV, animated: true)
 
         }
         else{
+            
+            let reservationInfo = resrvationSource.objectlist[indexPath.row]
+            
+            
             let foodVC = FoodViewController(nibName: "FoodViewController", bundle: nil)
+            foodVC.foodid=reservationInfo.idLab!
             self.navigationController?.pushViewController(foodVC, animated: true)
             
         }
@@ -397,6 +444,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
             strNowTime1 = timeFormatter.stringFromDate(date1) as String
         timeleftBT.setTitle(strNowTime, forState: UIControlState.Normal)
         endtimeBT.setTitle(strNowTime1, forState: UIControlState.Normal)
+            
          daysL.text="1天"
         }
         

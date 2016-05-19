@@ -111,7 +111,7 @@ class MallViewController: UIViewController,UICollectionViewDelegate ,UICollectio
         
         
         cell.nameL.text=shopInfo.shopname
-//        cell.jianjieL.text=shopInfo.shop
+        cell.jianjieL.text=shopInfo.shopdescription
         print(descriptionn)
         cell.priceL.text="¥"+shopInfo.shopprice!+"/g"
         let image = shopInfo.shoppicture

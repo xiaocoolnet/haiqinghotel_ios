@@ -76,6 +76,7 @@
 		F6480C6B1CBF72C300F27866 /* HQHotelUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6480C6A1CBF72C300F27866 /* HQHotelUITests.swift */; };
 		F6480C831CBF747C00F27866 /* ScollViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6480C821CBF747C00F27866 /* ScollViewController.swift */; };
 		F6480C8D1CBF7B5400F27866 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F6480C8C1CBF7B5400F27866 /* HomeViewController.swift */; };
+		F64C53001CED4CCF00B27C3D /* CollectModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64C52FF1CED4CCF00B27C3D /* CollectModel.swift */; };
 		F64CB8071CDDF13D00BD0210 /* ConnectModel.m in Sources */ = {isa = PBXBuildFile; fileRef = F64CB8061CDDF13D00BD0210 /* ConnectModel.m */; };
 		F64D73B01CC470210048B855 /* RoomViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64D73AF1CC470210048B855 /* RoomViewController.swift */; };
 		F64D73BA1CC47D180048B855 /* NewsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = F64D73B91CC47D180048B855 /* NewsTableViewCell.swift */; };
@@ -239,6 +240,7 @@
 		F6480C6C1CBF72C300F27866 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		F6480C821CBF747C00F27866 /* ScollViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = ScollViewController.swift; path = ../ScollViewController.swift; sourceTree = "<group>"; };
 		F6480C8C1CBF7B5400F27866 /* HomeViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = HomeViewController.swift; path = ../HomeViewController.swift; sourceTree = "<group>"; };
+		F64C52FF1CED4CCF00B27C3D /* CollectModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CollectModel.swift; sourceTree = "<group>"; };
 		F64CB8051CDDF13D00BD0210 /* ConnectModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = ConnectModel.h; path = HQHotel/file/ConnectModel.h; sourceTree = SOURCE_ROOT; };
 		F64CB8061CDDF13D00BD0210 /* ConnectModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = ConnectModel.m; path = HQHotel/file/ConnectModel.m; sourceTree = SOURCE_ROOT; };
 		F64D73AF1CC470210048B855 /* RoomViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = RoomViewController.swift; sourceTree = "<group>"; };
@@ -694,6 +696,7 @@
 				F6D26E3B1CDC9DE6002A28F5 /* HotelOrderModel.swift */,
 				F638148B1CE1C88400B9C486 /* FoodOrderModel.swift */,
 				F66878201CE81B1000D596AF /* MallModel.swift */,
+				F64C52FF1CED4CCF00B27C3D /* CollectModel.swift */,
 			);
 			name = model;
 			sourceTree = "<group>";
@@ -823,6 +826,7 @@
 				TargetAttributes = {
 					F6480C461CBF72C300F27866 = {
 						CreatedOnToolsVersion = 7.3;
+						DevelopmentTeam = H58LYH4V4T;
 					};
 					F6480C5A1CBF72C300F27866 = {
 						CreatedOnToolsVersion = 7.3;
@@ -1000,6 +1004,7 @@
 				F63814891CE16D9100B9C486 /* OrderFoodViewController.swift in Sources */,
 				F6423A1E1CE0302400A57B19 /* UIImageView+WebCache.m in Sources */,
 				F6447E761CEC76DA0056BB1A /* MassageCell.swift in Sources */,
+				F64C53001CED4CCF00B27C3D /* CollectModel.swift in Sources */,
 				F64EAB201CC60D200084A795 /* ShopListViewController.swift in Sources */,
 				F64EAB1E1CC60CEA0084A795 /* CollectViewController.swift in Sources */,
 				F6423A131CE0302400A57B19 /* SDWebImageCompat.m in Sources */,
@@ -1116,7 +1121,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chongqian Zhu (43SWZUC27M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chongqian Zhu (43SWZUC27M)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
@@ -1138,6 +1144,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
+				PROVISIONING_PROFILE = "4832cffb-8ee2-4720-8f4e-adfc1d63711c";
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -1162,7 +1169,8 @@
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer: Chongqian Zhu (43SWZUC27M)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: Chongqian Zhu (43SWZUC27M)";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
@@ -1177,6 +1185,7 @@
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
+				PROVISIONING_PROFILE = "4832cffb-8ee2-4720-8f4e-adfc1d63711c";
 				SDKROOT = iphoneos;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				VALIDATE_PRODUCT = YES;
@@ -1188,8 +1197,8 @@
 			baseConfigurationReference = 5B97422F80AB5194E72BFD9B /* Pods.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HQHotel/Resource",
@@ -1198,7 +1207,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = xiaocool.HQHotel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hqHotel.123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/xiaocool/Desktop/haiqinghotel_ios/HQHotel/Tool/OC_Header.h;
@@ -1210,8 +1219,8 @@
 			baseConfigurationReference = 2BD5FEA6F436DD938995E20A /* Pods.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				CODE_SIGN_IDENTITY = "";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "";
+				CODE_SIGN_IDENTITY = "iPhone Developer";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				FRAMEWORK_SEARCH_PATHS = (
 					"$(inherited)",
 					"$(PROJECT_DIR)/HQHotel/Resource",
@@ -1220,7 +1229,7 @@
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				ONLY_ACTIVE_ARCH = YES;
-				PRODUCT_BUNDLE_IDENTIFIER = xiaocool.HQHotel;
+				PRODUCT_BUNDLE_IDENTIFIER = com.hqHotel.123;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				SWIFT_OBJC_BRIDGING_HEADER = /Users/xiaocool/Desktop/haiqinghotel_ios/HQHotel/Tool/OC_Header.h;

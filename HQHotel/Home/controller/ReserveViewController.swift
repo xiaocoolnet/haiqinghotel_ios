@@ -104,6 +104,8 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
         yudingBT.backgroundColor=UIColor.init(red: 250/255, green: 140/255, blue: 61/255, alpha: 1)
         yudingBT.setTitle("提交订单", forState: UIControlState.Normal)
         yudingBT.addTarget(self, action: #selector(nowYuding), forControlEvents: UIControlEvents.TouchUpInside)
+//        yudingBT.userInteractionEnabled=false
+//        yudingBT.adjustsImageWhenDisabled=true
         self.view.addSubview(yudingBT)
 
         //添加手势，点击空白处收回键盘
@@ -191,7 +193,8 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
             cell.textLabel?.textColor=textColor
             
                 tableView0.rowHeight=44
-                roomnumL = UILabel(frame: CGRectMake(self.view.bounds.width/2,10,self.view.bounds.width/2-30,24))
+                roomnumL.frame =  CGRectMake(self.view.bounds.width/2,10,self.view.bounds.width/2-30,24)
+            roomnumL.text=""
                 cell.addSubview(roomnumL)
         default:
             
@@ -278,6 +281,7 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
         }
         else if tableView==tableView2{
             arrivetimeL.text=timeArray.objectAtIndex(indexPath.row) as? String
+            arrivetimeL.text=""
             button.frame=CGRectMake(0, 0, 0, 0)
             tableView.frame=CGRectMake(0, 0, 0, 0)
         }
@@ -326,7 +330,7 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
             hud.hide(true, afterDelay: 1)
             return false
         }
-        if(peoplenameTF.text!.isEmpty){
+        if(peoplenameTF.text==nil){
             let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             hud.mode = MBProgressHUDMode.Text
             hud.labelText = "请输入联系人"
@@ -335,7 +339,7 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
             hud.hide(true, afterDelay: 1)
             return false
         }
-        if(peoplenumTF.text!.isEmpty){
+        if(peoplenumTF.text==nil){
             let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             hud.mode = MBProgressHUDMode.Text
             hud.labelText = "请输入入住人数"
@@ -345,7 +349,7 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
             return false
         }
 
-        if(phoneTF.text!.isEmpty){
+        if(phoneTF.text==nil){
             let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             hud.mode = MBProgressHUDMode.Text
             hud.labelText = "请输入联系人手机号"

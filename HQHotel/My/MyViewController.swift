@@ -136,6 +136,7 @@ class MyViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
         switch indexPath.row {
         case 0:
             let hotelVC = HotelOrderViewController()
+            hotelVC.a="1"
             self.navigationController?.pushViewController(hotelVC, animated: true)
             hotelVC.view.backgroundColor = UIColor.whiteColor()
         case 1:

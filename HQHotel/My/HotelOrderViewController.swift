@@ -14,7 +14,7 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
     private var tableview1:UITableView!
     private var tableview2:UITableView!
     private var segment:UISegmentedControl!
-    
+    internal var a:String!
 
     var hotelSource = HotelOrderModel()
     var FoodSource = FoodOrderModel()
@@ -37,11 +37,15 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
 
         
         self.navigationItem.titleView=segment
-        self.navigationItem.leftBarButtonItem=UIBarButtonItem(title: "<", style: .Done, target: self, action: #selector(back))
+        if a != "1" {
+            self.navigationItem.leftBarButtonItem=UIBarButtonItem(title: "<", style: .Done, target: self, action: #selector(back))
+        }
+        
         
         
     }
     func back(){
+        
         
         self.tabBarController?.selectedIndex=3
     }

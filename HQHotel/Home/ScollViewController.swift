@@ -56,6 +56,13 @@ class ScollViewController: UIViewController{
         startBT.layer.cornerRadius = 5.0
         // 隐藏开始按钮
         startBT.alpha = 0.0
+        startBT.addTarget(self, action: #selector(begin), forControlEvents: .TouchUpInside)
+    }
+    func begin(){
+        let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
+        let vc : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("Login")
+        self.presentViewController(vc, animated: true, completion: nil)
+        
     }
     
     // 隐藏状态栏

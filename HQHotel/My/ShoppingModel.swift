@@ -33,6 +33,8 @@ class ShoppingInfo: JSONJoy{
     var shopname: String?
     var shopprice:String?
     var shoppicture:String?
+    var shopdescription:String?
+    
     
     init() {
         
@@ -42,6 +44,7 @@ class ShoppingInfo: JSONJoy{
         shopname = decoder["name"].string
         shopprice = decoder["price"].string
         shoppicture = decoder["picture"].string
+        shopdescription=decoder["description"].string
             }
     
 }

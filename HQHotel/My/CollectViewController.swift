@@ -7,15 +7,16 @@
 //
 
 import UIKit
-
+import Alamofire
+import MBProgressHUD
 class CollectViewController: UIViewController ,UITableViewDelegate,UITableViewDataSource{
 
     private var collTableview=UITableView()
+    private var CollectSource=CollectModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        GetcollectDate()
         
-        self.navigationController?.navigationBar.backItem?.title=""
-        self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
         
         collTableview=UITableView(frame: CGRectMake(0, 0, self.view.bounds.width, self.view.bounds.height))
         collTableview.delegate=self
@@ -25,24 +26,67 @@ class CollectViewController: UIViewController ,UITableViewDelegate,UITableViewDa
         
         
     }
+    func GetcollectDate(){
+        let url = apiUrl+"getfavoritelist"
+//                let userid = NSUserDefaults.standardUserDefaults()
+//                let uid = userid.stringForKey("userid")
+                let param = [
+                    "userid":578
+                ]
+        Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
+            if(error != nil){
+            }
+            else{
+                
+                let status = Http(JSONDecoder(json!))
+                print("状态是")
+                print(status.status)
+                if(status.status == "error"){
+                    let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    hud.mode = MBProgressHUDMode.Text;
+                    hud.margin = 10.0
+                    hud.removeFromSuperViewOnHide = true
+                    hud.hide(true, afterDelay: 1)
+                }
+                if(status.status == "success"){
+                    self.CollectSource = CollectModel(status.data!)
+                    self.collTableview.reloadData()
+                }
+            }
+        }
+    }
+
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 3
+        return CollectSource.count
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
-        var collcell = CollectionCell.cellWithTableView(tableView)
-
-//        if collcell==nil {
-//            collcell=CollectionCell(style: .Default, reuseIdentifier: "a")
-//        }
         
-        collcell.nameL.text="鲜活三文鱼"
-        collcell.jianjieL.text="这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介这是简介"
+        let collcell = CollectionCell.cellWithTableView(tableView)
+
+        let collectInfo = CollectSource.objectlist[indexPath.row]
+        
+        
+
+        
+        collcell.nameL.text=collectInfo.collecttitle
+        collcell.jianjieL.text=collectInfo.collectdescription
         collcell.iconView.image=UIImage(named: "海参.jpg")
         collcell.priceL.text="¥367"
-        
+        collcell.yudingBT.addTarget(self, action: #selector(Order), forControlEvents: .TouchUpInside)
         
         
        return collcell
+    }
+    func Order(){
+        
+    }
+    override func viewWillAppear(animated: Bool) {
+        self.navigationController?.navigationBar.backItem?.title=""
+        self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
+        self.tabBarController?.tabBar.hidden=true
+    }
+    override func viewWillDisappear(animated: Bool) {
+        self.tabBarController?.tabBar.hidden=false
     }
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()

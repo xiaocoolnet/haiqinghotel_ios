@@ -26,6 +26,8 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
     internal var price=String()
     internal var goodname=String()
     internal var goodid=String()
+    internal var gooddescription=String()
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -37,10 +39,10 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
         self.navigationController?.navigationBar.barTintColor=UIColor.init(red: 30/255, green: 175/255, blue: 252/255, alpha: 1)
         self.view.backgroundColor=bkColor
         scrollViewGet()
-        tableview=UITableView(frame: CGRectMake(0, frame.width*0.5+64, frame.width, frame.height-(frame.width*0.5+64)), style: .Grouped)
+        tableview=UITableView(frame: CGRectMake(0, 64, frame.width, frame.height-64), style: .Grouped)
         tableview.delegate=self
         tableview.dataSource=self
-        
+        tableview.tableHeaderView=scrollView
         
         
         self.view.addSubview(tableview)
@@ -53,6 +55,7 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
         yudingBT.backgroundColor=UIColor.init(red: 250/255, green: 140/255, blue: 61/255, alpha: 1)
         yudingBT.setTitle("立即预订", forState: UIControlState.Normal)
         yudingBT.addTarget(self, action: #selector(yuding), forControlEvents: UIControlEvents.TouchUpInside)
+        
         self.view.addSubview(yudingBT)
         
     }
@@ -61,14 +64,7 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
         return 3
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        if section==0 {
-            return 1
-        }else if section==1{
-            return 6
-        }
-        else{
-        return 1
-        }
+       return 1
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let identifier:String = "cell"
@@ -82,7 +78,9 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
             cell.addSubview(lable)
             let priceL = UILabel(frame: CGRectMake(5,60,self.view.bounds.width/2,25))
             priceL.textColor=textColor
-            priceL.text=price
+            priceL.text="¥"+price
+            priceL.textColor=blueColor
+            
             cell.addSubview(priceL)
             let loveBT = UIButton(frame: CGRectMake(self.view.bounds.width-40,50,40,20))
             loveBT.setImage(UIImage(named: "爱心"), forState: UIControlState.Normal)
@@ -92,65 +90,22 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
             loveL.font=UIFont.systemFontOfSize(12)
             loveL.text="喜欢"
             cell.addSubview(loveL)
-            
-            
+
             tableview.rowHeight=90
         }else if indexPath.section==1 {
-            let informationL = UILabel(frame: CGRectMake(self.view.bounds.width-80,5,self.view.bounds.width-80,34))
-            informationL.textAlignment = .Right
-            if indexPath.row==0 {
-                tableView.rowHeight=44
-                cell.textLabel?.text="配料表"
-                cell.textLabel?.textColor=textColor
-                informationL.text=""
-                informationL.textColor=textColor
-                cell.addSubview(informationL)
-                
-            }else if indexPath.row==1{
-                tableView.rowHeight=44
-                cell.textLabel?.text="储存方式"
-                cell.textLabel?.textColor=textColor
-                informationL.text=""
-                informationL.textColor=textColor
-                cell.addSubview(informationL)
-            }else if indexPath.row==2{
-                tableView.rowHeight=44
-                cell.textLabel?.text="生产日期"
-                cell.textLabel?.textColor=textColor
-                informationL.text=""
-                informationL.textColor=textColor
-                cell.addSubview(informationL)
-            }else if indexPath.row==3{
-                tableView.rowHeight=44
-                cell.textLabel?.text="保质期"
-                cell.textLabel?.textColor=textColor
-                informationL.text=""
-                informationL.textColor=textColor
-                cell.addSubview(informationL)
-            }else if indexPath.row==4{
-                tableView.rowHeight=44
-                cell.textLabel?.text="食品添加剂"
-                cell.textLabel?.textColor=textColor
-                informationL.text=""
-                informationL.textColor=textColor
-                cell.addSubview(informationL)
-            }else if indexPath.row==5{
-                tableView.rowHeight=44
-                cell.textLabel?.text="净含量"
-                cell.textLabel?.textColor=textColor
-                informationL.text=""
-                informationL.textColor=textColor
-                cell.addSubview(informationL)
-            }
-            
+            let inforImage = UIImageView(frame: CGRectMake(10, 5, self.view.bounds.width-20, self.view.bounds.width))
+            inforImage.image=UIImage(named: "海参.jpg")
+            cell.addSubview(inforImage)
+            tableview.rowHeight=self.view.bounds.width+10
             
             
         }else{
             
-            let imageV = UIImageView(frame: CGRectMake(5, 5, self.view.bounds.width-10, 100))
+            let imageV = UIImageView(frame: CGRectMake(5, 5, self.view.bounds.width-10, self.view.bounds.width))
             imageV.image=UIImage(named: "海参.jpg")
             tableView.rowHeight=110
             cell.addSubview(imageV)
+            tableview.rowHeight=self.view.bounds.width+10
             
         }
         
@@ -158,8 +113,50 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
         return cell
     }
     func love(){
-        print("已加入收藏")
+      
+        let url = apiUrl+"addfavorite"
+        let userid = NSUserDefaults.standardUserDefaults()
+        let uid = userid.stringForKey("userid")
+        let param = [
+            "userid":uid,
+            "goodid":goodid,
+            "type":"3",
+            "title":goodname,
+            "description":gooddescription
+            
+        ]
+        print(url)
+        Alamofire.request(.GET, url, parameters: param as? [String : String]).response { request, response, json, error in
+            if(error != nil){
+            }
+            else{
+                print("request是")
+                print(request!)
+                print("====================")
+                let status = Httpresult(JSONDecoder(json!))
+                print(JSONDecoder(json!))
+                print("状态是")
+                print(status.status)
+                if(status.status == "error"){
+                    let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    hud.mode = MBProgressHUDMode.Text;
+                    hud.labelText = status.errorData
+                    hud.margin = 10.0
+                    hud.removeFromSuperViewOnHide = true
+                    hud.hide(true, afterDelay: 3)
+                }
+                if(status.status == "success"){
+                    let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    hud.mode = MBProgressHUDMode.Text;
+                    hud.labelText = "已为您加入收藏"
+                    hud.margin = 10.0
+                    hud.removeFromSuperViewOnHide = true
+                    hud.hide(true, afterDelay: 3)
+                }
+            }
+        }
     }
+
     func yuding(){
         let mallVC = mallOrderViewController()
         mallVC.price=Int(price)!
@@ -170,60 +167,6 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
         print("gouwuche")
         
     }
-    func GetDate(){
-        
-//        let url = apiUrl+"showshoppinginfo"
-//        
-//        //        let userid = NSUserDefaults.standardUserDefaults()
-//        //        let uid = userid.stringForKey("userid")
-//        let param = [
-//            "id":goodid
-//        ]
-//        Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
-//            if(error != nil){
-//                
-//            }
-//            else{
-//                
-//                let status = GoodsModel(JSONDecoder(json!))
-//                print("状态是")
-//                print(status.status)
-//                if(status.status == "error"){
-//                    let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
-//                    hud.mode = MBProgressHUDMode.Text;
-//                    hud.labelText = status.errorData
-//                    hud.margin = 10.0
-//                    hud.removeFromSuperViewOnHide = true
-//                    hud.hide(true, afterDelay: 1)
-//                }
-//                if(status.status == "success"){
-//                    print("Success")
-//                    
-//                    self.count = (status.data?.count)!
-//                    for i in 0..<self.count {
-//                        self.shopgoodSource = (status.data?.goodphotolist[i])!
-//                        
-//                        self.muArr.addObject(self.shopgoodSource)
-//                    }
-//                    
-//                    
-//                    }
-//                    self.tableview.reloadData()
-//                    
-//                }
-////                var photo=String()
-////                photo=imageUrl+(status.data?.goodpicture!)!
-////                self.imageView.sd_setImageWithURL(NSURL(string: photo), placeholderImage: UIImage(named: "food1.png"))
-////                print(photo)
-//                
-//                
-//            }
-        }
-    
-
-    
-    
-    
     
     
        //    滚动视图
@@ -270,7 +213,7 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
         self.view.addSubview(scrollView)
         
         //将小白点添加到滚动视图
-        self.view.addSubview(pageC)
+        scrollView.addSubview(pageC)
         //定时器
         NSTimer.scheduledTimerWithTimeInterval(2.0, target: self, selector: #selector (doTime), userInfo: nil, repeats: true)
         

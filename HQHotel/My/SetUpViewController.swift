@@ -15,7 +15,7 @@ class SetUpViewController: UIViewController ,UITableViewDelegate,UITableViewData
         super.viewDidLoad()
 
         self.view.backgroundColor=bkColor
-        setupTableView=UITableView(frame: CGRectMake(0, 64, self.view.bounds.width, 220), style: .Plain)
+        setupTableView=UITableView(frame: CGRectMake(0, 64, self.view.bounds.width, 132), style: .Plain)
         setupTableView.scrollEnabled=false
         setupTableView.delegate=self
         setupTableView.dataSource=self
@@ -34,7 +34,7 @@ class SetUpViewController: UIViewController ,UITableViewDelegate,UITableViewData
     }
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
         
-        return 5
+        return 3
     }
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let ident = "tableviewcell"
@@ -47,21 +47,10 @@ class SetUpViewController: UIViewController ,UITableViewDelegate,UITableViewData
             cell.textLabel?.textColor=textColor
             cell.textLabel?.font=UIFont.systemFontOfSize(15)
         case 1:
-            cell.textLabel?.text="省流量模式"
-            let kaiguan = UISwitch(frame: CGRectMake(self.view.bounds.width-60,5,40,34))
-            
-            cell.addSubview(kaiguan)
-            cell.textLabel?.font=UIFont.systemFontOfSize(15)
-            cell.textLabel?.textColor=textColor
-            cell.accessoryType = .None
-        case 2:
             cell.textLabel?.text="缓冲清除"
             cell.textLabel?.textColor=textColor
             cell.textLabel?.font=UIFont.systemFontOfSize(15)
-        case 3:
-            cell.textLabel?.text="版本更新（1.1）"
-            cell.textLabel?.textColor=textColor
-            cell.textLabel?.font=UIFont.systemFontOfSize(15)
+        
         default:
             cell.textLabel?.text="关于我们"
             cell.textLabel?.textColor=textColor
@@ -77,8 +66,6 @@ class SetUpViewController: UIViewController ,UITableViewDelegate,UITableViewData
             self.navigationController?.pushViewController(passVC, animated: true)
             
         case 1:
-            break
-        case 2:
             // 取出cache文件夹路径
             let cachePath = NSSearchPathForDirectoriesInDomains(NSSearchPathDirectory.CachesDirectory, NSSearchPathDomainMask.UserDomainMask, true).first
             // 打印路径,需要测试的可以往这个路径下放东西
@@ -129,16 +116,12 @@ class SetUpViewController: UIViewController ,UITableViewDelegate,UITableViewData
             presentViewController(alert, animated: true) { () -> Void in
                 
             }
-        case 3:
-            let alertController=UIAlertController(title: "版本更新", message: "这已经是最新版本", preferredStyle: .Alert)
-            let cancelAction = UIAlertAction(title: "确定", style: .Cancel, handler: nil)
-            alertController.addAction(cancelAction)
-            
-            self.presentViewController(alertController, animated: true, completion: nil)
-
-
+        
         default:
-            break
+            let hDVC = HotelDetailsViewController()
+            self.navigationController?.pushViewController(hDVC, animated: true)
+            
+            
         }
     }
     func leave(){

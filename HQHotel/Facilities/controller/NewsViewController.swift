@@ -10,17 +10,19 @@ import UIKit
 
 class NewsViewController: UIViewController {
 
-    private var titleL=UILabel()
-    private var timeL=UILabel()
-    private var textView=UITextView()
-    private var readL=UILabel()
-    private var readnumL:UILabel!
-    private var zanBT:UIButton!
+     var titleL=UILabel()
+     var timeL=UILabel()
+     var textView=UITextView()
+     var readL=UILabel()
+     var readnumL:UILabel!
+     var zanBT:UIButton!
+    var name = String()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+       self.view.backgroundColor=bkColor
        titleL=UILabel(frame: CGRectMake(5,70,self.view.bounds.width-10,50))
-       titleL.text="不想惨遭盗号的话，这份指南你一定用得上｜有用功"
+       titleL.text=name
         titleL.numberOfLines=0
         
         

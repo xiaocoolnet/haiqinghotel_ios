@@ -30,7 +30,6 @@ class MallCollectionViewCell: UICollectionViewCell {
         
         nameL=UILabel(frame: CGRectMake(5, frame.height-80, frame.width, 30))
         nameL.textColor=textColor
-//        nameL.adjustsFontSizeToFitWidth=true
         nameL.baselineAdjustment = UIBaselineAdjustment.AlignBaselines
         jianjieL=UILabel(frame: CGRectMake(5, frame.height-50, frame.width, 10))
         jianjieL.textColor=textColor

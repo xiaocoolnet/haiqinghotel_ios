@@ -117,7 +117,7 @@ class RoomOrderViewController: UIViewController ,UITableViewDelegate,UITableView
         orderVC.startTime=roomStartTime
         orderVC.endTime=roomEndTime
         orderVC.roomnum=roomTimeNum
-        
+        orderVC.roomid=orderroomInfo.idLab!
         orderVC.name=orderroomInfo.name!
         orderVC.bedsize1=orderroomInfo.bed!
         orderVC.network1=orderroomInfo.network!

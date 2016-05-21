@@ -19,6 +19,7 @@ class ReserveViewController: UIViewController,UITableViewDataSource,UITableViewD
     internal var endTime=String()
     internal var price=String()
     internal var roomnum=Int()
+    internal var roomid=String()
     private var tableView0=UITableView()
     private var tableView1=UITableView()
     private var tableView2=UITableView()
@@ -281,7 +282,7 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
         }
         else if tableView==tableView2{
             arrivetimeL.text=timeArray.objectAtIndex(indexPath.row) as? String
-            arrivetimeL.text=""
+            
             button.frame=CGRectMake(0, 0, 0, 0)
             tableView.frame=CGRectMake(0, 0, 0, 0)
         }
@@ -321,7 +322,7 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
             hud.hide(true, afterDelay: 1)
             return false
         }
-        if(arrivetimeL.text!.isEmpty){
+        if(arrivetimeL.text==nil){
             let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
             hud.mode = MBProgressHUDMode.Text
             hud.labelText = "请选择到达时间"
@@ -368,9 +369,13 @@ self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255,
         if PandKong()==true{
       
         let url = apiUrl+"bookingroom"
+//        let userid = NSUserDefaults.standardUserDefaults()
+//        let uid = userid.stringForKey("userid")
+           
         let param = [
-            "userid":"578",
-            "goodsid":"12",
+            
+            "userid":"579",
+            "goodsid":roomid,
             "begintime":startzheng,
             "endtime":endzheng,
             "arrivetime":arrivetimeL.text!,

@@ -10,9 +10,9 @@ import UIKit
 
 class NewsTableViewCell: UITableViewCell {
 
-    private var imageV=UIImageView()
-    private var titleL=UILabel()
-    private var jianjieL=UILabel()
+     var imageV=UIImageView()
+     var titleL=UILabel()
+     var jianjieL=UILabel()
     
     override func awakeFromNib() {
         super.awakeFromNib()
@@ -24,12 +24,11 @@ class NewsTableViewCell: UITableViewCell {
 
         self.backgroundColor=UIColor.whiteColor()
         titleL.frame=CGRectMake(10, 5, self.bounds.width-20, 20)
-        titleL.text="海情资讯海情资讯"
         
         imageV.frame=CGRectMake(10, 30, self.bounds.width-20, 110)
-        imageV.image=UIImage(named: "设施1.png")
+
         jianjieL.frame=CGRectMake(10, 140, self.bounds.width-20, 60)
-        jianjieL.text="海情资讯海情资讯海情资讯海情资讯海情资讯海情资讯海情资讯海情资讯海情资讯海情资讯海情资讯海情资讯海情资讯海情资讯海情资讯海情资讯海情资讯海情资讯海情资讯海情资讯"
+
         jianjieL.textColor=UIColor.grayColor()
         jianjieL.font=UIFont.systemFontOfSize(12)
         jianjieL.lineBreakMode=NSLineBreakMode.ByCharWrapping

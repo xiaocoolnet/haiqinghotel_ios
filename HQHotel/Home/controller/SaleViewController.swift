@@ -50,6 +50,8 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
     var network=String()
     var price=String()
     var zongjiaL=UILabel()
+    
+    
     var chuanzhi = NSUserDefaults.standardUserDefaults()
     private var scrollView:UIScrollView!
     private let numOfPages=4
@@ -258,6 +260,7 @@ class SaleViewController: UIViewController ,UIScrollViewDelegate,UITableViewDele
         reserve.endTime=endTime
         reserve.price = String(zongjia)
         reserve.roomnum = self.roomnum
+        reserve.roomid=self.roomid
         self.navigationController?.pushViewController(reserve, animated: true)
         
         

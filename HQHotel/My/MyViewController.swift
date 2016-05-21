@@ -32,6 +32,10 @@ class MyViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
         iconImage.frame=CGRectMake(0, 0, self.view.bounds.width/4, self.view.bounds.width/4)
         iconImage.center=topView.center
         iconImage.image=UIImage(named: "ic_touxiang")
+        let messageBT = UIButton(frame: CGRectMake(0, 0, self.view.bounds.width/4, self.view.bounds.width/4))
+        messageBT.center=topView.center
+        
+        messageBT.addTarget(self, action: #selector(showmessage), forControlEvents: .TouchUpInside)
         let nameL = UILabel(frame: CGRectMake(0,topView_h-(topView_h/2-self.view.bounds.width/8),self.view.bounds.width,20))
         nameL.text="海情"
         nameL.textAlignment = .Center
@@ -82,6 +86,7 @@ class MyViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
             self.view.addSubview(xiangqingL)
             self.view.addSubview(imageV)
             self.view.addSubview(button)
+            self.view.addSubview(messageBT)
             
         }
                 
@@ -95,6 +100,9 @@ class MyViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
         self.view.addSubview(tableView)
   
     }
+    func showmessage(){
+    
+    }
     //执行按钮事件
     func dobutton(){
         let collectVC = CollectViewController()
@@ -107,7 +115,7 @@ class MyViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
     }
     func dobuttonTwo(){
         
-        let informationVC = InformationViewController()
+        let informationVC = MessageViewController()
         self.navigationController?.pushViewController(informationVC, animated: true)
     }
     //tableview的代理方法
@@ -146,8 +154,7 @@ class MyViewController: UIViewController,UITableViewDelegate,UITableViewDataSour
             
         default:
             
-            let markVC = MarkViewController()
-            self.navigationController?.pushViewController(markVC, animated: true)
+            break
             
         }
     }

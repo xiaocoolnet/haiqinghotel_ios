@@ -28,12 +28,12 @@ class CollectViewController: UIViewController ,UITableViewDelegate,UITableViewDa
     }
     func GetcollectDate(){
         let url = apiUrl+"getfavoritelist"
-//                let userid = NSUserDefaults.standardUserDefaults()
-//                let uid = userid.stringForKey("userid")
+                let userid = NSUserDefaults.standardUserDefaults()
+                let uid = userid.stringForKey("userid")
                 let param = [
-                    "userid":578
+                    "userid":uid
                 ]
-        Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
+        Alamofire.request(.GET, url, parameters: param as? [String : String]).response { request, response, json, error in
             if(error != nil){
             }
             else{
@@ -65,19 +65,23 @@ class CollectViewController: UIViewController ,UITableViewDelegate,UITableViewDa
 
         let collectInfo = CollectSource.objectlist[indexPath.row]
         
-        
-
-        
         collcell.nameL.text=collectInfo.collecttitle
         collcell.jianjieL.text=collectInfo.collectdescription
-        collcell.iconView.image=UIImage(named: "海参.jpg")
-        collcell.priceL.text="¥367"
-        collcell.yudingBT.addTarget(self, action: #selector(Order), forControlEvents: .TouchUpInside)
+        let photo = collectInfo.collectphoto
+        let url = imageUrl+photo!
+        collcell.iconView.sd_setImageWithURL(NSURL(string: url ),placeholderImage: UIImage(named: "青岛海情-002.JPG"))
+        
+        collcell.priceL.text=collectInfo.collectprice
+        collcell.yudingBT.tag=Int(collectInfo.collectid!)!
+        collcell.yudingBT.addTarget(self, action: #selector(CollectViewController.Order(_:)), forControlEvents: .TouchUpInside)
         
         
        return collcell
     }
-    func Order(){
+    func Order(sender:UIButton){
+        let mall = mallOrderViewController()
+        mall.goodsid=String(sender.tag)
+        self.navigationController?.pushViewController(mall, animated: true)
         
     }
     override func viewWillAppear(animated: Bool) {

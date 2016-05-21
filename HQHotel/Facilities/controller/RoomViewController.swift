@@ -7,12 +7,16 @@
 //
 
 import UIKit
-
+import Alamofire
+import MBProgressHUD
 class RoomViewController: UIViewController,UITableViewDelegate,UITableViewDataSource {
 
     private var tableView=UITableView()
+    internal var type=String()
+    private var FacilitesSource=FacilitesModel()
     override func viewDidLoad() {
         super.viewDidLoad()
+        GetFacilitesDate()
         self.navigationController!.navigationBar.tintColor = UIColor.whiteColor()
         self.navigationController?.navigationBar.backItem?.title=""
 
@@ -23,14 +27,58 @@ class RoomViewController: UIViewController,UITableViewDelegate,UITableViewDataSo
         
         self.view.addSubview(tableView)
     }
+    func GetFacilitesDate(){
+        let url = apiUrl+"getFacilitylist"
+        let param = [
+            "type":type
+            
+        ]
+
+        print(url)
+        Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
+            if(error != nil){
+            }
+            else{
+                
+                let status = Http(JSONDecoder(json!))
+                print("设施状态是")
+                print(status.status)
+                if(status.status == "error"){
+                    let hud = MBProgressHUD.showHUDAddedTo(self.view, animated: true)
+                    hud.mode = MBProgressHUDMode.Text;
+                    hud.margin = 10.0
+                    hud.removeFromSuperViewOnHide = true
+                    hud.hide(true, afterDelay: 1)
+                }
+                if(status.status == "success"){
+                    self.FacilitesSource = FacilitesModel(status.data!)
+                    self.tableView.reloadData()
+                }
+            }
+        }
+    }
+
 
     func tableView(tableView: UITableView, numberOfRowsInSection section: Int) -> Int{
-        return 3
+        return FacilitesSource.count
     }
     
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let cell = FacilitiesTableViewCell.cellWithTableView(tableView)
         cell.accessoryType=UITableViewCellAccessoryType.DisclosureIndicator
+        let facilitesinfo = FacilitesSource.objectlist[indexPath.row]
+        cell.titleL.text=facilitesinfo.facilitestitle
+        cell.jieshaoL.text=facilitesinfo.facilitesexcerpt
+        let photo = facilitesinfo.facilitesphoto
+        let url = imageUrl+photo!
+        
+        cell.iconIV.sd_setImageWithURL(NSURL(string: url ),placeholderImage: UIImage(named: "青岛海情-002.JPG"))
+        
+        
+        
+        
+        
+        
         return cell
     }
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath) {

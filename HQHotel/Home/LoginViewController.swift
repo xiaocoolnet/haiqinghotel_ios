@@ -30,8 +30,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate{
         
 
         self.view.backgroundColor=UIColor.init(colorLiteralRed: 245/255, green: 245/255, blue: 245/255, alpha: 1)
-//        XKeyBoard.registerKeyBoardHide(self)
-//        XKeyBoard.registerKeyBoardShow(self)
+
         AccountText.delegate = self
         PasswordText.delegate = self
         LoginButton.addTarget(self, action: #selector(LoginViewController.Login), forControlEvents: UIControlEvents.TouchUpInside)
@@ -46,29 +45,7 @@ class LoginViewController: UIViewController ,UITextFieldDelegate{
         PasswordText.resignFirstResponder()
         return true
     }
-//    @IBAction func register(sender: AnyObject) {
-//        
-//        let mainStoryboard = UIStoryboard(name: "Main", bundle: NSBundle.mainBundle())
-//        let next : UIViewController = mainStoryboard.instantiateViewControllerWithIdentifier("register")
-//        self.navigationController?.pushViewController(next, animated: true)
-//        
-//        
-//    }
-//    func keyboardWillHideNotification(notification:NSNotification){
-//        UIView.animateWithDuration(0.3) { () -> Void in
-//            self.topConstraint.constant = 233
-//            self.view.layoutIfNeeded()
-//        }
-//        
-//    }
-//    
-//    func keyboardWillShowNotification(notification:NSNotification){
-//        UIView.animateWithDuration(0.3) { () -> Void in
-//            self.topConstraint.constant = 150
-//            self.view.layoutIfNeeded()
-//        }
-//    }
-    
+
     override func touchesBegan(touches: Set<UITouch>, withEvent event: UIEvent?) {
         self.view.endEditing(true)
     }

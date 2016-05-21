@@ -53,13 +53,13 @@ class HotelOrderViewController: UIViewController ,UITableViewDelegate,UITableVie
         func GetroomorderDate(){
         let url = apiUrl+"getbookingorderlist"
         
-//        let userid = NSUserDefaults.standardUserDefaults()
-//        let uid = userid.stringForKey("userid")
+        let userid = NSUserDefaults.standardUserDefaults()
+        let uid = userid.stringForKey("userid")
         let param = [
-            "userid":578
+            "userid":uid
         ]
-      
-        Alamofire.request(.GET, url, parameters: param).response { request, response, json, error in
+      print(uid)
+        Alamofire.request(.GET, url, parameters: param as? [String : String]).response { request, response, json, error in
             if(error != nil){
             }
             else{

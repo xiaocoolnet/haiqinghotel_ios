@@ -249,11 +249,6 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
     //酒店预订接口
     func GetDate(){
         let url = apiUrl+"getpromotionlist"
-//        let userid = NSUserDefaults.standardUserDefaults()
-//        let uid = userid.stringForKey("userid")
-//        let param = [
-//            "userid":uid!
-//        ]
         Alamofire.request(.GET, url, parameters: nil).response { request, response, json, error in
             if(error != nil){
             }
@@ -327,8 +322,11 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
         }else{
             hotelcell.prie.text = "/位"
         }
-        hotelcell.imageV.image = UIImage(named: "青岛海情-002.JPG")
+        let photo = reservationInfo.picture
+        let url = imageUrl+photo!
         
+        
+        hotelcell.imageV.sd_setImageWithURL(NSURL(string: url ),placeholderImage: UIImage(named: "青岛海情-002.JPG"))
         return hotelcell
         
     }
@@ -398,8 +396,7 @@ class HomeViewController: UIViewController,UIScrollViewDelegate ,UITableViewDele
 }
     //隐藏键盘的方法
     func viewtap(){
-        self.view.endEditing(true)
-//        
+        self.view.endEditing(true)       
     }
 
 

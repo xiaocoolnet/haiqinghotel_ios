@@ -22,6 +22,7 @@ class mallOrderViewController: UIViewController ,UITableViewDelegate,UITableView
     private var roomnumTF=UITextField()
     private var phoneTF=UITextField()
     internal var price=Int()
+    internal var goodsid=String()
     private var pricenum=Int()
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -220,7 +221,7 @@ class mallOrderViewController: UIViewController ,UITableViewDelegate,UITableView
             let url = apiUrl+"bookingshopping"
             let param = [
                 "userid":578,
-                "goodsid":"12",
+                "goodsid":goodsid,
                 "roomname":roomnumTF.text!,
                 "peoplename":nameTF.text!,
                 "goodnum":numL.text!,

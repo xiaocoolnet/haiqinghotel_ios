@@ -38,6 +38,7 @@ class CollectInfo: JSONJoy{
     var collectobjectid:String?
     var collecttime:String?
     var collectprice:String?
+    var collectphoto:String?
     
     
     var type:Int?
@@ -54,6 +55,8 @@ class CollectInfo: JSONJoy{
         collectobjectid = decoder["object_id"].string
         collecttime=decoder["createtime"].string
         collectprice=decoder["price"].string
+        collectphoto=decoder["photo"].string
+    
     }
     
 }

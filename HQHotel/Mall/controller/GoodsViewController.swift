@@ -18,6 +18,8 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
     var count = Int()
     var shopgoodSource = GoodsInfo()
     var muArr = NSMutableArray()
+    var loveBT = UIButton()
+    var  collect = String()
     
     var countTwo = Int()
     var photoSource = goodphotolistInfo()
@@ -69,6 +71,7 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
     func tableView(tableView: UITableView, cellForRowAtIndexPath indexPath: NSIndexPath) -> UITableViewCell{
         let identifier:String = "cell"
         let cell:UITableViewCell = UITableViewCell(style: .Default, reuseIdentifier: identifier)
+        cell.selectionStyle = .None
         if indexPath.section==0 {
             
             let lable : UILabel!
@@ -82,8 +85,15 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
             priceL.textColor=blueColor
             
             cell.addSubview(priceL)
-            let loveBT = UIButton(frame: CGRectMake(self.view.bounds.width-40,50,40,20))
-            loveBT.setImage(UIImage(named: "爱心"), forState: UIControlState.Normal)
+            loveBT = UIButton(frame: CGRectMake(self.view.bounds.width-40,50,40,20))
+            if collect=="1" {
+                loveBT.setImage(UIImage(named: "爱心"), forState: UIControlState.Normal)
+                loveBT.userInteractionEnabled=false
+            }else{
+                loveBT.setImage(UIImage(named: "灰心"), forState: UIControlState.Normal)
+
+            }
+            
             loveBT.addTarget(self, action: #selector(love), forControlEvents: .TouchUpInside)
             cell.addSubview(loveBT)
             let loveL = UILabel(frame: CGRectMake(self.view.bounds.width-35,75,40,10))
@@ -152,6 +162,11 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
                     hud.margin = 10.0
                     hud.removeFromSuperViewOnHide = true
                     hud.hide(true, afterDelay: 3)
+                    self.collect="1"
+                    self.loveBT.userInteractionEnabled=false
+                    self.loveBT.setImage(UIImage(named: "爱心"), forState: UIControlState.Normal)
+
+                    
                 }
             }
         }
@@ -160,6 +175,7 @@ class GoodsViewController: UIViewController ,UIScrollViewDelegate,UITableViewDel
     func yuding(){
         let mallVC = mallOrderViewController()
         mallVC.price=Int(price)!
+        mallVC.goodsid=goodid
         self.navigationController?.pushViewController(mallVC, animated: true)
         
     }
